@@ -125,6 +125,7 @@ class LiveAnalyzer:
         self.fps = 60
         self.target_height = 480
         self.target_width = 854
+        self.debug_frames_dir = None
 
         # Performance tracking
         self.frames_processed = 0
@@ -190,6 +191,23 @@ class LiveAnalyzer:
             self.template_dir, self.target_height, debug_output_dir=self.output_dir
         )
 
+        # Save scaled templates for debugging
+        debug_templates_dir = os.path.join(self.output_dir, "debug_templates")
+        os.makedirs(debug_templates_dir, exist_ok=True)
+        print(f"\nSaving scaled templates to: {debug_templates_dir}")
+        for name, t in self.templates.items():
+            template_img = t['img_scaled']
+            h, w = template_img.shape[:2] if len(template_img.shape) == 2 else template_img.shape[:2]
+            cv2.imwrite(os.path.join(debug_templates_dir, f"{name}_template_scaled.png"), template_img)
+            if t['mask_scaled'] is not None:
+                cv2.imwrite(os.path.join(debug_templates_dir, f"{name}_mask_scaled.png"), t['mask_scaled'])
+            print(f"  {name}: {w}x{h}")
+
+        # Create debug frames directory
+        self.debug_frames_dir = os.path.join(self.output_dir, "debug_frames")
+        os.makedirs(self.debug_frames_dir, exist_ok=True)
+        print(f"Debug frames will be saved to: {self.debug_frames_dir}")
+
         # Create frame processor with shared state machine logic
         # Use shorter wait for live mode (12 frames at ~2.4fps capture rate = ~5 seconds)
         self.processor = FrameProcessor(
@@ -198,7 +216,8 @@ class LiveAnalyzer:
             fps=self.fps,
             output_dir=self.output_dir,
             debug=False,
-            on_game_complete=self._on_game_complete
+            on_game_complete=self._on_game_complete,
+            verbose=True
         )
         # Override wait time for live mode (fewer frames due to skip rate)
         self.processor.WAIT_AFTER_GAME = 12
@@ -299,6 +318,13 @@ class LiveAnalyzer:
             # Downscale frame for processing
             frame_small = cv2.resize(frame, (self.target_width, self.target_height),
                                      interpolation=cv2.INTER_AREA)
+
+            # Save debug frame with resolution info
+            if self.debug_frames_dir:
+                state_name = self.processor.state.name if self.processor else "INIT"
+                h, w = frame_small.shape[:2]
+                debug_filename = os.path.join(self.debug_frames_dir, f"frame_{frame_num:06d}_{state_name}_{w}x{h}.png")
+                cv2.imwrite(debug_filename, frame_small)
 
             # Process frame through shared state machine
             result = self.processor.process_frame(frame, frame_small, frame_num)

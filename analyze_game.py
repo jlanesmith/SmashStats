@@ -9,6 +9,7 @@ import numpy as np
 import argparse
 import csv
 import os
+import math
 from pathlib import Path
 from datetime import datetime
 import re
@@ -312,63 +313,53 @@ def extract_damage(result_image_path: str, player_num: int, save_debug_images: b
     return damage
 
 
-def extract_opponent_name(p3_image_path: str, p4_image_path: str, team1_won: bool = False, save_debug_images: bool = True):
+def extract_opponent_name(characters_image_path: str, save_debug_images: bool = True):
     """
-    Extract opponent name from P3 and P4 result screens.
+    Extract opponent name from the characters frame.
 
-    The opponent name appears as "<name>1" in P3's column and "<name>2" in P4's column.
+    The opponent name appears in P3's and P4's columns on the characters screen.
+    P3 shows "<name>1" and P4 shows "<name>2".
     We check P3 first - if it ends in "1", use that name (minus the "1").
     Otherwise, check P4 - if it ends in "2", use that name (minus the "2").
-    Otherwise, return empty string.
 
     Args:
-        p3_image_path: Path to P3's result screenshot (480p version)
-        p4_image_path: Path to P4's result screenshot (480p version)
-        team1_won: If True, P1+P2 won (bounding box moves up); if False, P3+P4 won
+        characters_image_path: Path to the characters screenshot (480p version)
         save_debug_images: If True, save the extracted regions for debugging
 
     Returns:
         str: Opponent name (or empty string if not detected)
     """
-    # Base coordinates for 480p (when P3+P4 win)
-    # P3 column: x starts at 474, P4 column: x starts at 687 (474 + 213 column width)
-    # Size 95x34
-    base_x_p3 = 474
-    base_x_p4 = 687  # P4 is in the 4th column (rightmost)
-    base_y_start = 78
-    base_box_width = 95
-    base_box_height = 34
-    base_height = 480
+    # Base coordinates for 1080p (1920x1080) - from characters frame
+    # P3: top-left at (1040, 143), size 270x60
+    # P4: 481 pixels to the right of P3
+    base_height = 1080
+    base_coords = {
+        'p3': {'x': 1040, 'y': 151, 'width': 230, 'height': 37},
+        'p4': {'x': 1521, 'y': 151, 'width': 230, 'height': 37},
+    }
 
-    # If P1+P2 win, the bounding box moves up by 16 pixels at 720p
-    if team1_won:
-        base_y_offset = 16 * (480 / 720)
-        base_y_start = base_y_start - base_y_offset
+    # Try to use full resolution image for better OCR accuracy
+    full_res_path = characters_image_path.replace('.png', '_full.png')
+    if os.path.exists(full_res_path):
+        img = cv2.imread(full_res_path)
+        using_full_res = True
+    else:
+        img = cv2.imread(characters_image_path)
+        using_full_res = False
 
-    def extract_from_image(image_path: str, player_label: str, base_x_start: int):
-        """Helper to extract opponent name from a single image."""
-        # Try to use full resolution image for better OCR accuracy
-        full_res_path = image_path.replace('.png', '_full.png')
-        if os.path.exists(full_res_path):
-            img = cv2.imread(full_res_path)
-            using_full_res = True
-        else:
-            img = cv2.imread(image_path)
-            using_full_res = False
+    if img is None:
+        return ""
 
-        if img is None:
-            return {
-                'text': None, 'raw_text': None, 'img': None, 'bbox': None,
-                'height': None, 'full_res': False, 'gray': None, 'thresh': None, 'region': None
-            }
+    height, width = img.shape[:2]
+    scale = height / base_height
 
-        height, width = img.shape[:2]
-        scale = height / base_height
-
-        x_start = int(base_x_start * scale)
-        y_start = int(base_y_start * scale)
-        box_width = int(base_box_width * scale)
-        box_height = int(base_box_height * scale)
+    def extract_name_from_region(player_key: str):
+        """Helper to extract opponent name from a region."""
+        coords = base_coords[player_key]
+        x_start = int(coords['x'] * scale)
+        y_start = int(coords['y'] * scale)
+        box_width = int(coords['width'] * scale)
+        box_height = int(coords['height'] * scale)
 
         x_end = min(x_start + box_width, width)
         y_end = min(y_start + box_height, height)
@@ -376,52 +367,62 @@ def extract_opponent_name(p3_image_path: str, p4_image_path: str, team1_won: boo
         # Extract the opponent name region
         name_region = img[y_start:y_end, x_start:x_end]
 
+        if name_region.size == 0:
+            return {
+                'text': None, 'bbox': None,
+                'gray': None, 'gray_upscaled': None, 'denoised': None,
+                'thresh': None, 'region': None
+            }
+
         # Convert to grayscale
         gray = cv2.cvtColor(name_region, cv2.COLOR_BGR2GRAY)
 
-        # Upscale for better OCR accuracy (2x)
-        upscale_factor = 2
+        # Upscale for better OCR accuracy (3x for small text)
+        upscale_factor = 3
         gray_upscaled = cv2.resize(gray, None, fx=upscale_factor, fy=upscale_factor, interpolation=cv2.INTER_CUBIC)
+
+        # Rotate to correct for angled text (goes up 8px over 160px = ~2.86° clockwise)
+        angle = math.degrees(math.atan(8 / 160))  # ~2.86 degrees
+        h, w = gray_upscaled.shape[:2]
+        center = (w // 2, h // 2)
+        rotation_matrix = cv2.getRotationMatrix2D(center, -angle, 1.0)  # negative = clockwise
+        gray_upscaled = cv2.warpAffine(gray_upscaled, rotation_matrix, (w, h),
+                                        borderMode=cv2.BORDER_REPLICATE)
 
         # Apply bilateral filter to reduce noise while keeping edges sharp
         denoised = cv2.bilateralFilter(gray_upscaled, 9, 75, 75)
 
-        # Use Otsu thresholding (works better for this case)
+        # Use Otsu thresholding
         _, thresh = cv2.threshold(denoised, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
         # Determine if we need to invert (text should be black on white for OCR)
-        # If the image is mostly black, invert it
         white_pixels = np.sum(thresh == 255)
         black_pixels = np.sum(thresh == 0)
         if black_pixels > white_pixels:
             thresh = cv2.bitwise_not(thresh)
 
-        # Remove small noise with morphological opening (removes small white dots)
+        # Remove small noise with morphological opening
         kernel_open = np.ones((2, 2), np.uint8)
         thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel_open)
 
-        # Close small gaps in text with morphological closing
-        kernel_close = np.ones((2, 2), np.uint8)
-        thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel_close)
+        # Erode slightly to thin the text (makes OCR more accurate)
+        # Dilate the white background to thin black text
+        kernel_thin = np.ones((2, 2), np.uint8)
+        thresh = cv2.dilate(thresh, kernel_thin, iterations=1)
+
+        # Add white padding around image - tesseract needs margin to recognize edge characters
+        padding = 20
+        thresh = cv2.copyMakeBorder(thresh, padding, padding, padding, padding,
+                                    cv2.BORDER_CONSTANT, value=255)
 
         # Perform OCR - PSM 7 for single line of text
         custom_config = r'--oem 3 --psm 7'
-        raw_text = pytesseract.image_to_string(thresh, config=custom_config)
+        text = pytesseract.image_to_string(thresh, config=custom_config).strip()
 
-        # Clean up the text
-        text = raw_text.strip()
-        text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
-        text = text.strip()
-
-        # Return extracted data
         bbox = (x_start, y_start, x_end, y_end)
         return {
             'text': text,
-            'raw_text': raw_text.strip(),
-            'img': img,
             'bbox': bbox,
-            'height': height,
-            'full_res': using_full_res,
             'gray': gray,
             'gray_upscaled': gray_upscaled,
             'denoised': denoised,
@@ -429,132 +430,100 @@ def extract_opponent_name(p3_image_path: str, p4_image_path: str, team1_won: boo
             'region': name_region
         }
 
-    # Extract from P3 (3rd column)
-    p3_data = extract_from_image(p3_image_path, "P3", base_x_p3)
+    # Extract from P3 and P4 regions
+    p3_data = extract_name_from_region('p3')
+    p4_data = extract_name_from_region('p4')
 
-    # Extract from P4 (4th column - rightmost)
-    p4_data = extract_from_image(p4_image_path, "P4", base_x_p4)
+    # Helper to fix common OCR misreads for trailing player numbers
+    def fix_trailing_number(text, expected_char, common_misreads):
+        """Replace common OCR misreads at end of text with expected character."""
+        if text and text[-1] in common_misreads:
+            return text[:-1] + expected_char
+        return text
+
+    # Fix common "1" misreads for P3 (!, l, I, |)
+    p3_text = fix_trailing_number(p3_data['text'], '1', '!lI|')
+    # Fix common "2" misreads for P4 (Z, z, ?)
+    p4_text = fix_trailing_number(p4_data['text'], '2', 'Zz?')
+
+    # Determine selection result
+    selected_from = None
+    final_name = ""
+    selection_reason = ""
+
+    if p3_text and p3_text.endswith('1'):
+        selected_from = "P3"
+        final_name = p3_text[:-1].strip()
+        selection_reason = f"P3 text ends with '1': '{p3_data['text']}' -> '{p3_text}' -> '{final_name}'"
+    elif p4_text and p4_text.endswith('2'):
+        selected_from = "P4"
+        final_name = p4_text[:-1].strip()
+        selection_reason = f"P4 text ends with '2': '{p4_data['text']}' -> '{p4_text}' -> '{final_name}'"
+    else:
+        selection_reason = f"Neither P3 ('{p3_text}') ends with '1' nor P4 ('{p4_text}') ends with '2'"
 
     # Save debug images
     if save_debug_images:
-        debug_dir = os.path.dirname(p3_image_path)
+        debug_dir = os.path.dirname(characters_image_path)
         debug_subdir = os.path.join(debug_dir, "debug_regions")
         os.makedirs(debug_subdir, exist_ok=True)
 
+        res_suffix = f"_{height}p" if using_full_res else "_480p"
+
         # Save P3 debug images
-        if p3_data['img'] is not None and p3_data['bbox'] is not None:
-            res_suffix = f"_{p3_data['height']}p" if p3_data['full_res'] else "_480p"
-            x_start, y_start, x_end, y_end = p3_data['bbox']
-
-            # Save cropped region (color)
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_region{res_suffix}.png"), p3_data['region'])
-
-            # Save grayscale (original size)
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_gray{res_suffix}.png"), p3_data['gray'])
-
-            # Save grayscale upscaled (2x)
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_gray_upscaled{res_suffix}.png"), p3_data['gray_upscaled'])
-
-            # Save denoised (after bilateral filter)
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_denoised{res_suffix}.png"), p3_data['denoised'])
-
-            # Save thresholded (what OCR sees)
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_thresh{res_suffix}.png"), p3_data['thresh'])
-
-            # Save with bounding box
-            p3_with_box = p3_data['img'].copy()
-            cv2.rectangle(p3_with_box, (x_start, y_start), (x_end, y_end), (0, 255, 0), 2)
-            cv2.putText(p3_with_box, f"P3: {p3_data['text'] or '?'}", (x_start, y_start - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5 * (p3_data['height'] / 480), (0, 255, 0), int(1 * (p3_data['height'] / 480)))
-            cv2.imwrite(os.path.join(debug_subdir, f"p3_opponent_bbox{res_suffix}.png"), p3_with_box)
+        if p3_data['region'] is not None:
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p3_opponent_region{res_suffix}.png"), p3_data['region'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p3_opponent_gray{res_suffix}.png"), p3_data['gray'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p3_opponent_gray_upscaled{res_suffix}.png"), p3_data['gray_upscaled'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p3_opponent_thresh{res_suffix}.png"), p3_data['thresh'])
 
         # Save P4 debug images
-        if p4_data['img'] is not None and p4_data['bbox'] is not None:
-            res_suffix = f"_{p4_data['height']}p" if p4_data['full_res'] else "_480p"
+        if p4_data['region'] is not None:
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p4_opponent_region{res_suffix}.png"), p4_data['region'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p4_opponent_gray{res_suffix}.png"), p4_data['gray'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p4_opponent_gray_upscaled{res_suffix}.png"), p4_data['gray_upscaled'])
+            cv2.imwrite(os.path.join(debug_subdir, f"game_p4_opponent_thresh{res_suffix}.png"), p4_data['thresh'])
+
+        # Save with bounding boxes on full image
+        img_with_boxes = img.copy()
+        if p3_data['bbox']:
+            x_start, y_start, x_end, y_end = p3_data['bbox']
+            cv2.rectangle(img_with_boxes, (x_start, y_start), (x_end, y_end), (0, 255, 0), 2)
+            cv2.putText(img_with_boxes, f"P3: {p3_data['text'] or '?'}", (x_start, y_start - 5),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5 * scale, (0, 255, 0), max(1, int(scale)))
+        if p4_data['bbox']:
             x_start, y_start, x_end, y_end = p4_data['bbox']
-
-            # Save cropped region (color)
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_region{res_suffix}.png"), p4_data['region'])
-
-            # Save grayscale (original size)
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_gray{res_suffix}.png"), p4_data['gray'])
-
-            # Save grayscale upscaled (2x)
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_gray_upscaled{res_suffix}.png"), p4_data['gray_upscaled'])
-
-            # Save denoised (after bilateral filter)
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_denoised{res_suffix}.png"), p4_data['denoised'])
-
-            # Save thresholded (what OCR sees)
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_thresh{res_suffix}.png"), p4_data['thresh'])
-
-            # Save with bounding box
-            p4_with_box = p4_data['img'].copy()
-            cv2.rectangle(p4_with_box, (x_start, y_start), (x_end, y_end), (255, 0, 255), 2)
-            cv2.putText(p4_with_box, f"P4: {p4_data['text'] or '?'}", (x_start, y_start - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5 * (p4_data['height'] / 480), (255, 0, 255), int(1 * (p4_data['height'] / 480)))
-            cv2.imwrite(os.path.join(debug_subdir, f"p4_opponent_bbox{res_suffix}.png"), p4_with_box)
-
-        # Determine selection logic result
-        selected_from = None
-        final_name = ""
-        selection_reason = ""
-
-        if p3_data['text'] and p3_data['text'].endswith('1'):
-            selected_from = "P3"
-            final_name = p3_data['text'][:-1].strip()
-            selection_reason = f"P3 text ends with '1': '{p3_data['text']}' -> '{final_name}'"
-        elif p4_data['text'] and p4_data['text'].endswith('2'):
-            selected_from = "P4"
-            final_name = p4_data['text'][:-1].strip()
-            selection_reason = f"P4 text ends with '2': '{p4_data['text']}' -> '{final_name}'"
-        else:
-            selection_reason = f"Neither P3 ('{p3_data['text']}') ends with '1' nor P4 ('{p4_data['text']}') ends with '2'"
+            cv2.rectangle(img_with_boxes, (x_start, y_start), (x_end, y_end), (255, 0, 255), 2)
+            cv2.putText(img_with_boxes, f"P4: {p4_data['text'] or '?'}", (x_start, y_start - 5),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5 * scale, (255, 0, 255), max(1, int(scale)))
+        cv2.imwrite(os.path.join(debug_subdir, f"game_opponent_bbox{res_suffix}.png"), img_with_boxes)
 
         # Save summary text file
         summary_path = os.path.join(debug_subdir, "opponent_name_debug.txt")
         with open(summary_path, 'w') as f:
-            f.write("=== OPPONENT NAME DETECTION DEBUG ===\n\n")
-            f.write(f"Team 1 Won: {team1_won}\n")
-            f.write(f"Y Offset Applied: {16 * (480 / 720) if team1_won else 0:.1f} pixels (at 480p)\n\n")
-            f.write("--- Preprocessing Pipeline ---\n")
-            f.write("  1. Convert to grayscale\n")
-            f.write("  2. Upscale 2x with cubic interpolation\n")
-            f.write("  3. Bilateral filter (d=9, sigmaColor=75, sigmaSpace=75)\n")
-            f.write("  4. Otsu thresholding\n")
-            f.write("  5. Auto-invert if mostly black (for black text on white)\n")
-            f.write("  6. Morphological opening (2x2) - remove noise\n")
-            f.write("  7. Morphological closing (2x2) - fill gaps\n\n")
+            f.write("=== OPPONENT NAME DETECTION DEBUG (GAME FRAME) ===\n\n")
+            f.write(f"Source Image: {characters_image_path}\n")
+            f.write(f"Resolution: {width}x{height} (full_res={using_full_res})\n")
+            f.write(f"Scale factor: {scale:.3f} (base: {base_height}p)\n\n")
+            f.write("--- Base Coordinates (1080p) ---\n")
+            f.write(f"  P3: x={base_coords['p3']['x']}, y={base_coords['p3']['y']}, w={base_coords['p3']['width']}, h={base_coords['p3']['height']}\n")
+            f.write(f"  P4: x={base_coords['p4']['x']}, y={base_coords['p4']['y']}, w={base_coords['p4']['width']}, h={base_coords['p4']['height']}\n\n")
             f.write("--- P3 Extraction ---\n")
-            f.write(f"  Image: {p3_image_path}\n")
-            f.write(f"  Resolution: {p3_data['height']}p (full_res={p3_data['full_res']})\n")
             f.write(f"  Bounding Box: {p3_data['bbox']}\n")
-            f.write(f"  Raw OCR Output: '{p3_data['raw_text']}'\n")
-            f.write(f"  Cleaned Text: '{p3_data['text']}'\n")
-            f.write(f"  Ends with '1': {p3_data['text'].endswith('1') if p3_data['text'] else False}\n\n")
+            f.write(f"  OCR Text: '{p3_data['text']}'\n")
+            f.write(f"  Fixed Text: '{p3_text}'\n")
+            f.write(f"  Ends with '1': {p3_text.endswith('1') if p3_text else False}\n\n")
             f.write("--- P4 Extraction ---\n")
-            f.write(f"  Image: {p4_image_path}\n")
-            f.write(f"  Resolution: {p4_data['height']}p (full_res={p4_data['full_res']})\n")
             f.write(f"  Bounding Box: {p4_data['bbox']}\n")
-            f.write(f"  Raw OCR Output: '{p4_data['raw_text']}'\n")
-            f.write(f"  Cleaned Text: '{p4_data['text']}'\n")
-            f.write(f"  Ends with '2': {p4_data['text'].endswith('2') if p4_data['text'] else False}\n\n")
+            f.write(f"  OCR Text: '{p4_data['text']}'\n")
+            f.write(f"  Fixed Text: '{p4_text}'\n")
+            f.write(f"  Ends with '2': {p4_text.endswith('2') if p4_text else False}\n\n")
             f.write("--- Selection Logic ---\n")
             f.write(f"  {selection_reason}\n")
             f.write(f"  Selected From: {selected_from or 'NONE'}\n")
             f.write(f"  Final Name: '{final_name}'\n")
 
-    # Apply selection logic
-    # If P3's text ends in "1", use it (minus the "1")
-    if p3_data['text'] and p3_data['text'].endswith('1'):
-        return p3_data['text'][:-1].strip()
-
-    # Otherwise, if P4's text ends in "2", use it (minus the "2")
-    if p4_data['text'] and p4_data['text'].endswith('2'):
-        return p4_data['text'][:-1].strip()
-
-    # Otherwise, return empty string
-    return ""
+    return final_name
 
 
 def extract_character_names(characters_image_path: str, save_debug_images: bool = True,
@@ -751,15 +720,12 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
         team1_won = team1_falls < team2_falls
         win = "Yes" if team1_won else "No"
 
-    # Extract opponent name from P3 and P4 result screens
+    # Extract opponent name from characters frame
     opponent = ""
-    p3_files = list(Path(game_dir).glob("p3_*.png"))
-    p4_files = list(Path(game_dir).glob("p4_*.png"))
     # Filter out full resolution files for the 480p path lookup
-    p3_files = [f for f in p3_files if '_full.png' not in str(f)]
-    p4_files = [f for f in p4_files if '_full.png' not in str(f)]
-    if p3_files and p4_files:
-        opponent = extract_opponent_name(str(p3_files[0]), str(p4_files[0]), team1_won=team1_won, save_debug_images=True) or ""
+    characters_files_480p = [f for f in characters_files if '_full.png' not in str(f)]
+    if characters_files_480p:
+        opponent = extract_opponent_name(str(characters_files_480p[0]), save_debug_images=True) or ""
 
     result = {
         'datetime': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

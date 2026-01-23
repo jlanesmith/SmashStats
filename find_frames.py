@@ -31,7 +31,7 @@ class FrameProcessor:
     """
 
     def __init__(self, templates, threshold=0.95, fps=60, output_dir=None,
-                 debug=False, on_game_complete=None):
+                 debug=False, on_game_complete=None, verbose=False):
         """
         Initialize the frame processor.
 
@@ -42,6 +42,7 @@ class FrameProcessor:
             output_dir: Directory to save captured frames (optional)
             debug: If True, track debug information
             on_game_complete: Callback function(game_dir, game_num) called when a game is complete
+            verbose: If True, print frame-by-frame logs (for live mode)
         """
         self.templates = templates
         self.threshold = threshold
@@ -49,6 +50,7 @@ class FrameProcessor:
         self.output_dir = output_dir
         self.debug = debug
         self.on_game_complete = on_game_complete
+        self.verbose = verbose
 
         # State machine
         self.state = State.LOOKING_FOR_CHARACTERS
@@ -58,6 +60,7 @@ class FrameProcessor:
         self.player_groups = {'p1': [], 'p2': [], 'p3': [], 'p4': []}
         self.active_group = {'p1': None, 'p2': None, 'p3': None, 'p4': None}
         self.player_done = {'p1': False, 'p2': False, 'p3': False, 'p4': False}
+        self.p1_p2_wait_counter = None  # Counts frames after p1+p2 found, waiting for p3+p4
 
         # Game tracking
         self.game_num = 0
@@ -72,6 +75,7 @@ class FrameProcessor:
         self.WIN_LOSS_THRESHOLD = 0.95
         self.MAX_DROP = 0.01
         self.MIN_CONSECUTIVE_FRAMES = 10
+        self.P1_P2_EXTRA_WAIT = 10  # Extra frames to wait for p3/p4 after p1+p2 found
 
         # Debug tracking
         self.best_matches = {
@@ -140,8 +144,6 @@ class FrameProcessor:
             with open(result_file, 'w') as f:
                 f.write(self.game_result)
             print(f"Game result: {self.game_result.upper()}")
-        else:
-            print("Warning: Win/loss not detected for this game")
 
         # Add this game directory to our list
         if self.current_game_dir:
@@ -215,6 +217,11 @@ class FrameProcessor:
                 frame_small_gray, t['img_scaled'], t['mask_scaled'], self.threshold
             )
 
+            # Print confidence vs threshold for debugging
+            match_indicator = "✓ MATCH" if matched else ""
+            if self.verbose:
+                print(f"  [CHAR] Frame {frame_num}: conf={confidence:.4f} thresh={self.threshold:.2f} {match_indicator}")
+
             # Track best match for debug
             if self.debug and confidence > self.best_matches['characters']['confidence']:
                 self.best_matches['characters'] = {
@@ -252,6 +259,11 @@ class FrameProcessor:
                 frame_small_gray, t['img_scaled'], t['mask_scaled'], self.threshold
             )
 
+            # Print confidence vs threshold for debugging
+            match_indicator = "✓ MATCH" if matched else ""
+            if self.verbose:
+                print(f"  [GAME] Frame {frame_num}: conf={confidence:.4f} thresh={self.threshold:.2f} {match_indicator}")
+
             # Track best match for debug
             if self.debug and confidence > self.best_matches['game']['confidence']:
                 self.best_matches['game'] = {
@@ -275,6 +287,7 @@ class FrameProcessor:
                 self.player_groups = {'p1': [], 'p2': [], 'p3': [], 'p4': []}
                 self.active_group = {'p1': None, 'p2': None, 'p3': None, 'p4': None}
                 self.player_done = {'p1': False, 'p2': False, 'p3': False, 'p4': False}
+                self.p1_p2_wait_counter = None
                 event = 'game_end'
                 print(f"Waiting {self.WAIT_AFTER_GAME} frames before checking for results...")
 
@@ -386,15 +399,31 @@ class FrameProcessor:
                     debug_parts.append(f"{player}={confidence:.3f}(g{num_groups})")
 
             # Print debug info for all players
-            print(f"  [RESULTS] Frame {frame_num}: {' '.join(debug_parts)}")
+            if self.verbose:
+                print(f"  [RESULTS] Frame {frame_num}: {' '.join(debug_parts)}")
 
-            # Check if all players have at least one completed group (any size)
+            # Check completion conditions
             all_have_groups = all(len(self.player_groups[p]) > 0 for p in ['p1', 'p2', 'p3', 'p4'])
+            p1_p2_have_groups = len(self.player_groups['p1']) > 0 and len(self.player_groups['p2']) > 0
 
+            # Complete if all 4 players have groups
             if all_have_groups:
                 self._select_best_frame_for_players()
                 self._complete_game()
                 event = 'results_complete'
+            # Or if p1+p2 have groups and we've waited long enough for p3+p4
+            elif p1_p2_have_groups:
+                if self.p1_p2_wait_counter is None:
+                    self.p1_p2_wait_counter = 0
+                else:
+                    self.p1_p2_wait_counter += 1
+
+                if self.p1_p2_wait_counter >= self.P1_P2_EXTRA_WAIT:
+                    if self.verbose:
+                        print(f"  [RESULTS] Completing with p1+p2 only (waited {self.p1_p2_wait_counter} extra frames)")
+                    self._select_best_frame_for_players()
+                    self._complete_game()
+                    event = 'results_complete'
 
         return {'state': self.state, 'event': event, 'game_num': self.game_num, 'game_dir': self.current_game_dir}
 
@@ -412,10 +441,11 @@ class FrameProcessor:
                     self.player_groups[player].append(self.active_group[player])
                     self.active_group[player] = None
 
-            # Check if all players have at least one group
+            # Check completion conditions
             all_have_groups = all(len(self.player_groups[p]) > 0 for p in ['p1', 'p2', 'p3', 'p4'])
+            p1_p2_have_groups = len(self.player_groups['p1']) > 0 and len(self.player_groups['p2']) > 0
 
-            if all_have_groups:
+            if all_have_groups or p1_p2_have_groups:
                 self._select_best_frame_for_players()
                 self._complete_game()
                 return True
