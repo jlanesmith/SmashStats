@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(chmod:*)",
+      "Bash(tesseract:*)",
+      "Bash(brew install:*)",
+      "Bash(python analyze_game.py:*)"
+    ]
+  }
+}

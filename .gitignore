@@ -1,0 +1,5 @@
+*.mov
+game_captures/*
+live_captures/*
+__pycache__/*
+data.csv
