@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmashStats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+        .win { color: #22c55e; font-weight: 600; }
+        .loss { color: #ef4444; font-weight: 600; }
+        .result-1 { background-color: #dcfce7; }
+        .result-0 { background-color: #fee2e2; }
+        .result-half { background-color: #fef9c3; }
+        .modal { display: none; }
+        .modal.active { display: flex; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">SmashStats</h1>
+            <div class="flex flex-wrap gap-4 mt-2 text-sm">
+                <div id="today-stats" class="text-gray-300"></div>
+                <div id="overall-stats" class="text-gray-400"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex">
+                <button id="tab-games" class="tab-btn px-6 py-3 font-medium tab-active" onclick="showTab('games')">
+                    Raw Data
+                </button>
+                <button id="tab-matchups" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-gray-700" onclick="showTab('matchups')">
+                    Matchups
+                </button>
+                <button id="tab-graphs" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-gray-700" onclick="showTab('graphs')">
+                    Graphs
+                </button>
+            </div>
+            <button onclick="openAddModal()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2">
+                + Add Game
+            </button>
+            <button id="undo-btn" onclick="undoLastAction()" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mr-4">
+                Undo
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="container mx-auto p-4">
+        <!-- Games Tab -->
+        <div id="content-games" class="tab-content">
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50 text-left">
+                            <tr>
+                                <th class="px-3 py-3">Date</th>
+                                <th class="px-3 py-3">P1</th>
+                                <th class="px-3 py-3">P2</th>
+                                <th class="px-3 py-3">P3</th>
+                                <th class="px-3 py-3">P4</th>
+                                <th class="px-3 py-3">Result</th>
+                                <th class="px-3 py-3">Opponent</th>
+                                <th class="px-3 py-3">KOs</th>
+                                <th class="px-3 py-3">Falls</th>
+                                <th class="px-3 py-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="games-table" class="divide-y divide-gray-200">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matchups Tab -->
+        <div id="content-matchups" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50 text-left">
+                            <tr>
+                                <th class="px-3 py-3">Opponent</th>
+                                <th class="px-3 py-3">P1</th>
+                                <th class="px-3 py-3">P2</th>
+                                <th class="px-3 py-3">P3</th>
+                                <th class="px-3 py-3">P4</th>
+                                <th class="px-3 py-3">Record</th>
+                                <th class="px-3 py-3">History</th>
+                                <th class="px-3 py-3">Result</th>
+                                <th class="px-3 py-3">Last Played</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matchups-table" class="divide-y divide-gray-200">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphs Tab -->
+        <div id="content-graphs" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Today's Matchups Pie Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Today's Matchups</h3>
+                    <div class="relative" style="height: 250px;">
+                        <canvas id="today-chart"></canvas>
+                    </div>
+                    <div id="today-chart-stats" class="text-center mt-4 text-gray-600"></div>
+                </div>
+
+                <!-- Overall Matchups Pie Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Overall Matchups</h3>
+                    <div class="relative" style="height: 250px;">
+                        <canvas id="overall-chart"></canvas>
+                    </div>
+                    <div id="overall-chart-stats" class="text-center mt-4 text-gray-600"></div>
+                </div>
+
+                <!-- Last Month Matchups Pie Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Last 30 Days</h3>
+                    <div class="relative" style="height: 250px;">
+                        <canvas id="month-chart"></canvas>
+                    </div>
+                    <div id="month-chart-stats" class="text-center mt-4 text-gray-600"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="game-modal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-2xl mx-4 max-h-screen overflow-y-auto">
+            <h2 id="modal-title" class="text-xl font-bold mb-4">Add Game</h2>
+            <form id="game-form" onsubmit="saveGame(event)">
+                <input type="hidden" id="game-id">
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Date/Time</label>
+                        <input type="datetime-local" id="game-datetime" class="w-full border rounded px-3 py-2" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Result</label>
+                        <select id="game-win" class="w-full border rounded px-3 py-2" required>
+                            <option value="Yes">Win</option>
+                            <option value="No">Loss</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Opponent</label>
+                    <input type="text" id="game-opponent" class="w-full border rounded px-3 py-2">
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P1 Character</label>
+                        <input type="text" id="game-p1_character" class="w-full border rounded px-2 py-1 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P2 Character</label>
+                        <input type="text" id="game-p2_character" class="w-full border rounded px-2 py-1 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P3 Character</label>
+                        <input type="text" id="game-p3_character" class="w-full border rounded px-2 py-1 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P4 Character</label>
+                        <input type="text" id="game-p4_character" class="w-full border rounded px-2 py-1 text-sm">
+                    </div>
+                </div>
+
+                <div class="mb-3 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
+                    <strong>Tip:</strong> Leave stat fields empty to mark as "N/A" (not available). Enter 0 for zero values.
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P1 KOs</label>
+                        <input type="number" id="game-p1_kos" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P2 KOs</label>
+                        <input type="number" id="game-p2_kos" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P3 KOs</label>
+                        <input type="number" id="game-p3_kos" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P4 KOs</label>
+                        <input type="number" id="game-p4_kos" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P1 Falls</label>
+                        <input type="number" id="game-p1_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P2 Falls</label>
+                        <input type="number" id="game-p2_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P3 Falls</label>
+                        <input type="number" id="game-p3_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P4 Falls</label>
+                        <input type="number" id="game-p4_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P1 Damage</label>
+                        <input type="number" id="game-p1_damage" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P2 Damage</label>
+                        <input type="number" id="game-p2_damage" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P3 Damage</label>
+                        <input type="number" id="game-p3_damage" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">P4 Damage</label>
+                        <input type="number" id="game-p4_damage" class="w-full border rounded px-2 py-1 text-sm" value="0">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2">
+                    <button type="button" onclick="closeModal()" class="px-4 py-2 border rounded hover:bg-gray-100">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <h2 class="text-xl font-bold mb-4">Delete Game?</h2>
+            <p class="mb-6 text-gray-600">Are you sure you want to delete this game? This action cannot be undone.</p>
+            <input type="hidden" id="delete-game-id">
+            <div class="flex justify-end gap-2">
+                <button onclick="closeDeleteModal()" class="px-4 py-2 border rounded hover:bg-gray-100">
+                    Cancel
+                </button>
+                <button onclick="confirmDelete()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

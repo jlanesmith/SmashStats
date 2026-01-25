@@ -9,6 +9,8 @@ import threading
 import time
 import os
 import argparse
+import subprocess
+import platform
 from collections import deque
 from pathlib import Path
 from datetime import datetime
@@ -16,12 +18,13 @@ from datetime import datetime
 from find_frames import (
     load_and_scale_templates,
     FrameProcessor,
-    State
+    State,
+    DEFAULT_THRESHOLD
 )
 from analyze_game import (
     analyze_game_dir,
     print_game_result,
-    save_result_to_csv
+    save_result_to_db
 )
 
 
@@ -100,11 +103,10 @@ class LiveAnalyzer:
     """Real-time video stream analyzer for Super Smash Bros."""
 
     def __init__(self, template_dir, output_dir="live_captures",
-                 threshold=0.95, csv_path="results.csv", buffer_size=900):
+                 threshold=DEFAULT_THRESHOLD, buffer_size=900):
         self.template_dir = template_dir
         self.output_dir = output_dir
         self.threshold = threshold
-        self.csv_path = csv_path
 
         # Create output directory
         os.makedirs(output_dir, exist_ok=True)
@@ -319,11 +321,12 @@ class LiveAnalyzer:
             frame_small = cv2.resize(frame, (self.target_width, self.target_height),
                                      interpolation=cv2.INTER_AREA)
 
-            # Save debug frame with resolution info
+            # Save debug frame with resolution info and timestamp
             if self.debug_frames_dir:
                 state_name = self.processor.state.name if self.processor else "INIT"
                 h, w = frame_small.shape[:2]
-                debug_filename = os.path.join(self.debug_frames_dir, f"frame_{frame_num:06d}_{state_name}_{w}x{h}.png")
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]  # Include milliseconds
+                debug_filename = os.path.join(self.debug_frames_dir, f"frame_{timestamp}_{frame_num:06d}_{state_name}_{w}x{h}.png")
                 cv2.imwrite(debug_filename, frame_small)
 
             # Process frame through shared state machine
@@ -337,7 +340,7 @@ class LiveAnalyzer:
         print("Processing thread stopped")
 
     def analyze_and_save_game(self, game_dir, game_num):
-        """Analyze the captured game and save results to CSV."""
+        """Analyze the captured game and save results to database."""
         print(f"\nAnalyzing Game {game_num}...")
 
         # Use shared analysis function
@@ -350,9 +353,9 @@ class LiveAnalyzer:
             print(f"{'='*50}")
             print_game_result(result, game_num=game_num)
 
-            # Save to CSV using shared function
-            save_result_to_csv(result, self.csv_path)
-            print(f"\nResults saved to: {self.csv_path}")
+            # Save to database
+            game_id = save_result_to_db(result)
+            print(f"\nResults saved to database (game_id: {game_id})")
 
             # Print performance stats
             if self.processing_times:
@@ -438,13 +441,8 @@ def main():
     parser.add_argument(
         "--threshold",
         type=float,
-        default=0.95,
-        help="Match threshold 0-1, higher = stricter (default: 0.95)"
-    )
-    parser.add_argument(
-        "--csv",
-        default="results.csv",
-        help="Path to CSV file for results (default: results.csv)"
+        default=DEFAULT_THRESHOLD,
+        help=f"Match threshold 0-1, higher = stricter (default: {DEFAULT_THRESHOLD})"
     )
     parser.add_argument(
         "--buffer-size",
@@ -467,19 +465,37 @@ def main():
     if not os.path.isabs(template_dir):
         template_dir = script_dir / template_dir
 
+    # Start caffeinate on macOS to keep capture card active when display sleeps
+    caffeinate_proc = None
+    if platform.system() == "Darwin":
+        try:
+            caffeinate_proc = subprocess.Popen(
+                ["caffeinate", "-s"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+            print("Started caffeinate to keep capture card active during display sleep")
+        except Exception as e:
+            print(f"Warning: Could not start caffeinate: {e}")
+
     print("=" * 60)
     print("SMASH STATS LIVE")
     print("=" * 60)
 
-    analyzer = LiveAnalyzer(
-        template_dir=str(template_dir),
-        output_dir=args.output,
-        threshold=args.threshold,
-        csv_path=args.csv,
-        buffer_size=args.buffer_size
-    )
+    try:
+        analyzer = LiveAnalyzer(
+            template_dir=str(template_dir),
+            output_dir=args.output,
+            threshold=args.threshold,
+            buffer_size=args.buffer_size
+        )
 
-    analyzer.run(source)
+        analyzer.run(source)
+    finally:
+        # Clean up caffeinate process
+        if caffeinate_proc:
+            caffeinate_proc.terminate()
+            caffeinate_proc.wait()
 
 
 if __name__ == "__main__":

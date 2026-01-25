@@ -17,6 +17,10 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
 
+# Default template matching threshold (0-1, higher = stricter matching)
+DEFAULT_THRESHOLD = 0.93
+
+
 class State(Enum):
     LOOKING_FOR_CHARACTERS = 1
     LOOKING_FOR_GAME = 2
@@ -30,7 +34,7 @@ class FrameProcessor:
     Smash Bros game events. Can be used for both recorded video and live streams.
     """
 
-    def __init__(self, templates, threshold=0.95, fps=60, output_dir=None,
+    def __init__(self, templates, threshold=DEFAULT_THRESHOLD, fps=60, output_dir=None,
                  debug=False, on_game_complete=None, verbose=False):
         """
         Initialize the frame processor.
@@ -72,7 +76,7 @@ class FrameProcessor:
         # Constants
         self.WAIT_AFTER_GAME = 300  # Frames to wait after game end before looking for results
         self.RESULTS_THRESHOLD = 0.80
-        self.WIN_LOSS_THRESHOLD = 0.95
+        self.WIN_LOSS_THRESHOLD = DEFAULT_THRESHOLD
         self.MAX_DROP = 0.01
         self.MIN_CONSECUTIVE_FRAMES = 10
         self.P1_P2_EXTRA_WAIT = 10  # Extra frames to wait for p3/p4 after p1+p2 found
@@ -93,7 +97,7 @@ class FrameProcessor:
     def get_frame_skip(self):
         """Return the recommended frame skip based on current state."""
         if self.state == State.LOOKING_FOR_CHARACTERS:
-            return 10
+            return 5
         elif self.state == State.LOOKING_FOR_GAME:
             return 25
         elif self.state == State.WAITING_FOR_RESULTS:
@@ -501,7 +505,7 @@ def scale_template_and_mask(template, mask, scale_factor):
     return template_scaled, mask_scaled
 
 
-def match_template(frame_gray, template_gray, mask=None, threshold=0.95):
+def match_template(frame_gray, template_gray, mask=None, threshold=DEFAULT_THRESHOLD):
     """
     Perform template matching and return confidence score.
 
@@ -518,7 +522,7 @@ def match_template(frame_gray, template_gray, mask=None, threshold=0.95):
     return max_val >= threshold, max_val, max_loc
 
 
-def match_template_color(frame_bgr, template_bgr, mask=None, threshold=0.95):
+def match_template_color(frame_bgr, template_bgr, mask=None, threshold=DEFAULT_THRESHOLD):
     """
     Perform color-aware template matching and return confidence score.
     Uses TM_CCOEFF_NORMED for better color matching.
@@ -631,7 +635,7 @@ def save_frame(frame, frame_small, output_dir, name, frame_num, fps):
 
 
 def find_frames(video_path: str, template_dir: str, output_dir: str,
-                threshold: float = 0.95, debug: bool = False,
+                threshold: float = DEFAULT_THRESHOLD, debug: bool = False,
                 on_game_complete: callable = None):
     """
     Analyze video to find character select, game end, and result screens.

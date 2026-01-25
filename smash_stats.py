@@ -8,7 +8,7 @@ import argparse
 import os
 from pathlib import Path
 
-from find_frames import find_frames as find_frames_func
+from find_frames import find_frames as find_frames_func, DEFAULT_THRESHOLD
 from analyze_game import (
     analyze_game_dir,
     print_game_result,
@@ -17,7 +17,7 @@ from analyze_game import (
 
 
 def process_video(video_path: str, template_dir: str, output_dir: str,
-                  threshold: float = 0.95, csv_path: str = "data.csv",
+                  threshold: float = DEFAULT_THRESHOLD, csv_path: str = "data.csv",
                   debug: bool = False):
     """
     Process a video to find frames and analyze match results.
@@ -109,8 +109,8 @@ def main():
     parser.add_argument(
         "--threshold",
         type=float,
-        default=0.95,
-        help="Template match threshold 0-1, higher = stricter (default: 0.95)"
+        default=DEFAULT_THRESHOLD,
+        help=f"Template match threshold 0-1, higher = stricter (default: {DEFAULT_THRESHOLD})"
     )
     parser.add_argument(
         "--csv",

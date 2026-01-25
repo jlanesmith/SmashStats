@@ -5,7 +5,14 @@
       "Bash(chmod:*)",
       "Bash(tesseract:*)",
       "Bash(brew install:*)",
-      "Bash(python analyze_game.py:*)"
+      "Bash(python analyze_game.py:*)",
+      "Bash(xargs cat:*)",
+      "Bash(wc:*)",
+      "Bash(xargs ls:*)",
+      "Bash(python webapp/import_csv.py:*)",
+      "Bash(sqlite3:*)",
+      "Bash(pip3 show:*)",
+      "Bash(pip3 install:*)"
     ]
   }
 }

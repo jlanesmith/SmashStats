@@ -10,9 +10,11 @@ import argparse
 import csv
 import os
 import math
+import difflib
 from pathlib import Path
 from datetime import datetime
 import re
+import sys
 
 try:
     import pytesseract
@@ -34,6 +36,77 @@ CSV_FIELDNAMES = [
     'win',
     'opponent'
 ]
+
+
+def load_character_list():
+    """Load the list of valid character names from character_list.txt."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    char_list_path = os.path.join(script_dir, "character_list.txt")
+
+    if not os.path.exists(char_list_path):
+        return []
+
+    with open(char_list_path, 'r') as f:
+        return [line.strip() for line in f if line.strip()]
+
+
+# Cache the character list
+_CHARACTER_LIST = None
+
+
+def get_character_list():
+    """Get the cached character list, loading it if necessary."""
+    global _CHARACTER_LIST
+    if _CHARACTER_LIST is None:
+        _CHARACTER_LIST = load_character_list()
+    return _CHARACTER_LIST
+
+
+def normalize_for_matching(text):
+    """Normalize text for fuzzy matching - lowercase, remove punctuation."""
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s]', '', text)  # Remove punctuation
+    text = re.sub(r'\s+', ' ', text).strip()  # Normalize whitespace
+    return text
+
+
+def find_closest_character(ocr_text, min_similarity=0.6):
+    """
+    Find the closest matching character name from the character list.
+
+    Args:
+        ocr_text: The OCR-detected text
+        min_similarity: Minimum similarity ratio (0-1) to accept a match
+
+    Returns:
+        The closest matching character name, or the original text if no good match
+    """
+    if not ocr_text:
+        return ocr_text
+
+    character_list = get_character_list()
+    if not character_list:
+        return ocr_text
+
+    ocr_normalized = normalize_for_matching(ocr_text)
+
+    # Build a mapping of normalized names to original names
+    normalized_to_original = {}
+    for char in character_list:
+        normalized_to_original[normalize_for_matching(char)] = char
+
+    # Find closest match using difflib
+    matches = difflib.get_close_matches(
+        ocr_normalized,
+        normalized_to_original.keys(),
+        n=1,
+        cutoff=min_similarity
+    )
+
+    if matches:
+        return normalized_to_original[matches[0]]
+
+    return ocr_text
 
 
 def count_kos(result_image_path: str, player_num: int, save_debug_images: bool = True):
@@ -334,8 +407,8 @@ def extract_opponent_name(characters_image_path: str, save_debug_images: bool = 
     # P4: 481 pixels to the right of P3
     base_height = 1080
     base_coords = {
-        'p3': {'x': 1040, 'y': 151, 'width': 230, 'height': 37},
-        'p4': {'x': 1521, 'y': 151, 'width': 230, 'height': 37},
+        'p3': {'x': 1040, 'y': 151, 'width': 240, 'height': 37},
+        'p4': {'x': 1521, 'y': 151, 'width': 240, 'height': 37},
     }
 
     # Try to use full resolution image for better OCR accuracy
@@ -377,8 +450,12 @@ def extract_opponent_name(characters_image_path: str, save_debug_images: bool = 
         # Convert to grayscale
         gray = cv2.cvtColor(name_region, cv2.COLOR_BGR2GRAY)
 
-        # Upscale for better OCR accuracy (3x for small text)
-        upscale_factor = 3
+        # Upscale to target height for optimal OCR accuracy
+        # At 1080p, region is ~37px tall. At 480p, region is ~16px tall.
+        # Target ~100px height for good Tesseract accuracy (works well with 30-100px text)
+        TARGET_OCR_HEIGHT = 100
+        current_height = gray.shape[0]
+        upscale_factor = max(1.0, TARGET_OCR_HEIGHT / current_height)
         gray_upscaled = cv2.resize(gray, None, fx=upscale_factor, fy=upscale_factor, interpolation=cv2.INTER_CUBIC)
 
         # Rotate to correct for angled text (goes up 8px over 160px = ~2.86° clockwise)
@@ -640,6 +717,9 @@ def extract_character_names(characters_image_path: str, save_debug_images: bool 
         text = re.sub(r'[^a-zA-Z\s]', '', text)
         text = text.strip()
 
+        # Find closest matching character name from the known list
+        text = find_closest_character(text)
+
         player_key = f"p{player_num}"
         characters[player_key] = text
 
@@ -692,15 +772,18 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
         if not player_files:
             if verbose:
                 print(f"Warning: No {player_key} file found")
-            kos[player_key] = 0
-            falls[player_key] = 0
-            damage[player_key] = 0
+            # Use None (N/A) when data isn't available for any player
+            kos[player_key] = None
+            falls[player_key] = None
+            damage[player_key] = None
             continue
 
         player_path = str(player_files[0])
         kos[player_key] = count_kos(player_path, player_num, save_debug_images=True)
         falls[player_key] = count_falls(player_path, player_num, save_debug_images=True)
-        damage[player_key] = extract_damage(player_path, player_num, save_debug_images=True) or 0
+        extracted_damage = extract_damage(player_path, player_num, save_debug_images=True)
+        # Use None (N/A) for any player when damage couldn't be extracted
+        damage[player_key] = extracted_damage
 
     # Read game result from file (detected via win/loss template matching)
     game_result_file = os.path.join(game_dir, "game_result.txt")
@@ -759,13 +842,18 @@ def print_game_result(result: dict, game_num: int = None):
     else:
         print(f"\nGame Results:")
 
-    print(f"  P1: {result['p1_character']} - KOs: {result['p1_kos']}, Falls: {result['p1_falls']}, Damage: {result['p1_damage']}%")
-    print(f"  P2: {result['p2_character']} - KOs: {result['p2_kos']}, Falls: {result['p2_falls']}, Damage: {result['p2_damage']}%")
-    print(f"  P3: {result['p3_character']} - KOs: {result['p3_kos']}, Falls: {result['p3_falls']}, Damage: {result['p3_damage']}%")
-    print(f"  P4: {result['p4_character']} - KOs: {result['p4_kos']}, Falls: {result['p4_falls']}, Damage: {result['p4_damage']}%")
+    def format_stat(value):
+        """Format a stat value, showing N/A for None."""
+        return "N/A" if value is None else value
 
-    team1_falls = result['p1_falls'] + result['p2_falls']
-    team2_falls = result['p3_falls'] + result['p4_falls']
+    print(f"  P1: {result['p1_character']} - KOs: {format_stat(result['p1_kos'])}, Falls: {format_stat(result['p1_falls'])}, Damage: {format_stat(result['p1_damage'])}%")
+    print(f"  P2: {result['p2_character']} - KOs: {format_stat(result['p2_kos'])}, Falls: {format_stat(result['p2_falls'])}, Damage: {format_stat(result['p2_damage'])}%")
+    print(f"  P3: {result['p3_character']} - KOs: {format_stat(result['p3_kos'])}, Falls: {format_stat(result['p3_falls'])}, Damage: {format_stat(result['p3_damage'])}%")
+    print(f"  P4: {result['p4_character']} - KOs: {format_stat(result['p4_kos'])}, Falls: {format_stat(result['p4_falls'])}, Damage: {format_stat(result['p4_damage'])}%")
+
+    # Calculate team falls, treating None as 0 for the calculation
+    team1_falls = (result['p1_falls'] or 0) + (result['p2_falls'] or 0)
+    team2_falls = (result['p3_falls'] or 0) + (result['p4_falls'] or 0)
     print(f"  Team 1 Falls: {team1_falls}, Team 2 Falls: {team2_falls}")
     print(f"  Win: {result['win']}")
     print(f"  Opponent: {result['opponent']}")
@@ -775,11 +863,19 @@ def save_result_to_csv(result: dict, csv_path: str):
     """Append a single game result to CSV file."""
     file_exists = os.path.exists(csv_path)
 
+    # Convert None values to "N/A" for CSV output
+    csv_result = {}
+    for key, value in result.items():
+        if value is None:
+            csv_result[key] = "N/A"
+        else:
+            csv_result[key] = value
+
     with open(csv_path, 'a', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=CSV_FIELDNAMES)
         if not file_exists:
             writer.writeheader()
-        writer.writerow(result)
+        writer.writerow(csv_result)
 
 
 def save_results_to_csv(results: list, csv_path: str):
@@ -794,6 +890,33 @@ def save_results_to_csv(results: list, csv_path: str):
         if not file_exists:
             writer.writeheader()
         for result in results:
-            writer.writerow(result)
+            # Convert None values to "N/A" for CSV output
+            csv_result = {}
+            for key, value in result.items():
+                if value is None:
+                    csv_result[key] = "N/A"
+                else:
+                    csv_result[key] = value
+            writer.writerow(csv_result)
 
     print(f"\nResults saved to: {csv_path}")
+
+
+def save_result_to_db(result: dict) -> int:
+    """
+    Save a game result to the database.
+
+    Args:
+        result: Dictionary with game data
+
+    Returns:
+        int: The ID of the inserted game
+    """
+    # Import database module (lazy import to avoid circular dependencies)
+    sys.path.insert(0, str(Path(__file__).parent / "webapp"))
+    from database import save_game_result, init_db
+
+    # Ensure database is initialized
+    init_db()
+
+    return save_game_result(result)
