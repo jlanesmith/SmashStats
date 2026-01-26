@@ -120,11 +120,33 @@ function getResultRowClass(result) {
 
 // Load and display games
 async function loadGames() {
+    const tbody = document.getElementById('games-table');
+
+    // Show loading state
+    tbody.innerHTML = `
+        <tr class="loading-row">
+            <td colspan="9">
+                <div class="loading-spinner"></div>
+                <div class="text-gray-500 mt-2">Loading games...</div>
+            </td>
+        </tr>
+    `;
+
     try {
         const response = await fetch('/api/games');
         const data = await response.json();
 
-        const tbody = document.getElementById('games-table');
+        if (data.games.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="px-3 py-8 text-center text-gray-500">
+                        No games recorded yet. Click "+ Add Game" to get started.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
         tbody.innerHTML = data.games.map(game => {
             const team1KOs = formatTeamStat(game.p1_kos, game.p2_kos);
             const team2KOs = formatTeamStat(game.p3_kos, game.p4_kos);
@@ -149,16 +171,45 @@ async function loadGames() {
         }).join('');
     } catch (error) {
         console.error('Error loading games:', error);
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" class="px-3 py-8 text-center text-red-500">
+                    Error loading games. Please refresh the page.
+                </td>
+            </tr>
+        `;
     }
 }
 
 // Load and display matchups
 async function loadMatchups() {
+    const tbody = document.getElementById('matchups-table');
+
+    // Show loading state
+    tbody.innerHTML = `
+        <tr class="loading-row">
+            <td colspan="9">
+                <div class="loading-spinner"></div>
+                <div class="text-gray-500 mt-2">Loading matchups...</div>
+            </td>
+        </tr>
+    `;
+
     try {
         const response = await fetch('/api/matchups');
         const data = await response.json();
 
-        const tbody = document.getElementById('matchups-table');
+        if (data.matchups.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="px-3 py-8 text-center text-gray-500">
+                        No matchups recorded yet.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
         tbody.innerHTML = data.matchups.map(m => `
             <tr class="${getResultRowClass(m.matchup_result)}">
                 <td class="px-3 py-2 font-medium">${m.opponent || '-'}</td>
@@ -174,6 +225,13 @@ async function loadMatchups() {
         `).join('');
     } catch (error) {
         console.error('Error loading matchups:', error);
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" class="px-3 py-8 text-center text-red-500">
+                    Error loading matchups. Please refresh the page.
+                </td>
+            </tr>
+        `;
     }
 }
 

@@ -10,13 +10,22 @@ from pydantic import BaseModel
 from typing import Optional
 from pathlib import Path
 
-from webapp.database import (
-    init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
-    get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
-    get_character_stats, get_character_stats_month, get_character_ko_damage_stats, get_opponent_character_stats,
-    get_opponent_ko_damage_stats, get_weekday_stats, get_halfhour_stats, get_daily_success_rate, get_order_stats,
-    get_opponent_pairs_stats, get_streak_stats
-)
+try:
+    from webapp.database import (
+        init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
+        get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
+        get_character_stats, get_character_stats_month, get_character_ko_damage_stats, get_opponent_character_stats,
+        get_opponent_ko_damage_stats, get_weekday_stats, get_halfhour_stats, get_daily_success_rate, get_order_stats,
+        get_opponent_pairs_stats, get_streak_stats
+    )
+except ModuleNotFoundError:
+    from database import (
+        init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
+        get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
+        get_character_stats, get_character_stats_month, get_character_ko_damage_stats, get_opponent_character_stats,
+        get_opponent_ko_damage_stats, get_weekday_stats, get_halfhour_stats, get_daily_success_rate, get_order_stats,
+        get_opponent_pairs_stats, get_streak_stats
+    )
 
 # Initialize database on startup
 init_db()

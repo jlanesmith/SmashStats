@@ -18,6 +18,27 @@
         .result-half { background-color: #fef9c3; }
         .modal { display: none; }
         .modal.active { display: flex; }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #e5e7eb;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-row {
+            text-align: center;
+            padding: 40px;
+        }
+        .loading-row td {
+            padding: 40px !important;
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -76,6 +97,12 @@
                             </tr>
                         </thead>
                         <tbody id="games-table" class="divide-y divide-gray-200">
+                            <tr id="games-loading" class="loading-row">
+                                <td colspan="9">
+                                    <div class="loading-spinner"></div>
+                                    <div class="text-gray-500 mt-2">Loading games...</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -101,6 +128,12 @@
                             </tr>
                         </thead>
                         <tbody id="matchups-table" class="divide-y divide-gray-200">
+                            <tr id="matchups-loading" class="loading-row">
+                                <td colspan="9">
+                                    <div class="loading-spinner"></div>
+                                    <div class="text-gray-500 mt-2">Loading matchups...</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -795,9 +795,40 @@ def save_results_to_csv(results: list, csv_path: str):
     print(f"\nResults saved to: {csv_path}")
 
 
+def sync_to_remote(result: dict) -> bool:
+    """
+    Sync a game result to the remote Railway API.
+
+    Args:
+        result: Dictionary with game data
+
+    Returns:
+        bool: True if sync succeeded, False otherwise
+    """
+    import requests
+
+    remote_url = os.environ.get("SMASHSTATS_REMOTE_URL")
+    if not remote_url:
+        return False
+
+    api_url = f"{remote_url.rstrip('/')}/api/games"
+
+    try:
+        response = requests.post(api_url, json=result, timeout=10)
+        if response.status_code == 200:
+            print(f"  Synced to remote: {remote_url}")
+            return True
+        else:
+            print(f"  Warning: Remote sync failed (status {response.status_code})")
+            return False
+    except Exception as e:
+        print(f"  Warning: Remote sync failed: {e}")
+        return False
+
+
 def save_result_to_db(result: dict) -> int:
     """
-    Save a game result to the database.
+    Save a game result to the database (local and optionally remote).
 
     Args:
         result: Dictionary with game data
@@ -812,4 +843,9 @@ def save_result_to_db(result: dict) -> int:
     # Ensure database is initialized
     init_db()
 
-    return save_game_result(result)
+    game_id = save_game_result(result)
+
+    # Also sync to remote if configured
+    sync_to_remote(result)
+
+    return game_id
