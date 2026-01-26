@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from typing import Optional
 from pathlib import Path
 
-from database import (
+from webapp.database import (
     init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
     get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
     get_character_stats, get_character_stats_month, get_character_ko_damage_stats, get_opponent_character_stats,
