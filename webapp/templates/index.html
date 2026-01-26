@@ -72,7 +72,6 @@
                                 <th class="px-3 py-3">Result</th>
                                 <th class="px-3 py-3">Opponent</th>
                                 <th class="px-3 py-3">KOs</th>
-                                <th class="px-3 py-3">Falls</th>
                                 <th class="px-3 py-3">Actions</th>
                             </tr>
                         </thead>
@@ -136,6 +135,25 @@
                         <canvas id="month-chart"></canvas>
                     </div>
                     <div id="month-chart-stats" class="text-center mt-4 text-gray-600"></div>
+                </div>
+            </div>
+
+            <!-- Character Stats Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <!-- P1 Characters Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P1 Characters</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p1-characters-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- P2 Characters Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P2 Characters</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p2-characters-chart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,25 +224,6 @@
                     <div>
                         <label class="block text-sm font-medium mb-1">P4 KOs</label>
                         <input type="number" id="game-p4_kos" class="w-full border rounded px-2 py-1 text-sm" value="0">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-4 gap-2 mb-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-1">P1 Falls</label>
-                        <input type="number" id="game-p1_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">P2 Falls</label>
-                        <input type="number" id="game-p2_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">P3 Falls</label>
-                        <input type="number" id="game-p3_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">P4 Falls</label>
-                        <input type="number" id="game-p4_falls" class="w-full border rounded px-2 py-1 text-sm" value="0">
                     </div>
                 </div>
 

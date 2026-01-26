@@ -7,6 +7,8 @@ let lastAction = null;
 let todayChart = null;
 let overallChart = null;
 let monthChart = null;
+let p1CharacterChart = null;
+let p2CharacterChart = null;
 
 // Tab switching
 function showTab(tabName) {
@@ -102,10 +104,7 @@ async function loadGames() {
         tbody.innerHTML = data.games.map(game => {
             const team1KOs = formatTeamStat(game.p1_kos, game.p2_kos);
             const team2KOs = formatTeamStat(game.p3_kos, game.p4_kos);
-            const team1Falls = formatTeamStat(game.p1_falls, game.p2_falls);
-            const team2Falls = formatTeamStat(game.p3_falls, game.p4_falls);
             const teamKOs = `${team1KOs} - ${team2KOs}`;
-            const teamFalls = `${team1Falls} - ${team2Falls}`;
 
             return `
                 <tr class="${game.win === 'Yes' ? 'result-1' : 'result-0'}">
@@ -117,7 +116,6 @@ async function loadGames() {
                     <td class="px-3 py-2 ${game.win === 'Yes' ? 'win' : 'loss'}">${game.win === 'Yes' ? 'Win' : 'Loss'}</td>
                     <td class="px-3 py-2">${game.opponent || '-'}</td>
                     <td class="px-3 py-2">${teamKOs}</td>
-                    <td class="px-3 py-2">${teamFalls}</td>
                     <td class="px-3 py-2 whitespace-nowrap">
                         <button onclick="openEditModal(${game.id})" class="text-blue-500 hover:text-blue-700 mr-2">Edit</button>
                         <button onclick="openDeleteModal(${game.id})" class="text-red-500 hover:text-red-700">Delete</button>
@@ -165,24 +163,39 @@ async function loadTodayStats() {
             <span class="font-semibold">Today:</span>
             ${data.today_games} games |
             ${data.today_matchups} matchups |
-            ${data.matchup_win_pct}% matchup win rate
+            ${formatWinLoss(data.matchup_wins)}W - ${formatWinLoss(data.matchup_losses)}L (${data.matchup_win_pct}%)
         `;
     } catch (error) {
         console.error('Error loading today stats:', error);
     }
 }
 
+// Format win/loss numbers - only show decimal if it's .5
+function formatWinLoss(value) {
+    // If it's a whole number, return without decimals
+    if (value % 1 === 0) {
+        return Math.round(value).toString();
+    }
+    // Otherwise show one decimal (for .5 values)
+    return value.toFixed(1);
+}
+
 // Load overall stats
 async function loadStats() {
     try {
-        const response = await fetch('/api/stats');
-        const data = await response.json();
+        const [gameStatsRes, matchupStatsRes] = await Promise.all([
+            fetch('/api/stats'),
+            fetch('/api/stats/overall')
+        ]);
+
+        const gameData = await gameStatsRes.json();
+        const matchupData = await matchupStatsRes.json();
 
         document.getElementById('overall-stats').innerHTML = `
             <span class="font-semibold">Overall:</span>
-            ${data.total_games} games |
-            ${data.wins}W - ${data.losses}L (${data.win_rate}%) |
-            ${data.total_matchups} matchups
+            ${gameData.total_games} g |
+            ${matchupData.total_matchups} m |
+            ${formatWinLoss(matchupData.matchup_wins)}W - ${formatWinLoss(matchupData.matchup_losses)}L (${matchupData.matchup_win_pct}%)
         `;
     } catch (error) {
         console.error('Error loading stats:', error);
@@ -190,9 +203,10 @@ async function loadStats() {
 }
 
 // Create pie chart helper
+// Ties are already counted as 0.5 wins and 0.5 losses in the backend
 function createPieChart(canvasId, wins, losses, ties) {
     const ctx = document.getElementById(canvasId).getContext('2d');
-    const total = wins + losses + ties;
+    const total = wins + losses;
 
     // Handle empty data
     if (total === 0) {
@@ -216,12 +230,10 @@ function createPieChart(canvasId, wins, losses, ties) {
     }
 
     const data = {
-        labels: ties > 0 ? ['Wins', 'Losses', 'Ties'] : ['Wins', 'Losses'],
+        labels: ['Wins', 'Losses'],
         datasets: [{
-            data: ties > 0 ? [wins, losses, ties] : [wins, losses],
-            backgroundColor: ties > 0
-                ? ['#22c55e', '#ef4444', '#eab308']
-                : ['#22c55e', '#ef4444'],
+            data: [wins, losses],
+            backgroundColor: ['#22c55e', '#ef4444'],
             borderWidth: 2,
             borderColor: '#ffffff'
         }]
@@ -243,7 +255,7 @@ function createPieChart(canvasId, wins, losses, ties) {
                         label: function(context) {
                             const value = context.raw;
                             const pct = ((value / total) * 100).toFixed(1);
-                            return `${context.label}: ${value} (${pct}%)`;
+                            return `${context.label}: ${value.toFixed(1)} (${pct}%)`;
                         }
                     }
                 }
@@ -279,7 +291,7 @@ async function loadCharts() {
             todayData.matchup_ties
         );
         document.getElementById('today-chart-stats').innerHTML =
-            `${todayData.today_matchups} matchups | ${todayData.matchup_win_pct}% win rate`;
+            `${todayData.today_matchups} matchups | ${todayData.matchup_win_pct}% success rate`;
 
         // Create overall chart
         overallChart = createPieChart(
@@ -289,7 +301,7 @@ async function loadCharts() {
             overallData.matchup_ties
         );
         document.getElementById('overall-chart-stats').innerHTML =
-            `${overallData.total_matchups} matchups | ${overallData.matchup_win_pct}% win rate`;
+            `${overallData.total_matchups} matchups | ${overallData.matchup_win_pct}% success rate`;
 
         // Create month chart
         monthChart = createPieChart(
@@ -299,10 +311,145 @@ async function loadCharts() {
             monthData.matchup_ties
         );
         document.getElementById('month-chart-stats').innerHTML =
-            `${monthData.month_matchups} matchups | ${monthData.matchup_win_pct}% win rate`;
+            `${monthData.month_matchups} matchups | ${monthData.matchup_win_pct}% success rate`;
 
     } catch (error) {
         console.error('Error loading charts:', error);
+    }
+}
+
+// Create character stats bar+line chart
+function createCharacterChart(canvasId, characterData, title) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+
+    // Handle empty data
+    if (!characterData || characterData.length === 0) {
+        return new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['No Data'],
+                datasets: [{
+                    data: [0],
+                    backgroundColor: ['#e5e7eb']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    const labels = characterData.map(c => c.character);
+    const counts = characterData.map(c => c.count);
+    const winPcts = characterData.map(c => c.win_pct);
+
+    return new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Matchups',
+                    data: counts,
+                    backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y',
+                    order: 2
+                },
+                {
+                    label: 'Success %',
+                    data: winPcts,
+                    type: 'line',
+                    borderColor: 'rgba(220, 38, 38, 1)',
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointBackgroundColor: 'rgba(220, 38, 38, 1)',
+                    fill: false,
+                    yAxisID: 'y1',
+                    order: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    callbacks: {
+                        afterBody: function(context) {
+                            const idx = context[0].dataIndex;
+                            const char = characterData[idx];
+                            let result = `Wins: ${char.wins} | Losses: ${char.losses}`;
+                            if (char.ties > 0) {
+                                result += ` | Ties: ${char.ties}`;
+                            }
+                            return result;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Matchups'
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Success %'
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Load and render character charts
+async function loadCharacterCharts() {
+    try {
+        const response = await fetch('/api/stats/characters');
+        const data = await response.json();
+
+        // Destroy existing charts if they exist
+        if (p1CharacterChart) p1CharacterChart.destroy();
+        if (p2CharacterChart) p2CharacterChart.destroy();
+
+        // Create P1 character chart
+        p1CharacterChart = createCharacterChart('p1-characters-chart', data.p1, 'P1 Characters');
+
+        // Create P2 character chart
+        p2CharacterChart = createCharacterChart('p2-characters-chart', data.p2, 'P2 Characters');
+
+    } catch (error) {
+        console.error('Error loading character charts:', error);
     }
 }
 
@@ -313,6 +460,7 @@ function refreshData() {
     loadGames();
     loadMatchups();
     loadCharts();
+    loadCharacterCharts();
     updateUndoButton();
 }
 
@@ -399,7 +547,6 @@ async function openEditModal(gameId) {
 
         const fields = ['p1_character', 'p2_character', 'p3_character', 'p4_character',
                         'p1_kos', 'p2_kos', 'p3_kos', 'p4_kos',
-                        'p1_falls', 'p2_falls', 'p3_falls', 'p4_falls',
                         'p1_damage', 'p2_damage', 'p3_damage', 'p4_damage'];
 
         fields.forEach(field => {
@@ -448,10 +595,6 @@ async function saveGame(event) {
         p2_kos: parseStat('game-p2_kos'),
         p3_kos: parseStat('game-p3_kos'),
         p4_kos: parseStat('game-p4_kos'),
-        p1_falls: parseStat('game-p1_falls'),
-        p2_falls: parseStat('game-p2_falls'),
-        p3_falls: parseStat('game-p3_falls'),
-        p4_falls: parseStat('game-p4_falls'),
         p1_damage: parseStat('game-p1_damage'),
         p2_damage: parseStat('game-p2_damage'),
         p3_damage: parseStat('game-p3_damage'),

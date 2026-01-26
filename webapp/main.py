@@ -12,7 +12,8 @@ from pathlib import Path
 
 from database import (
     init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
-    get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game
+    get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
+    get_character_stats
 )
 
 # Initialize database on startup
@@ -36,10 +37,6 @@ class GameCreate(BaseModel):
     p2_kos: Optional[int] = None
     p3_kos: Optional[int] = None
     p4_kos: Optional[int] = None
-    p1_falls: Optional[int] = None
-    p2_falls: Optional[int] = None
-    p3_falls: Optional[int] = None
-    p4_falls: Optional[int] = None
     p1_damage: Optional[int] = None
     p2_damage: Optional[int] = None
     p3_damage: Optional[int] = None
@@ -58,10 +55,6 @@ class GameUpdate(BaseModel):
     p2_kos: Optional[int] = None
     p3_kos: Optional[int] = None
     p4_kos: Optional[int] = None
-    p1_falls: Optional[int] = None
-    p2_falls: Optional[int] = None
-    p3_falls: Optional[int] = None
-    p4_falls: Optional[int] = None
     p1_damage: Optional[int] = None
     p2_damage: Optional[int] = None
     p3_damage: Optional[int] = None
@@ -175,15 +168,24 @@ async def api_overall_stats():
     wins = sum(1 for m in matchups if m['matchup_result'] == 1.0)
     losses = sum(1 for m in matchups if m['matchup_result'] == 0.0)
     ties = total - wins - losses
-    win_pct = (wins / total * 100) if total > 0 else 0
+    # Count ties as 0.5 wins and 0.5 losses for display
+    adjusted_wins = wins + (0.5 * ties)
+    adjusted_losses = losses + (0.5 * ties)
+    win_pct = (adjusted_wins / total * 100) if total > 0 else 0
 
     return {
         "total_matchups": total,
-        "matchup_wins": wins,
-        "matchup_losses": losses,
-        "matchup_ties": ties,
+        "matchup_wins": adjusted_wins,
+        "matchup_losses": adjusted_losses,
+        "matchup_ties": 0,  # Don't show ties separately
         "matchup_win_pct": round(win_pct, 1)
     }
+
+
+@app.get("/api/stats/characters")
+async def api_character_stats():
+    """Get character statistics for p1 and p2."""
+    return get_character_stats()
 
 
 if __name__ == "__main__":

@@ -31,7 +31,6 @@ CSV_FIELDNAMES = [
     'datetime',
     'p1_character', 'p2_character', 'p3_character', 'p4_character',
     'p1_kos', 'p2_kos', 'p3_kos', 'p4_kos',
-    'p1_falls', 'p2_falls', 'p3_falls', 'p4_falls',
     'p1_damage', 'p2_damage', 'p3_damage', 'p4_damage',
     'win',
     'opponent'
@@ -199,97 +198,6 @@ def count_kos(result_image_path: str, player_num: int, save_debug_images: bool =
             break
 
     return ko_count
-
-
-def count_falls(result_image_path: str, player_num: int, save_debug_images: bool = True):
-    """
-    Count falls from a player's result screen by detecting icon graphics.
-    Falls region is 50 pixels below the KOs region.
-
-    Args:
-        result_image_path: Path to the player result screenshot (480p version)
-        player_num: Player number (1-4)
-        save_debug_images: If True, save the extracted region for debugging
-
-    Returns:
-        int: Number of falls
-    """
-    # Try to use full resolution image for better accuracy
-    full_res_path = result_image_path.replace('.png', '_full.png')
-    if os.path.exists(full_res_path):
-        img = cv2.imread(full_res_path)
-        using_full_res = True
-    else:
-        img = cv2.imread(result_image_path)
-        using_full_res = False
-
-    if img is None:
-        raise FileNotFoundError(f"Could not load image: {result_image_path}")
-
-    height, width = img.shape[:2]
-
-    # Base dimensions for 480p
-    base_height = 480
-    scale = height / base_height
-
-    # Falls icon region - same as KOs but 50 pixels lower (at 480p)
-    falls_regions_480p = {
-        1: {'x': 19, 'y': 307, 'width': 150, 'height': 22},
-        2: {'x': 233, 'y': 307, 'width': 150, 'height': 22},
-        3: {'x': 446, 'y': 307, 'width': 150, 'height': 22},
-        4: {'x': 659, 'y': 307, 'width': 150, 'height': 22},
-    }
-
-    base_region = falls_regions_480p[player_num]
-    x_start = int(base_region['x'] * scale)
-    y_start = int(base_region['y'] * scale)
-    box_width = int(base_region['width'] * scale)
-    box_height = int(base_region['height'] * scale)
-    icon_width = int(22 * scale)
-
-    # Extract the falls region
-    falls_region = img[y_start:y_start + box_height, x_start:x_start + box_width]
-
-    # Create debug directory and save region
-    if save_debug_images:
-        debug_dir = os.path.dirname(result_image_path)
-        debug_subdir = os.path.join(debug_dir, "debug_regions")
-        os.makedirs(debug_subdir, exist_ok=True)
-
-        res_suffix = f"_{height}p" if using_full_res else "_480p"
-        cv2.imwrite(os.path.join(debug_subdir, f"p{player_num}_falls_region{res_suffix}.png"), falls_region)
-
-        # Save bounding box overlay
-        img_with_box = img.copy()
-        cv2.rectangle(img_with_box, (x_start, y_start), (x_start + box_width, y_start + box_height), (0, 0, 255), 2)
-        cv2.putText(img_with_box, f"P{player_num} Falls", (x_start, y_start - 5),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5 * scale, (0, 0, 255), int(1 * scale))
-        cv2.imwrite(os.path.join(debug_subdir, f"p{player_num}_falls_bbox{res_suffix}.png"), img_with_box)
-
-    # Convert to grayscale
-    gray = cv2.cvtColor(falls_region, cv2.COLOR_BGR2GRAY)
-
-    # Count icons by checking each icon-width segment for significant content
-    max_icons = box_width // icon_width
-    falls_count = 0
-
-    for i in range(max_icons):
-        icon_x_start = i * icon_width
-        icon_x_end = min((i + 1) * icon_width, box_width)
-
-        icon_segment = gray[:, icon_x_start:icon_x_end]
-
-        # Check if this segment has significant content
-        std_dev = np.std(icon_segment)
-
-        # Threshold for detecting an icon
-        if std_dev > 20:
-            falls_count += 1
-        else:
-            # Once we hit an empty segment, stop counting
-            break
-
-    return falls_count
 
 
 def extract_damage(result_image_path: str, player_num: int, save_debug_images: bool = True):
@@ -762,7 +670,6 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
 
     # Extract stats for each player
     kos = {}
-    falls = {}
     damage = {}
 
     for player_num in range(1, 5):
@@ -774,13 +681,11 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
                 print(f"Warning: No {player_key} file found")
             # Use None (N/A) when data isn't available for any player
             kos[player_key] = None
-            falls[player_key] = None
             damage[player_key] = None
             continue
 
         player_path = str(player_files[0])
         kos[player_key] = count_kos(player_path, player_num, save_debug_images=True)
-        falls[player_key] = count_falls(player_path, player_num, save_debug_images=True)
         extracted_damage = extract_damage(player_path, player_num, save_debug_images=True)
         # Use None (N/A) for any player when damage couldn't be extracted
         damage[player_key] = extracted_damage
@@ -795,13 +700,10 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
         if verbose:
             print(f"Game result from template matching: {game_result.upper()}")
     else:
-        # Fallback to counting falls if game_result.txt doesn't exist
+        # No fallback available - game result is required
         if verbose:
-            print("Warning: game_result.txt not found, falling back to falls-based detection")
-        team1_falls = falls.get('p1', 0) + falls.get('p2', 0)
-        team2_falls = falls.get('p3', 0) + falls.get('p4', 0)
-        team1_won = team1_falls < team2_falls
-        win = "Yes" if team1_won else "No"
+            print("Warning: game_result.txt not found")
+        win = "No"  # Default to loss if result is unknown
 
     # Extract opponent name from characters frame
     opponent = ""
@@ -820,10 +722,6 @@ def analyze_game_dir(game_dir: str, game_num: int = None, verbose: bool = True):
         'p2_kos': kos.get('p2', 0),
         'p3_kos': kos.get('p3', 0),
         'p4_kos': kos.get('p4', 0),
-        'p1_falls': falls.get('p1', 0),
-        'p2_falls': falls.get('p2', 0),
-        'p3_falls': falls.get('p3', 0),
-        'p4_falls': falls.get('p4', 0),
         'p1_damage': damage.get('p1', 0),
         'p2_damage': damage.get('p2', 0),
         'p3_damage': damage.get('p3', 0),
@@ -846,15 +744,10 @@ def print_game_result(result: dict, game_num: int = None):
         """Format a stat value, showing N/A for None."""
         return "N/A" if value is None else value
 
-    print(f"  P1: {result['p1_character']} - KOs: {format_stat(result['p1_kos'])}, Falls: {format_stat(result['p1_falls'])}, Damage: {format_stat(result['p1_damage'])}%")
-    print(f"  P2: {result['p2_character']} - KOs: {format_stat(result['p2_kos'])}, Falls: {format_stat(result['p2_falls'])}, Damage: {format_stat(result['p2_damage'])}%")
-    print(f"  P3: {result['p3_character']} - KOs: {format_stat(result['p3_kos'])}, Falls: {format_stat(result['p3_falls'])}, Damage: {format_stat(result['p3_damage'])}%")
-    print(f"  P4: {result['p4_character']} - KOs: {format_stat(result['p4_kos'])}, Falls: {format_stat(result['p4_falls'])}, Damage: {format_stat(result['p4_damage'])}%")
-
-    # Calculate team falls, treating None as 0 for the calculation
-    team1_falls = (result['p1_falls'] or 0) + (result['p2_falls'] or 0)
-    team2_falls = (result['p3_falls'] or 0) + (result['p4_falls'] or 0)
-    print(f"  Team 1 Falls: {team1_falls}, Team 2 Falls: {team2_falls}")
+    print(f"  P1: {result['p1_character']} - KOs: {format_stat(result['p1_kos'])}, Damage: {format_stat(result['p1_damage'])}%")
+    print(f"  P2: {result['p2_character']} - KOs: {format_stat(result['p2_kos'])}, Damage: {format_stat(result['p2_damage'])}%")
+    print(f"  P3: {result['p3_character']} - KOs: {format_stat(result['p3_kos'])}, Damage: {format_stat(result['p3_damage'])}%")
+    print(f"  P4: {result['p4_character']} - KOs: {format_stat(result['p4_kos'])}, Damage: {format_stat(result['p4_damage'])}%")
     print(f"  Win: {result['win']}")
     print(f"  Opponent: {result['opponent']}")
 

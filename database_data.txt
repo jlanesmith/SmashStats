@@ -1,0 +1,2064 @@
+01/24 20:30:26 SmashStats (main) $ sqlite3 smashstats.db "SELECT * FROM games"
+1|2026-01-23 19:06:13|Captain Falcon|Ganondorf|Terry|Ken|1|5|2|2|239|416|296|291|Yes|#
+2|2026-01-23 22:23:45|Captain Falcon|King K. Rool|Pyra & Mythra|Palutena|0|3|2|4|149|226|462|509|No|Coleman
+3|2026-01-23 22:32:11|Captain Falcon|King K. Rool|King K. Rool|Ganondorf|3|3|0|3|360|297|178|395|Yes|Kitchen
+4|2026-01-23 22:34:57|Captain Falcon|King K. Rool|Ganondorf|Ness|0|0|2|4|131|98|310|354|No|CeBearDa
+5|2026-01-23 22:40:43|Captain Falcon|Captain Falcon|Steve|Kirby|4|2|2|2|383|304|296|278|Yes|Joao
+6|2026-01-23 22:42:37|Captain Falcon|Captain Falcon|Zero suit Samus|Corrin|1|2|0|0|14|78|110|52|Yes|KonSims
+7|2026-01-23 22:46:33|Captain Falcon|Captain Falcon|Captain Falcon|King K. Rool|1|1|4|2|258|259|315|342|No|AlexG
+8|2026-01-23 22:49:45|Captain Falcon|Captain Falcon|Captain Falcon|King K. Rool|0|2|3|3|126|251|279|349|No|AlexG
+9|2026-01-23 22:54:18|Captain Falcon|Captain Falcon|Captain Falcon|King K. Rool|2|4|2|2|334|394|377|317|Yes|AlexG
+10|2026-01-23 22:57:10|Captain Falcon|Captain Falcon|Captain Falcon|King K. Rool|2|1|2|4|144|281|264|300|No|AlexG
+11|2026-01-23 23:02:06|Captain Falcon|Captain Falcon|Corrin|Ike|3|3|2|0|195|368|272|133|Yes|DAYA
+14|2026-01-24 18:45:00|Captain Falcon|King K. Rool|Mewtwo|Lucina|1|0|||138|120|||No|Merkusg
+15|2026-01-24 19:03:04|Captain Falcon|Captain Falcon|Donkey Kong|Little Mac|3|3|1|0|179|292|156|108|Yes|BIGBRAYDEN
+16|2026-01-24 19:08:00|Captain Falcon|Captain Falcon|King K. Rool|King Dedede|1|3|0|6|470|249|298|430|No|gyattRizz
+17|2024-08-12 19:31:35|Kirby|Kazuya|Pyra & Mythra|Hero|||||||||No|
+18|2024-08-12 19:33:56|Kirby|Kazuya|Captain Falcon|King Dedede|||||||||Yes|
+19|2024-08-12 19:37:13|Kirby|Kazuya|Captain Falcon|King Dedede|||||||||Yes|
+20|2024-08-12 19:41:44|Kirby|Kazuya|Captain Falcon|King Dedede|||||||||Yes|
+21|2024-08-12 19:47:46|Kirby|Kazuya|Snake|Zero suit Samus|||||||||No|
+22|2024-08-12 19:52:46|Kirby|Kazuya|Snake|Zero suit Samus|||||||||No|
+23|2024-08-12 19:58:29|Captain Falcon|Kazuya|Snake|Zero suit Samus|||||||||No|
+24|2024-08-12 20:03:17|Captain Falcon|Kazuya|Snake|Zero suit Samus|||||||||Yes|
+25|2024-08-12 20:08:27|Wii Fit Trainer|Kazuya|Palutena|Cloud|||||||||No|
+26|2024-08-12 20:11:58|Wii Fit Trainer|Kazuya|Palutena|Cloud|||||||||No|
+27|2024-08-12 20:17:04|Wii Fit Trainer|Kazuya|Kirby|Captain Falcon|||||||||No|
+28|2024-08-12 20:20:43|Wii Fit Trainer|Kazuya|Kirby|Captain Falcon|||||||||No|
+29|2024-08-12 20:25:20|Wii Fit Trainer|Kazuya|King Dedede|Piranha Plant|||||||||No|
+30|2024-08-12 20:30:04|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+31|2024-08-12 20:33:50|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+32|2024-08-12 20:38:36|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+33|2024-08-12 20:43:18|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+34|2024-08-12 20:47:20|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+35|2024-08-12 22:08:53|Donkey Kong|Kazuya|King K. Rool|Ganondorf|||||||||Yes|
+36|2024-08-12 22:12:12|Donkey Kong|Kazuya|King K. Rool|Ganondorf|||||||||Yes|
+37|2024-08-12 22:15:50|Donkey Kong|Kazuya|King K. Rool|Ganondorf|||||||||Yes|
+38|2024-08-12 22:19:30|Donkey Kong|Kazuya|King K. Rool|Ganondorf|||||||||Yes|
+39|2024-08-12 22:23:02|Donkey Kong|Kazuya|King K. Rool|Ganondorf|||||||||Yes|
+40|2024-08-13 20:40:46|Donkey Kong|Kazuya|Donkey Kong|Bowser|||||||||Yes|
+41|2024-08-13 20:43:45|Donkey Kong|Kazuya|Donkey Kong|Bowser|||||||||No|
+42|2024-08-13 20:48:25|Donkey Kong|Kazuya|Ness|Pikachu|||||||||No|
+43|2024-08-13 20:51:48|Donkey Kong|Kazuya|Lucas|Zelda|||||||||No|
+44|2024-08-13 20:55:40|Donkey Kong|Kazuya|Pyra & Mythra|Shulk|||||||||No|
+45|2024-08-13 21:00:13|Donkey Kong|Kazuya|Pyra & Mythra|Shulk|||||||||Yes|
+46|2024-08-13 21:02:53|Donkey Kong|Kazuya|Pyra & Mythra|Shulk|||||||||No|
+47|2024-08-13 21:08:31|Donkey Kong|Kazuya|King Dedede|Fox|||||||||No|
+48|2024-08-13 21:13:01|Donkey Kong|Kazuya|Dr. Mario|Lucas|||||||||Yes|
+49|2024-08-13 21:16:33|Donkey Kong|Kazuya|Kirby|Luigi|||||||||No|
+50|2024-08-13 21:19:32|Donkey Kong|Kazuya|Ice Climbers|Ice Climbers|||||||||Yes|
+51|2024-08-13 21:24:31|Donkey Kong|Kazuya|Link|Ryu|||||||||Yes|
+52|2024-08-13 21:29:11|Donkey Kong|Kazuya|Link|Ryu|||||||||Yes|
+53|2024-08-13 21:33:10|Donkey Kong|Kazuya|Sephiroth|Sephiroth|||||||||Yes|
+54|2024-08-14 22:37:18|Kirby|Kazuya|Kazuya|Ness|||||||||Yes|
+55|2024-08-14 22:42:40|Kirby|Kazuya|Byleth|Sheik|||||||||No|
+56|2024-08-14 22:46:08|Kirby|Kazuya|Byleth|Sheik|||||||||No|
+57|2024-08-14 22:51:12|Kirby|Kazuya|Byleth|Sheik|||||||||No|
+58|2024-08-14 22:55:47|Kirby|Kazuya|Byleth|Sheik|||||||||Yes|
+59|2024-08-14 23:00:02|Kirby|Kazuya|King K. Rool|Link|||||||||No|
+60|2024-08-14 23:04:36|Kirby|Kazuya|King K. Rool|Link|||||||||Yes|
+61|2024-08-14 23:08:27|Kirby|Kazuya|King K. Rool|Link|||||||||No|
+62|2024-08-14 23:12:00|Kirby|Kazuya|King K. Rool|Link|||||||||Yes|
+63|2024-08-14 23:15:52|Kirby|Kazuya|King K. Rool|Link|||||||||Yes|
+64|2024-08-14 23:19:33|Kirby|Kazuya|King K. Rool|Link|||||||||Yes|
+65|2024-08-14 23:22:58|Kirby|Kazuya|Bowser|Ganondorf|||||||||No|
+66|2024-08-14 23:26:03|Kirby|Kazuya|Bowser|Ganondorf|||||||||No|
+67|2024-08-14 23:26:04|Kirby|Kazuya|Bowser|Ganondorf|||||||||No|
+68|2024-08-14 23:29:08|Captain Falcon|Kazuya|Bowser|Donkey Kong|||||||||No|
+69|2024-08-14 23:33:43|Captain Falcon|Kazuya|Lucas|Zelda|||||||||Yes|
+70|2024-08-14 23:38:36|Captain Falcon|Kazuya|Hero|Fox|||||||||Yes|
+71|2024-08-14 23:41:22|Captain Falcon|Kazuya|Hero|Fox|||||||||Yes|
+72|2024-08-14 23:46:12|Captain Falcon|Kazuya|Ganondorf|Meta Knight|||||||||No|
+73|2024-08-14 23:50:23|Captain Falcon|Kazuya|Mario|Pac-Man|||||||||Yes|
+74|2024-08-26 22:51:25|Donkey Kong|Kazuya|Incineroar|Pokemon Trainer|||||||||Yes|
+75|2024-08-26 22:53:50|Donkey Kong|Kazuya|Meta Knight|Kirby|||||||||Yes|
+76|2024-08-26 22:58:32|Donkey Kong|Kazuya|Pit|Kirby|||||||||No|
+77|2024-08-26 23:03:10|Donkey Kong|Kazuya|R.O.B.|Captain Falcon|||||||||Yes|
+78|2024-08-26 23:07:36|Donkey Kong|Kazuya|Steve|Mr. Game & Watch|||||||||No|
+79|2024-08-26 23:11:59|Donkey Kong|Kazuya|Meta Knight|Ganondorf|||||||||No|
+80|2024-08-26 23:14:41|Donkey Kong|Kazuya|Meta Knight|Ganondorf|||||||||Yes|
+81|2024-08-26 23:17:46|Donkey Kong|Kazuya|Meta Knight|Ganondorf|||||||||No|
+82|2024-08-27 22:44:06|Ike|Kazuya|Kirby|Ike|||||||||No|
+83|2024-08-27 22:48:31|Ike|Kazuya|Kirby|Ike|||||||||Yes|
+84|2024-08-27 22:52:07|Ike|Kazuya|Kirby|Ike|||||||||Yes|
+85|2024-08-27 22:55:27|Ike|Kazuya|Mario|Snake|||||||||Yes|
+86|2024-08-27 22:59:41|Ike|Kazuya|Cloud|Ness|||||||||Yes|
+87|2024-08-27 23:04:44|Ike|Kazuya|Kirby|Kazuya|||||||||Yes|
+88|2024-08-27 23:08:05|Ike|Kazuya|Kirby|Kazuya|||||||||Yes|
+89|2024-08-27 23:13:05|Ike|Kazuya|Ike|Ganondorf|||||||||Yes|
+90|2024-08-27 23:18:15|Ike|Kazuya|Hero|Fox|||||||||No|
+91|2024-08-27 23:23:08|Ike|Kazuya|Hero|Pokemon Trainer|||||||||Yes|
+92|2024-08-27 23:27:15|Ike|Kazuya|Link|Link|||||||||No|
+93|2024-08-27 23:31:15|Ike|Kazuya|Link|Link|||||||||Yes|
+94|2024-08-28 22:45:00|Kirby|Kazuya|Corrin|Pyra & Mythra|||||||||No|
+95|2024-08-28 22:48:59|Kirby|Kazuya|Donkey Kong|Zelda|||||||||Yes|
+96|2024-08-28 22:52:57|Kirby|Kazuya|Donkey Kong|Zelda|||||||||No|
+97|2024-08-28 22:57:12|Kirby|Kazuya|Donkey Kong|Zelda|||||||||Yes|
+98|2024-08-28 23:00:19|Kirby|Kazuya|Banjo & Kazooie|Banjo & Kazooie|||||||||Yes|
+99|2024-08-28 23:03:19|Kirby|Kazuya|Cloud|Bowser|||||||||Yes|
+100|2024-08-28 23:07:23|Kirby|Kazuya|Cloud|Bowser|||||||||Yes|
+101|2024-08-28 23:10:39|Kirby|Kazuya|Cloud|Bowser|||||||||Yes|
+102|2024-08-29 22:37:23|Captain Falcon|Kazuya|Hero|Hero|||||||||No|
+103|2024-08-29 22:47:12|Captain Falcon|Kazuya|Piranha Plant|Samus|||||||||No|
+104|2024-08-29 22:51:19|Captain Falcon|Kazuya|Cloud|Bowser|||||||||Yes|
+105|2024-08-29 22:54:45|Captain Falcon|Kazuya|Cloud|Bowser|||||||||No|
+106|2024-08-29 22:59:11|Captain Falcon|Kazuya|Ness|Little Mac|||||||||Yes|
+107|2024-08-29 23:03:00|Captain Falcon|Kazuya|Terry|Ike|||||||||No|
+108|2024-08-29 23:07:11|Captain Falcon|Kazuya|Sephiroth|Ike|||||||||Yes|
+109|2024-08-29 23:12:00|Captain Falcon|Kazuya|Sephiroth|Ike|||||||||No|
+110|2024-08-29 23:16:14|Captain Falcon|Kazuya|Toon Link|Young Link|||||||||No|
+111|2024-08-29 23:20:13|Captain Falcon|Kazuya|Toon Link|Young Link|||||||||No|
+112|2024-08-29 23:24:15|Captain Falcon|Kazuya|Ness|Roy|||||||||Yes|
+113|2024-08-29 23:27:52|Captain Falcon|Kazuya|Ness|Roy|||||||||Yes|
+114|2024-08-29 23:30:43|Captain Falcon|Kazuya|Ness|Roy|||||||||Yes|
+115|2024-08-30 23:12:19|Donkey Kong|Kazuya|Pyra & Mythra|King K. Rool|||||||||Yes|
+116|2024-08-30 23:15:12|Donkey Kong|Kazuya|Pyra & Mythra|King K. Rool|||||||||Yes|
+117|2024-08-30 23:19:43|Donkey Kong|Kazuya|Palutena|Joker|||||||||No|
+118|2024-08-30 23:23:56|Donkey Kong|Kazuya|Robin|Kirby|||||||||Yes|
+119|2024-08-30 23:27:59|Donkey Kong|Kazuya|Pyra & Mythra|Yoshi|||||||||Yes|
+120|2024-08-30 23:31:53|Donkey Kong|Kazuya|Donkey Kong|King K. Rool|||||||||Yes|
+121|2024-08-30 23:34:21|Donkey Kong|Kazuya|Donkey Kong|King K. Rool|||||||||Yes|
+122|2024-08-30 23:42:51|Donkey Kong|Kazuya|Kirby|Pikachu|||||||||Yes|
+123|2024-08-30 23:47:31|Donkey Kong|Kazuya|Sora|Sephiroth|||||||||Yes|
+124|2024-08-30 23:50:56|Donkey Kong|Kazuya|Sora|Sephiroth|||||||||Yes|
+125|2024-08-30 23:56:35|Donkey Kong|Kazuya|King K. Rool|King Dedede|||||||||No|
+126|2024-08-31 00:02:02|Donkey Kong|Kazuya|King K. Rool|King Dedede|||||||||Yes|
+127|2024-08-31 00:06:26|Donkey Kong|Kazuya|Captain Falcon|Ganondorf|||||||||No|
+128|2024-08-31 00:11:20|Donkey Kong|Kazuya|Pyra & Mythra|Sora|||||||||Yes|
+129|2024-08-31 22:55:32|Wii Fit Trainer|Kazuya|Banjo & Kazooie|Banjo & Kazooie|||||||||No|
+130|2024-08-31 22:59:15|Wii Fit Trainer|Kazuya|Banjo & Kazooie|Banjo & Kazooie|||||||||No|
+131|2024-08-31 23:03:45|Wii Fit Trainer|Kazuya|Ganondorf|Wolf|||||||||Yes|
+132|2024-08-31 23:08:19|Wii Fit Trainer|Kazuya|Kirby|Pikachu|||||||||No|
+133|2024-08-31 23:13:24|Wii Fit Trainer|Kazuya|Ike|Byleth|||||||||No|
+134|2024-08-31 23:17:27|Wii Fit Trainer|Kazuya|Ike|Byleth|||||||||Yes|
+135|2024-08-31 23:22:17|Wii Fit Trainer|Kazuya|Ike|Byleth|||||||||Yes|
+136|2024-09-01 21:36:56|Ike|Kazuya|Zero suit Samus|Joker|||||||||Yes|
+137|2024-09-01 21:40:09|Ike|Kazuya|Zero suit Samus|Joker|||||||||Yes|
+138|2024-09-01 21:56:04|Kirby|Kazuya|Pac-Man|Cloud|||||||||Yes|
+139|2024-09-01 22:01:23|Kirby|Kazuya|Pac-Man|Cloud|||||||||No|
+140|2024-09-01 22:05:35|Kirby|Kazuya|Ike|Young Link|||||||||Yes|
+141|2024-09-01 22:08:40|Kirby|Kazuya|Pit|Donkey Kong|||||||||Yes|
+142|2024-09-01 22:12:23|Kirby|Kazuya|Kirby|King K. Rool|||||||||Yes|
+143|2024-09-01 22:15:42|Kirby|Kazuya|Kirby|King K. Rool|||||||||No|
+144|2024-09-01 22:18:58|Kirby|Kazuya|Kirby|King K. Rool|||||||||Yes|
+145|2024-09-01 22:25:44|Kirby|Kazuya|Villager|R.O.B.|||||||||No|
+146|2024-09-01 22:30:43|Kirby|Kazuya|Villager|R.O.B.|||||||||Yes|
+147|2024-09-01 22:37:54|Kirby|Kazuya|Fox|Captain Falcon|||||||||Yes|
+148|2024-09-01 22:38:00|Kirby|Kazuya|Fox|Captain Falcon|||||||||Yes|
+149|2024-09-01 22:42:33|Kirby|Lucas|Mario|Corrin|||||||||Yes|
+150|2024-09-01 22:46:43|Kirby|Lucas|Jigglypuff|Jigglypuff|||||||||No|
+151|2024-09-01 22:46:47|Kirby|Lucas|Jigglypuff|Jigglypuff|||||||||No|
+152|2024-09-01 22:55:42|Wii Fit Trainer|Ganondorf|Little Mac|Pyra & Mythra|||||||||No|
+153|2024-09-01 22:58:46|Wii Fit Trainer|Ganondorf|Little Mac|Pyra & Mythra|||||||||No|
+154|2024-09-01 23:03:23|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+155|2024-09-01 23:07:36|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+156|2024-09-01 23:11:14|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+157|2024-09-01 23:14:57|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+158|2024-09-01 23:17:52|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+159|2024-09-01 23:21:14|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+160|2024-09-01 23:24:42|Ike|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+161|2024-09-01 23:29:14|Ike|Kazuya|Sephiroth|King K. Rool|||||||||No|
+162|2024-09-01 23:33:18|Ike|Kazuya|Pyra & Mythra|Hero|||||||||Yes|
+163|2024-09-02 15:19:11|Link|Cloud|Ryu|Luigi|||||||||No|
+164|2024-09-02 15:22:29|Link|Cloud|Sephiroth|King K. Rool|||||||||No|
+165|2024-09-02 15:25:46|Link|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+166|2024-09-02 15:27:42|Link|Kazuya|Little Mac|Little Mac|||||||||Yes|
+167|2024-09-02 15:30:52|Link|Kazuya|Little Mac|Little Mac|||||||||Yes|
+168|2024-09-02 15:35:01|Link|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+169|2024-09-02 15:37:31|Link|Kazuya|Ganondorf|Ganondorf|||||||||No|
+170|2024-09-02 15:41:32|Link|Kazuya|Ganondorf|Ganondorf|||||||||No|
+171|2024-09-02 15:45:10|Link|Kazuya|Donkey Kong|Samus|||||||||Yes|
+172|2024-09-02 15:48:57|Link|Kazuya|Link|Ganondorf|||||||||Yes|
+173|2024-09-02 15:53:36|Link|Kazuya|Link|Ganondorf|||||||||Yes|
+174|2024-09-02 15:57:43|Link|Kazuya|Link|Ganondorf|||||||||Yes|
+175|2024-09-02 16:06:03|Link|Kazuya|Shulk|Zelda|||||||||Yes|
+176|2024-09-02 16:10:35|Link|Kazuya|Shulk|Zelda|||||||||No|
+177|2024-09-02 16:15:29|Link|Kazuya|Little Mac|Ike|||||||||Yes|
+178|2024-09-02 17:40:45|Wii Fit Trainer|Kazuya|Wario|Incineroar|||||||||No|
+179|2024-09-02 17:44:08|Wii Fit Trainer|Kazuya|Wario|Incineroar|||||||||No|
+180|2024-09-03 22:18:33|Wii Fit Trainer|Kazuya|Simon|King K. Rool|||||||||No|
+181|2024-09-03 22:21:58|Wii Fit Trainer|Kazuya|Simon|King K. Rool|||||||||No|
+182|2024-09-03 22:34:03|Wii Fit Trainer|Kazuya|Donkey Kong|King K. Rool|||||||||No|
+183|2024-09-03 22:38:56|Wii Fit Trainer|Kazuya|Donkey Kong|King K. Rool|||||||||No|
+184|2024-09-03 22:43:38|Wii Fit Trainer|Kazuya|Ganondorf|King K. Rool|||||||||No|
+185|2024-09-03 22:49:20|Wii Fit Trainer|Kazuya|Kirby|Kirby|||||||||No|
+186|2024-09-03 22:55:36|Kirby|Kazuya|Ryu|Mario|||||||||Yes|
+187|2024-09-03 23:00:07|Kirby|Kazuya|Ryu|Mario|||||||||Yes|
+188|2024-09-03 23:05:08|Kirby|Kazuya|Ryu|Mario|||||||||No|
+189|2024-09-03 23:10:03|Kirby|Kazuya|Ryu|Mario|||||||||Yes|
+190|2024-09-03 23:13:49|Kirby|Kazuya|Ryu|Mario|||||||||Yes|
+191|2024-09-04 23:29:36|Donkey Kong|Kazuya|Kirby|Kirby|||||||||Yes|
+192|2024-09-04 23:33:19|Donkey Kong|Kazuya|Pit|Pit|||||||||No|
+193|2024-09-04 23:33:24|Donkey Kong|Kazuya|Pit|Pit|||||||||Yes|
+194|2024-09-04 23:37:09|Donkey Kong|Kazuya|Pit|Pit|||||||||Yes|
+195|2024-09-04 23:41:46|Donkey Kong|Kazuya|Jigglypuff|Dr. Mario|||||||||No|
+196|2024-09-05 21:35:39|Ike|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+197|2024-09-05 21:38:48|Ike|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+198|2024-09-05 21:41:40|Ike|Kazuya|Byleth|Corrin|||||||||Yes|
+199|2024-09-05 21:45:40|Ike|Kazuya|Samus|Ness|||||||||Yes|
+200|2024-09-05 21:51:17|Ike|Kazuya|King K. Rool|Dr. Mario|||||||||Yes|
+201|2024-09-05 21:55:04|Ike|Kazuya|Little Mac|Cloud|||||||||Yes|
+202|2024-09-05 21:59:21|Ike|Kazuya|Samus|Ganondorf|||||||||No|
+203|2024-09-05 22:02:01|Ike|Kazuya|Samus|Ganondorf|||||||||Yes|
+204|2024-09-05 22:06:04|Ike|Kazuya|Samus|Ganondorf|||||||||Yes|
+205|2024-09-05 22:09:48|Ike|Kazuya|Kirby|Pikachu|||||||||Yes|
+206|2024-09-05 22:13:01|Ike|Kazuya|Kirby|Pikachu|||||||||No|
+207|2024-09-05 22:17:08|Ike|Kazuya|Mewtwo|Mewtwo|||||||||Yes|
+208|2024-09-05 22:25:17|Ike|Kazuya|Mii Swordfighter|Wii Fit Trainer|||||||||Yes|
+209|2024-09-05 22:28:27|Ike|Kazuya|Roy|Ike|||||||||Yes|
+210|2024-09-05 22:32:37|Ike|Kazuya|Snake|Ness|||||||||Yes|
+211|2024-09-06 23:18:37|Link|Kazuya|Ken|Zelda|||||||||No|
+212|2024-09-06 23:21:15|Link|Fox|Joker|Falco|||||||||No|
+213|2024-09-06 23:25:45|Link|Kazuya|Sephiroth|Pyra & Mythra|||||||||Yes|
+214|2024-09-06 23:29:43|Link|Kazuya|Yoshi|Ness|||||||||No|
+215|2024-09-06 23:34:42|Link|Kazuya|Yoshi|Ness|||||||||No|
+216|2024-09-06 23:40:08|Link|Kazuya|Luigi|Zelda|||||||||No|
+217|2024-09-06 23:44:30|Link|Kazuya|Luigi|Zelda|||||||||No|
+218|2024-09-06 23:50:54|Link|Kazuya|Ridley|King K. Rool|||||||||Yes|
+219|2024-09-06 23:58:02|Link|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+220|2024-09-06 23:58:10|Link|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+221|2024-09-07 00:01:20|Link|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+222|2024-09-07 00:05:40|Link|Kazuya|Ridley|King K. Rool|||||||||Yes|
+223|2024-09-07 00:10:08|Link|Kazuya|Donkey Kong|King K. Rool|||||||||No|
+224|2024-09-07 00:13:38|Link|Kazuya|Hero|Hero|||||||||No|
+225|2024-09-07 00:16:43|Link|Kazuya|Sonic|Sephiroth|||||||||Yes|
+226|2024-09-07 00:22:09|Link|Kazuya|Yoshi|R.O.B.|||||||||No|
+227|2024-09-07 00:26:56|Link|Kazuya|Donkey Kong|Pyra & Mythra|||||||||No|
+228|2024-09-07 00:33:15|Link|Kazuya|Sora|Corrin|||||||||No|
+229|2024-09-07 00:39:37|Ike|Wario|Donkey Kong|Donkey Kong|||||||||Yes|
+230|2024-09-07 16:52:29|Captain Falcon|Joker|Sephiroth|Lucina|||||||||No|
+231|2024-09-07 16:55:48|Captain Falcon|Joker|Ness|Mega Man|||||||||No|
+232|2024-09-07 17:00:29|Captain Falcon|Kazuya|King K. Rool|Bowser|||||||||Yes|
+233|2024-09-07 17:03:18|Captain Falcon|Kazuya|Bowser|Mario|||||||||Yes|
+234|2024-09-07 17:06:13|Captain Falcon|Kazuya|Bowser|Mario|||||||||Yes|
+235|2024-09-07 17:10:49|Captain Falcon|Kazuya|Bowser|Mario|||||||||Yes|
+236|2024-09-07 17:14:43|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+237|2024-09-07 17:17:35|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+238|2024-09-07 17:21:17|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+239|2024-09-07 17:25:02|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+240|2024-09-07 17:28:13|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+241|2024-09-07 17:31:24|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+242|2024-09-07 19:05:56|Donkey Kong|Kazuya|Terry|Jigglypuff|||||||||Yes|
+243|2024-09-07 20:50:17|Joker|Joker|Mii Swordfighter|Mii Swordfighter|||||||||No|
+244|2024-09-07 20:54:31|Joker|Joker|Mr. Game & Watch|Toon Link|||||||||Yes|
+245|2024-09-07 22:58:49|Captain Falcon|Joker|Yoshi|Incineroar|||||||||No|
+246|2024-09-07 23:00:54|Captain Falcon|Joker|Yoshi|Incineroar|||||||||No|
+247|2024-09-07 23:09:04|Captain Falcon|Kazuya|Bowser|Ganondorf|||||||||No|
+248|2024-09-07 23:13:09|Captain Falcon|Kazuya|Jigglypuff|Zelda|||||||||No|
+249|2024-09-07 23:16:27|Captain Falcon|Kazuya|Jigglypuff|Zelda|||||||||No|
+250|2024-09-07 23:23:10|Captain Falcon|Kazuya|Lucas|Captain Falcon|||||||||No|
+251|2024-09-07 23:26:02|Captain Falcon|Kazuya|Lucas|Captain Falcon|||||||||Yes|
+252|2024-09-07 23:30:04|Captain Falcon|Kazuya|Lucas|Captain Falcon|||||||||Yes|
+253|2024-09-07 23:34:42|Ganondorf|Kazuya|Ness|Bowser|||||||||Yes|
+254|2024-09-07 23:36:22|Ganondorf|Kazuya|Ness|Bowser|||||||||No|
+255|2024-09-07 23:39:39|Ganondorf|Kazuya|Ness|Bowser|||||||||Yes|
+256|2024-09-07 23:41:33|Ganondorf|Kazuya|Ness|Bowser|||||||||No|
+257|2024-09-07 23:45:15|Ganondorf|Kazuya|Ness|Bowser|||||||||No|
+258|2024-09-07 23:49:02|Ganondorf|Kazuya|Pac-Man|Bowser|||||||||Yes|
+259|2024-09-07 23:53:02|Ganondorf|Kazuya|Pac-Man|Bowser|||||||||Yes|
+260|2024-09-07 23:57:57|Ike|Kazuya|Kirby|Donkey Kong|||||||||Yes|
+261|2024-09-08 00:01:33|Ike|Kazuya|Ganondorf|Donkey Kong|||||||||Yes|
+262|2024-09-09 22:21:05|Donkey Kong|Kazuya|Little Mac|Pyra & Mythra|||||||||No|
+263|2024-09-09 22:24:19|Donkey Kong|Kazuya|Little Mac|Pyra & Mythra|||||||||No|
+264|2024-09-09 22:27:36|Donkey Kong|Kazuya|Little Mac|Pyra & Mythra|||||||||Yes|
+265|2024-09-09 22:30:11|Donkey Kong|Kazuya|Ice Climbers|Donkey Kong|||||||||Yes|
+266|2024-09-09 22:35:39|Donkey Kong|Kazuya|Kirby|Pyra & Mythra|||||||||No|
+267|2024-09-09 22:39:50|Donkey Kong|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+268|2024-09-09 22:43:24|Donkey Kong|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+269|2024-09-09 22:46:45|Donkey Kong|Kazuya|Dr. Mario|Captain Falcon|||||||||Yes|
+270|2024-09-10 22:05:05|Kirby|Joker|Pichu|Pikachu|||||||||No|
+271|2024-09-10 22:09:26|Kirby|Joker|Donkey Kong|King K. Rool|||||||||No|
+272|2024-09-10 22:13:05|Kirby|Joker|Donkey Kong|King K. Rool|||||||||No|
+273|2024-09-10 22:16:35|Kirby|Joker|Donkey Kong|King K. Rool|||||||||No|
+274|2024-09-10 22:19:55|Kirby|Kazuya|Mario|Peach|||||||||Yes|
+275|2024-09-10 22:24:21|Kirby|Kazuya|Mario|Palutena|||||||||Yes|
+276|2024-09-10 22:31:39|Kirby|Kazuya|Falco|Fox|||||||||Yes|
+277|2024-09-10 22:31:59|Kirby|Kazuya|Bowser|Ness|||||||||Yes|
+278|2024-09-10 22:35:31|Kirby|Kazuya|Bowser|Ness|||||||||No|
+279|2024-09-10 22:39:01|Kirby|Kazuya|Bowser|Ness|||||||||Yes|
+280|2024-09-11 21:58:11|Captain Falcon|Kazuya|Hero|Hero|||||||||No|
+281|2024-09-11 22:01:50|Captain Falcon|Kazuya|Hero|Hero|||||||||Yes|
+282|2024-09-11 22:06:27|Captain Falcon|Kazuya|Link|Ganondorf|||||||||Yes|
+283|2024-09-11 22:12:08|Captain Falcon|Kazuya|Link|Ganondorf|||||||||Yes|
+284|2024-09-11 22:15:49|Captain Falcon|Kazuya|King K. Rool|Hero|||||||||No|
+285|2024-09-11 22:19:25|Captain Falcon|Kazuya|King K. Rool|Hero|||||||||Yes|
+286|2024-09-11 22:22:25|Captain Falcon|Kazuya|King K. Rool|Hero|||||||||No|
+287|2024-09-11 22:25:45|Captain Falcon|Kazuya|King K. Rool|Hero|||||||||No|
+288|2024-09-11 22:30:30|Captain Falcon|Kazuya|Captain Falcon|Corrin|||||||||Yes|
+289|2024-09-11 22:33:40|Captain Falcon|Kazuya|Captain Falcon|Corrin|||||||||No|
+290|2024-09-11 22:37:03|Captain Falcon|Kazuya|Captain Falcon|Corrin|||||||||Yes|
+291|2024-09-12 23:12:01|Link|Kazuya|Little Mac|Ridley|||||||||Yes|
+292|2024-09-12 23:16:37|Link|Kazuya|Captain Falcon|Peach|||||||||Yes|
+293|2024-09-12 23:19:23|Link|Kazuya|Little Mac|Little Mac|||||||||No|
+294|2024-09-12 23:22:13|Link|Kazuya|Little Mac|Little Mac|||||||||No|
+295|2024-09-12 23:25:20|Link|Kazuya|King Dedede|Ganondorf|||||||||Yes|
+296|2024-09-12 23:30:40|Link|Kazuya|Duck Hunt|Duck Hunt|||||||||Yes|
+297|2024-09-12 23:34:47|Link|Kazuya|Ike|Peach|||||||||No|
+298|2024-09-12 23:39:19|Link|Kazuya|Hero|Fox|||||||||Yes|
+299|2024-09-12 23:42:02|Link|Kazuya|Hero|Fox|||||||||Yes|
+300|2024-09-13 21:18:25|Captain Falcon|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+301|2024-09-13 21:21:19|Captain Falcon|Kazuya|Lucas|Ness|||||||||No|
+302|2024-09-13 21:25:13|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||No|
+303|2024-09-13 21:28:52|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||No|
+304|2024-09-13 21:32:29|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||Yes|
+305|2024-09-13 21:35:57|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||Yes|
+306|2024-09-13 21:38:42|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||No|
+307|2024-09-13 21:42:18|Captain Falcon|Kazuya|Roy|Pyra & Mythra|||||||||No|
+308|2024-09-13 21:46:02|Captain Falcon|Kazuya|Jigglypuff|Ganondorf|||||||||Yes|
+309|2024-09-13 21:50:07|Captain Falcon|Kazuya|Jigglypuff|Dark Samus|||||||||Yes|
+310|2024-09-13 21:53:05|Captain Falcon|Kazuya|Jigglypuff|Dark Samus|||||||||Yes|
+311|2024-09-13 21:58:57|Captain Falcon|Kazuya|Ike|Ness|||||||||Yes|
+312|2024-09-13 22:02:09|Captain Falcon|Kazuya|Young Link|Pit|||||||||Yes|
+313|2024-09-15 13:33:13|Kirby|Kazuya|Donkey Kong|King K. Rool|||||||||Yes|
+314|2024-09-15 13:37:06|Kirby|Kazuya|Donkey Kong|King K. Rool|||||||||No|
+315|2024-09-15 13:41:11|Kirby|Kazuya|Donkey Kong|King K. Rool|||||||||Yes|
+316|2024-09-15 13:44:45|Kirby|Kazuya|Hero|Hero|||||||||Yes|
+317|2024-09-15 13:49:14|Kirby|Kazuya|Ganondorf|Corrin|||||||||Yes|
+318|2024-09-15 19:53:34|Donkey Kong|Kazuya|Samus|Samus|||||||||Yes|
+319|2024-09-15 19:58:11|Donkey Kong|Kazuya|Kirby|King K. Rool|||||||||Yes|
+320|2024-09-15 20:02:27|Donkey Kong|Kazuya|Kirby|Samus|||||||||Yes|
+321|2024-09-15 20:05:51|Donkey Kong|Kazuya|King K. Rool|Bowser Jr.|||||||||No|
+322|2024-09-15 20:08:38|Donkey Kong|Kazuya|King K. Rool|Bowser Jr.|||||||||No|
+323|2024-09-15 20:12:58|Donkey Kong|Kazuya|King K. Rool|Bowser Jr.|||||||||No|
+324|2024-09-15 22:10:27|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+325|2024-09-15 22:12:14|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+326|2024-09-15 22:15:27|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+327|2024-09-15 22:18:06|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+328|2024-09-15 22:20:27|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+329|2024-09-15 22:27:24|Wii Fit Trainer|Kazuya|Mr. Game & Watch|Sora|||||||||Yes|
+330|2024-09-15 22:27:40|Wii Fit Trainer|Kazuya|Lucas|Sora|||||||||Yes|
+331|2024-09-15 22:31:11|Wii Fit Trainer|Kazuya|Lucas|Sora|||||||||Yes|
+332|2024-09-15 22:38:25|Ike|Wario|Kirby|Fox|||||||||Yes|
+333|2024-09-16 22:44:41|Wii Fit Trainer|Kazuya|Kirby|Donkey Kong|||||||||No|
+334|2024-09-16 22:48:42|Wii Fit Trainer|Kazuya|Zelda|Pikachu|||||||||No|
+335|2024-09-16 22:53:20|Wii Fit Trainer|Kazuya|Kirby|Ganondorf|||||||||No|
+336|2024-09-16 22:57:50|Wii Fit Trainer|Kazuya|Sonic|Falco|||||||||No|
+337|2024-09-16 23:02:12|Wii Fit Trainer|Kazuya|Donkey Kong|Cloud|||||||||No|
+338|2024-09-16 23:05:45|Wii Fit Trainer|Kazuya|Pyra & Mythra|Zelda|||||||||No|
+339|2024-09-16 23:10:12|Ike|Kazuya|Pikachu|Corrin|||||||||Yes|
+340|2024-09-16 23:13:32|Ike|Kazuya|Ganondorf|Dark Samus|||||||||Yes|
+341|2024-09-16 23:16:45|Ike|Kazuya|Ganondorf|Dark Samus|||||||||Yes|
+342|2024-09-17 23:15:37|Kirby|Kazuya|Bowser|Bowser|||||||||Yes|
+343|2024-09-17 23:20:33|Kirby|Kazuya|Cloud|Sephiroth|||||||||Yes|
+344|2024-09-17 23:28:53|Kirby|Kazuya|Ike|Pikachu|||||||||Yes|
+345|2024-09-17 23:32:32|Kirby|Kazuya|Ike|Pikachu|||||||||Yes|
+346|2024-09-17 23:35:49|Kirby|Kazuya|Ike|Pikachu|||||||||Yes|
+347|2024-09-18 22:44:10|Wii Fit Trainer|Joker|Falco|Peach|||||||||No|
+348|2024-09-18 22:47:06|Wii Fit Trainer|Joker|Falco|Peach|||||||||No|
+349|2024-09-18 22:51:22|Wii Fit Trainer|Kazuya|King K. Rool|King K. Rool|||||||||No|
+350|2024-09-18 22:54:12|Wii Fit Trainer|Kazuya|King K. Rool|King K. Rool|||||||||No|
+351|2024-09-18 23:01:43|Wii Fit Trainer|Kazuya|Mii Swordfighter|Mii Brawler|||||||||Yes|
+352|2024-09-18 23:04:50|Wii Fit Trainer|Kazuya|Mii Swordfighter|Mii Brawler|||||||||Yes|
+353|2024-09-18 23:05:10|Wii Fit Trainer|Kazuya|Sora|Min Min|||||||||Yes|
+354|2024-09-18 23:10:08|Wii Fit Trainer|Kazuya|Sora|Sephiroth|||||||||Yes|
+355|2024-09-18 23:14:27|Wii Fit Trainer|Kazuya|Sora|Sephiroth|||||||||No|
+356|2024-09-18 23:17:58|Wii Fit Trainer|Kazuya|Sora|Sephiroth|||||||||Yes|
+357|2024-09-18 23:23:31|Ike|Wario|Zero suit Samus|Bayonetta|||||||||Yes|
+358|2024-09-21 13:14:55|Captain Falcon|Kazuya|Villager|Zelda|||||||||No|
+359|2024-09-21 13:19:07|Captain Falcon|Kazuya|Hero|Mr. Game & Watch|||||||||No|
+360|2024-09-21 13:23:14|Captain Falcon|Kazuya|Young Link|Terry|||||||||Yes|
+361|2024-09-21 13:27:10|Captain Falcon|Kazuya|Young Link|Terry|||||||||Yes|
+362|2024-09-21 13:31:07|Captain Falcon|Kazuya|King K. Rool|Captain Falcon|||||||||Yes|
+363|2024-09-22 22:12:42|Donkey Kong|Kazuya|Bowser|Kirby|||||||||No|
+364|2024-09-22 22:15:36|Donkey Kong|Kazuya|Bowser|Kirby|||||||||No|
+365|2024-09-22 22:20:31|Donkey Kong|Kazuya|Fox|Hero|||||||||Yes|
+366|2024-09-22 22:24:24|Donkey Kong|Kazuya|Ness|Inlking|||||||||Yes|
+367|2024-09-22 22:27:06|Donkey Kong|Kazuya|Ness|Inlking|||||||||Yes|
+368|2024-09-22 22:31:26|Donkey Kong|Kazuya|Ness|Inlking|||||||||Yes|
+369|2024-09-22 22:34:49|Donkey Kong|Kazuya|Incineroar|Incineroar|||||||||No|
+370|2024-09-22 22:37:07|Donkey Kong|Kazuya|Incineroar|Incineroar|||||||||No|
+371|2024-09-22 22:41:07|Donkey Kong|Kazuya|Ike|Link|||||||||Yes|
+372|2024-09-22 22:44:27|Donkey Kong|Kazuya|Little Mac|Sephiroth|||||||||Yes|
+373|2024-09-22 22:46:45|Donkey Kong|Kazuya|Little Mac|Sephiroth|||||||||Yes|
+374|2024-09-23 12:18:30|Wii Fit Trainer|Lucas|Mega Man|King Dedede|||||||||No|
+375|2024-09-23 12:22:54|Wii Fit Trainer|Lucas|Pac-Man|King K. Rool|||||||||No|
+376|2024-09-23 12:28:13|Wii Fit Trainer|Lucas|Marth|Wii Fit Trainer|||||||||Yes|
+377|2024-09-23 12:32:32|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+378|2024-09-23 12:37:22|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||Yes|
+379|2024-09-23 12:43:02|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+380|2024-09-23 12:46:45|Ike|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+381|2024-09-23 22:03:14|Ganondorf|Kazuya|Jigglypuff|Jigglypuff|||||||||No|
+382|2024-09-23 22:07:12|Ganondorf|Kazuya|Jigglypuff|Jigglypuff|||||||||Yes|
+383|2024-09-23 22:10:13|Ganondorf|Kazuya|Jigglypuff|Jigglypuff|||||||||Yes|
+384|2024-09-23 22:13:48|Ganondorf|Kazuya|Cloud|Corrin|||||||||Yes|
+385|2024-09-23 22:17:37|Ganondorf|Kazuya|Lucas|R.O.B.|||||||||No|
+386|2024-09-23 22:21:39|Kazuya|Kazuya|Wario|Wario|||||||||Yes|
+387|2024-09-23 22:24:43|Kazuya|Kazuya|Captain Falcon|Link|||||||||Yes|
+388|2024-09-23 22:28:18|Kazuya|Kazuya|Ganondorf|Sheik|||||||||No|
+389|2024-09-23 22:31:51|Kazuya|Kazuya|Link|Bayonetta|||||||||Yes|
+390|2024-09-24 22:17:16|Kazuya|Kazuya|Ken|Incineroar|||||||||No|
+391|2024-09-24 22:21:17|Kazuya|Kazuya|Ken|Incineroar|||||||||No|
+392|2024-09-24 22:26:25|Kazuya|Kazuya|Ken|Incineroar|||||||||No|
+393|2024-09-24 22:30:33|Kazuya|Kazuya|Ganondorf|Mr. Game & Watch|||||||||Yes|
+394|2024-09-24 22:34:59|Kazuya|Kazuya|King Dedede|King K. Rool|||||||||No|
+395|2024-09-24 22:40:14|Kazuya|Kazuya|Mr. Game & Watch|Ganondorf|||||||||Yes|
+396|2024-09-24 22:42:45|Kazuya|Kazuya|Mr. Game & Watch|Ganondorf|||||||||No|
+397|2024-09-24 22:47:34|Kazuya|Kazuya|Ike|Kazuya|||||||||Yes|
+398|2024-09-24 22:50:56|Kazuya|Kazuya|Ike|Kazuya|||||||||No|
+399|2024-09-24 22:59:24|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+400|2024-09-24 22:59:38|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+401|2024-09-24 23:02:25|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+402|2024-09-24 23:09:18|Captain Falcon|Kazuya|Byleth|Cloud|||||||||Yes|
+403|2024-09-24 23:12:38|Captain Falcon|Kazuya|Byleth|Cloud|||||||||No|
+404|2024-09-25 21:28:43|Donkey Kong|Kazuya|Kirby|Steve|||||||||Yes|
+405|2024-09-25 21:33:20|Donkey Kong|Lucas|Mii Gunner|Mii Gunner|||||||||No|
+406|2024-09-25 21:37:21|Donkey Kong|Lucas|Sonic|Sonic|||||||||Yes|
+407|2024-09-25 21:40:49|Donkey Kong|Lucas|Kazuya|Ganondorf|||||||||No|
+408|2024-09-25 21:44:06|Donkey Kong|Lucas|Kazuya|Ganondorf|||||||||No|
+409|2024-09-25 21:48:21|Donkey Kong|Lucas|Kazuya|Ganondorf|||||||||Yes|
+410|2024-09-25 21:51:32|Donkey Kong|Lucas|Kazuya|Ganondorf|||||||||No|
+411|2024-09-25 21:54:49|Donkey Kong|Lucas|Kazuya|Ganondorf|||||||||No|
+412|2024-09-25 21:58:25|Captain Falcon|Kazuya|King Dedede|Samus|||||||||No|
+413|2024-09-25 22:01:34|Captain Falcon|Kazuya|King Dedede|Samus|||||||||No|
+414|2024-09-25 22:05:27|Captain Falcon|Kazuya|King Dedede|Samus|||||||||No|
+415|2024-09-25 22:09:35|Captain Falcon|Kazuya|King Dedede|Samus|||||||||No|
+416|2024-09-25 22:13:03|Ike|Wario|Ganondorf|Cloud|||||||||No|
+417|2024-09-25 22:16:45|Ike|Kazuya|Kirby|King K. Rool|||||||||Yes|
+418|2024-09-25 22:19:25|Ike|Kazuya|Kirby|King K. Rool|||||||||Yes|
+419|2024-09-25 22:24:49|Ike|Kazuya|Mega Man|Mega Man|||||||||No|
+420|2024-09-25 22:30:24|Ike|Kazuya|Byleth|R.O.B.|||||||||Yes|
+421|2024-09-28 22:24:35|Donkey Kong|Kazuya|Kirby|Mario|||||||||Yes|
+422|2024-09-28 22:28:56|Donkey Kong|Kazuya|Kirby|Kirby|||||||||Yes|
+423|2024-09-28 22:33:06|Donkey Kong|Kazuya|Pyra & Mythra|Ness|||||||||No|
+424|2024-09-28 22:36:14|Donkey Kong|Kazuya|Pyra & Mythra|Ness|||||||||No|
+425|2024-09-29 22:02:41|Kirby|Lucas|Pyra & Mythra|Sora|||||||||No|
+426|2024-09-29 22:07:02|Kirby|Lucas|Pyra & Mythra|Sora|||||||||No|
+427|2024-09-29 22:11:20|Kirby|Lucas|Samus|Pit|||||||||No|
+428|2024-09-29 22:15:43|Kirby|Kazuya|Dr. Mario|Wario|||||||||No|
+429|2024-09-29 22:19:09|Kirby|Kazuya|Dr. Mario|Wario|||||||||Yes|
+430|2024-09-29 22:23:35|Kirby|Kazuya|Dr. Mario|Wario|||||||||No|
+431|2024-09-29 22:28:26|Kirby|Kazuya|Dr. Mario|Wario|||||||||Yes|
+432|2024-09-29 22:32:14|Kirby|Kazuya|Dr. Mario|Wario|||||||||No|
+433|2024-09-29 22:35:24|Kirby|Kazuya|King Dedede|Ridley|||||||||No|
+434|2024-09-29 22:39:15|Kirby|Kazuya|King Dedede|Ridley|||||||||No|
+435|2024-09-29 22:45:02|Kirby|Kazuya|Kirby|Kirby|||||||||Yes|
+436|2024-09-29 22:49:47|Ike|Kazuya|Wario|Wario|||||||||Yes|
+437|2024-09-29 22:54:19|Ike|Kazuya|Piranha Plant|Piranha Plant|||||||||Yes|
+438|2024-09-29 22:58:41|Ike|Kazuya|Pyra & Mythra|Sora|||||||||No|
+439|2024-09-29 23:02:52|Ike|Kazuya|Pyra & Mythra|Sora|||||||||No|
+440|2024-09-29 23:07:33|Ike|Kazuya|Pyra & Mythra|Sora|||||||||No|
+441|2024-09-29 23:11:44|Ike|Kazuya|Pyra & Mythra|Sora|||||||||No|
+442|2024-09-30 21:26:55|Wii Fit Trainer|Link|Pyra & Mythra|Piranha Plant|||||||||No|
+443|2024-09-30 21:29:24|Wii Fit Trainer|Link|Pyra & Mythra|Piranha Plant|||||||||No|
+444|2024-09-30 21:35:07|Wii Fit Trainer|Link|Mega Man|Mr. Game & Watch|||||||||Yes|
+445|2024-09-30 21:43:08|Ganondorf|Cloud|Ken|Samus|||||||||Yes|
+446|2024-09-30 21:46:49|Ganondorf|Cloud|Joker|Palutena|||||||||No|
+447|2024-09-30 21:51:19|Ganondorf|Joker|Joker|Kirby|||||||||Yes|
+448|2024-09-30 21:54:06|Ganondorf|Joker|Bowser|Ridley|||||||||No|
+449|2024-09-30 21:56:15|Ganondorf|Joker|Bowser|Ridley|||||||||No|
+450|2024-09-30 22:03:35|Ganondorf|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+451|2024-09-30 22:03:41|Ganondorf|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+452|2024-09-30 22:03:50|Ganondorf|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+453|2024-09-30 22:06:33|Ike|Kazuya|Kirby|Luigi|||||||||Yes|
+454|2024-09-30 22:10:18|Ike|Kazuya|Ness|Lucina|||||||||No|
+455|2024-09-30 22:13:45|Ike|Kazuya|Donkey Kong|Sephiroth|||||||||Yes|
+456|2024-09-30 22:17:18|Captain Falcon|Kazuya|Ganondorf|Mr. Game & Watch|||||||||Yes|
+457|2024-09-30 22:21:59|Captain Falcon|Kazuya|Ganondorf|Mr. Game & Watch|||||||||No|
+458|2024-09-30 22:26:37|Captain Falcon|Kazuya|Corrin|Mewtwo|||||||||Yes|
+459|2024-10-01 22:05:46|Link|Cloud|King K. Rool|Byleth|||||||||No|
+460|2024-10-01 22:08:10|Link|Cloud|King K. Rool|Byleth|||||||||No|
+461|2024-10-01 22:11:37|Link|Cloud|King K. Rool|Byleth|||||||||No|
+462|2024-10-01 22:16:33|Link|Link|Mii Brawler|Samus|||||||||No|
+463|2024-10-01 22:21:48|Link|Kazuya|Mario|Little Mac|||||||||Yes|
+464|2024-10-01 22:24:53|Link|Kazuya|Mario|Little Mac|||||||||Yes|
+465|2024-10-01 22:28:52|Link|Kazuya|Lucas|Ness|||||||||Yes|
+466|2024-10-04 00:05:39|Roy|Cloud|Sephiroth|Incineroar|||||||||Yes|
+467|2024-10-04 00:09:13|Roy|Kazuya|King Dedede|King Dedede|||||||||No|
+468|2024-10-04 00:13:04|Roy|Kazuya|King Dedede|King Dedede|||||||||No|
+469|2024-10-04 00:17:31|Roy|Kazuya|King Dedede|King Dedede|||||||||Yes|
+470|2024-10-04 00:21:17|Roy|Kazuya|King Dedede|King Dedede|||||||||No|
+471|2024-10-06 21:22:52|Ganondorf|Kazuya|Kazuya|Joker|||||||||No|
+472|2024-10-06 21:26:38|Ganondorf|Kazuya|Kazuya|Joker|||||||||No|
+473|2024-10-06 21:30:30|Ganondorf|Kazuya|Kazuya|Joker|||||||||No|
+474|2024-10-06 21:35:00|Ganondorf|Kazuya|Kazuya|Joker|||||||||Yes|
+475|2024-10-06 21:38:47|Ganondorf|Kazuya|Kazuya|Joker|||||||||No|
+476|2024-10-06 21:40:55|Ganondorf|Kazuya|Ike|Bayonetta|||||||||Yes|
+477|2024-10-06 21:44:34|Ganondorf|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+478|2024-10-06 21:47:14|Ganondorf|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+479|2024-10-06 21:54:19|Ike|Kazuya|Ike|Sora|||||||||Yes|
+480|2024-10-07 22:06:18|Wii Fit Trainer|Link|Pyra & Mythra|Mii Swordfighter|||||||||No|
+481|2024-10-07 22:09:55|Wii Fit Trainer|Link|Pyra & Mythra|Mii Swordfighter|||||||||No|
+482|2024-10-07 22:15:02|Link|Link|Captain Falcon|Captain Falcon|||||||||No|
+483|2024-10-07 22:18:21|Link|Link|Pyra & Mythra|Cloud|||||||||No|
+484|2024-10-07 22:22:30|Link|Link|Pyra & Mythra|Cloud|||||||||No|
+485|2024-10-07 22:26:32|Link|Link|Pyra & Mythra|Cloud|||||||||No|
+486|2024-10-07 22:32:03|Donkey Kong|Kazuya|King Dedede|Incineroar|||||||||No|
+487|2024-10-07 22:36:44|Donkey Kong|Kazuya|Min Min|Snake|||||||||Yes|
+488|2024-10-07 22:40:30|Donkey Kong|Kazuya|Toon Link|Sephiroth|||||||||Yes|
+489|2024-10-07 22:45:20|Donkey Kong|Kazuya|King K. Rool|Sephiroth|||||||||Yes|
+490|2024-10-07 22:48:32|Donkey Kong|Kazuya|King K. Rool|Sephiroth|||||||||No|
+491|2024-10-07 22:52:03|Donkey Kong|Kazuya|Link|King Dedede|||||||||No|
+492|2024-10-07 22:55:31|Donkey Kong|Kazuya|Link|King Dedede|||||||||No|
+493|2024-10-07 22:59:39|Donkey Kong|Kazuya|Link|King Dedede|||||||||No|
+494|2024-10-08 21:12:43|King K. Rool|Kazuya|Steve|Pokemon Trainer|||||||||No|
+495|2024-10-08 21:16:20|King K. Rool|Kazuya|Steve|Pokemon Trainer|||||||||No|
+496|2024-10-08 21:20:10|King K. Rool|Kazuya|King K. Rool|Mega Man|||||||||No|
+497|2024-10-08 21:23:52|King K. Rool|Kazuya|King K. Rool|Mega Man|||||||||No|
+498|2024-10-08 21:29:04|Kirby|Lucas|Byleth|Pac-Man|||||||||Yes|
+499|2024-10-08 21:33:45|Kirby|Lucas|Kirby|Ganondorf|||||||||Yes|
+500|2024-10-08 21:37:51|Kirby|Lucas|Kirby|Ganondorf|||||||||No|
+501|2024-10-08 21:42:57|Kirby|Lucas|Ike|Roy|||||||||Yes|
+502|2024-10-08 21:47:30|Kirby|Kazuya|Kirby|Wii Fit Trainer|||||||||Yes|
+503|2024-10-08 21:53:05|Kirby|Kazuya|Donkey Kong|Byleth|||||||||Yes|
+504|2024-10-25 21:23:23|Captain Falcon|Kazuya|Captain Falcon|Ike|||||||||Yes|
+505|2024-10-25 21:29:15|Captain Falcon|Kazuya|Mii Brawler|Ness|||||||||Yes|
+506|2024-10-25 21:32:29|Captain Falcon|Kazuya|Mii Brawler|Ness|||||||||Yes|
+507|2024-10-25 21:36:05|Captain Falcon|Kazuya|Dr. Mario|Dr. Mario|||||||||Yes|
+508|2024-10-25 21:40:55|Captain Falcon|Kazuya|Dr. Mario|Dr. Mario|||||||||Yes|
+509|2024-10-25 21:44:48|Captain Falcon|Kazuya|Bowser|R.O.B.|||||||||Yes|
+510|2024-10-25 21:49:44|Captain Falcon|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+511|2024-10-25 21:53:47|Captain Falcon|Kazuya|Kazuya|Piranha Plant|||||||||Yes|
+512|2024-10-25 21:58:24|Captain Falcon|Kazuya|Captain Falcon|Ike|||||||||Yes|
+513|2024-10-25 22:02:38|Captain Falcon|Kazuya|Ganondorf|Samus|||||||||Yes|
+514|2024-10-25 22:05:34|Captain Falcon|Kazuya|Ganondorf|Samus|||||||||Yes|
+515|2024-10-25 22:10:06|Captain Falcon|Kazuya|Roy|Corrin|||||||||Yes|
+516|2024-10-25 22:13:58|Captain Falcon|Kazuya|Falco|Steve|||||||||Yes|
+517|2024-10-25 22:17:27|Captain Falcon|Kazuya|Falco|Steve|||||||||No|
+518|2024-10-25 22:21:40|Captain Falcon|Kazuya|Falco|Steve|||||||||Yes|
+519|2024-10-25 22:26:32|Donkey Kong|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+520|2024-10-25 22:31:09|Donkey Kong|Lucas|Mii Brawler|Mii Swordfighter|||||||||Yes|
+521|2024-10-25 22:38:07|Donkey Kong|Lucas|Captain Falcon|Richter|||||||||Yes|
+522|2024-10-25 22:38:28|Donkey Kong|Lucas|Captain Falcon|Richter|||||||||No|
+523|2024-10-25 22:44:08|Donkey Kong|Lucas|Captain Falcon|Richter|||||||||No|
+524|2024-10-25 22:48:23|Donkey Kong|Lucas|Kazuya|Isabelle|||||||||No|
+525|2024-10-25 22:51:06|Donkey Kong|Lucas|Kazuya|Isabelle|||||||||Yes|
+526|2024-10-25 22:55:23|Donkey Kong|Lucas|Kazuya|Isabelle|||||||||Yes|
+527|2024-10-25 23:04:19|Captain Falcon|Kazuya|Ike|Bowser|||||||||No|
+528|2024-10-25 23:04:20|Captain Falcon|Kazuya|Ike|Bowser|||||||||No|
+529|2024-10-25 23:07:53|Captain Falcon|Kazuya|Ike|Bowser|||||||||No|
+530|2024-10-25 23:12:02|Captain Falcon|Kazuya|Ike|Bowser|||||||||No|
+531|2024-10-25 23:17:07|Captain Falcon|Kazuya|Ike|Bowser|||||||||Yes|
+532|2024-10-25 23:20:08|Captain Falcon|Kazuya|Ike|Bowser|||||||||No|
+533|2024-10-25 23:24:12|Ike|Kazuya|Ganondorf|Steve|||||||||Yes|
+534|2024-10-27 00:02:56|Captain Falcon|Kazuya|Incineroar|King K. Rool|||||||||No|
+535|2024-10-27 00:06:55|Captain Falcon|Kazuya|Zelda|Sora|||||||||No|
+536|2024-10-27 00:09:45|Captain Falcon|Kazuya|Zelda|Sora|||||||||No|
+537|2024-10-27 00:13:25|Captain Falcon|Kazuya|Link|Donkey Kong|||||||||Yes|
+538|2024-10-27 20:32:01|Kirby|Kazuya|Little Mac|Pikachu|||||||||Yes|
+539|2024-10-27 20:35:32|Kirby|Kazuya|Jigglypuff|Link|||||||||Yes|
+540|2024-10-27 20:38:30|Kirby|Kazuya|Jigglypuff|Link|||||||||Yes|
+541|2024-10-27 20:41:42|Kirby|Kazuya|Fox|R.O.B.|||||||||Yes|
+542|2024-10-27 20:45:34|Kirby|Kazuya|Fox|R.O.B.|||||||||Yes|
+543|2024-10-27 20:49:16|Kirby|Kazuya|Bowser|Kazuya|||||||||Yes|
+544|2024-10-27 20:53:22|Kirby|Lucas|King K. Rool|Pit|||||||||No|
+545|2024-10-27 20:57:43|Kirby|Lucas|King K. Rool|Pit|||||||||No|
+546|2024-10-27 21:00:37|Kirby|Lucas|Captain Falcon|Inlking|||||||||Yes|
+547|2024-10-27 21:05:05|Kirby|Lucas|Zelda|Ganondorf|||||||||No|
+548|2024-10-27 21:10:10|Link|Kazuya|Kirby|Byleth|||||||||Yes|
+549|2024-10-27 21:14:07|Link|Kazuya|Kirby|Byleth|||||||||No|
+550|2024-10-27 21:18:54|Link|Kazuya|Kirby|Byleth|||||||||No|
+551|2024-10-27 21:23:07|Link|Kazuya|Kirby|Byleth|||||||||Yes|
+552|2024-10-27 21:28:04|Link|Kazuya|Kirby|Byleth|||||||||Yes|
+553|2024-10-29 21:32:38|Captain Falcon|Lucas|Zero suit Samus|Zero suit Samus|||||||||Yes|
+554|2024-10-29 21:36:04|Captain Falcon|Lucas|Mr. Game & Watch|Corrin|||||||||Yes|
+555|2024-10-29 21:39:46|Captain Falcon|Lucas|Kirby|Pikachu|||||||||No|
+556|2024-10-29 21:42:57|Captain Falcon|Lucas|Lucina|Little Mac|||||||||Yes|
+557|2024-10-29 21:48:07|Lucas|Ness|Wolf|Dr. Mario|||||||||No|
+558|2024-10-29 21:54:06|King K. Rool|Ganondorf|King K. Rool|Donkey Kong|||||||||No|
+559|2024-10-29 21:54:31|King K. Rool|Ganondorf|Steve|Mii Gunner|||||||||No|
+560|2024-10-29 22:03:25|Ganondorf|Kazuya|Bowser|Donkey Kong|||||||||Yes|
+561|2024-10-29 22:03:36|Ganondorf|Kazuya|Bowser|Donkey Kong|||||||||Yes|
+562|2024-10-29 22:03:44|Ganondorf|Kazuya|Bowser|Donkey Kong|||||||||No|
+563|2024-10-29 22:06:57|Ganondorf|Kazuya|Bowser|Donkey Kong|||||||||Yes|
+564|2024-10-29 22:10:32|Ganondorf|Kazuya|Cloud|Samus|||||||||No|
+565|2024-10-29 22:13:52|Ganondorf|Kazuya|Cloud|Samus|||||||||No|
+566|2024-10-29 22:17:50|Ganondorf|Kazuya|Cloud|Samus|||||||||No|
+567|2024-10-29 22:22:30|Captain Falcon|Kazuya|Mii Gunner|Samus|||||||||Yes|
+568|2024-10-29 22:27:23|Captain Falcon|Kazuya|Little Mac|Samus|||||||||Yes|
+569|2024-10-29 22:31:03|Captain Falcon|Kazuya|Little Mac|Samus|||||||||No|
+570|2024-10-29 22:33:51|Captain Falcon|Kazuya|Little Mac|Samus|||||||||Yes|
+571|2024-10-30 21:59:06|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||No|
+572|2024-10-30 22:02:43|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||No|
+573|2024-10-30 22:06:23|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||No|
+574|2024-10-30 22:09:55|Ike|Kazuya|Captain Falcon|R.O.B.|||||||||Yes|
+575|2024-10-30 22:10:02|Ike|Kazuya|Captain Falcon|R.O.B.|||||||||Yes|
+576|2024-10-30 22:14:33|Ike|Kazuya|Dr. Mario|Dr. Mario|||||||||Yes|
+577|2024-10-30 22:19:29|Ike|Kazuya|Ganondorf|King Dedede|||||||||Yes|
+578|2024-10-30 22:23:50|Ike|Kazuya|Sonic|Zero suit Samus|||||||||Yes|
+579|2024-10-30 22:29:07|Ike|Kazuya|Ice Climbers|Sephiroth|||||||||Yes|
+580|2024-11-12 22:23:36|Captain Falcon|Kazuya|Ike|Donkey Kong|||||||||No|
+581|2024-11-12 22:28:03|Captain Falcon|Kazuya|Ike|Donkey Kong|||||||||Yes|
+582|2024-11-12 22:32:12|Captain Falcon|Kazuya|Sora|Pyra & Mythra|||||||||No|
+583|2024-11-12 22:40:59|Captain Falcon|Kazuya|Corrin|Sephiroth|||||||||No|
+584|2024-11-12 22:48:11|Captain Falcon|Kazuya|Bowser|King K. Rool|||||||||Yes|
+585|2024-11-12 22:48:25|Captain Falcon|Kazuya|Bowser|Corrin|||||||||Yes|
+586|2024-11-13 21:33:44|Captain Falcon|Kazuya|Palutena|Pit|||||||||Yes|
+587|2024-11-13 21:38:16|Captain Falcon|Kazuya|Steve|King K. Rool|||||||||No|
+588|2024-11-13 21:42:48|Captain Falcon|Kazuya|Steve|King K. Rool|||||||||No|
+589|2024-11-13 21:48:32|Captain Falcon|Kazuya|Link|Yoshi|||||||||No|
+590|2024-11-13 21:51:31|Captain Falcon|Kazuya|Ganondorf|Pyra & Mythra|||||||||No|
+591|2024-11-13 21:59:26|Captain Falcon|Kazuya|Hero|Ness|||||||||Yes|
+592|2024-11-13 22:05:04|Donkey Kong|Lucas|Zelda|Pyra & Mythra|||||||||No|
+593|2024-11-13 22:07:46|Donkey Kong|Kazuya|Pokemon Trainer|Cloud|||||||||Yes|
+594|2024-11-13 22:10:32|Donkey Kong|Kazuya|Mewtwo|Cloud|||||||||Yes|
+595|2024-11-13 22:14:49|Donkey Kong|Kazuya|Falco|Yoshi|||||||||Yes|
+596|2024-11-13 22:18:22|Donkey Kong|Kazuya|Falco|Yoshi|||||||||Yes|
+597|2024-11-13 22:22:25|Donkey Kong|Kazuya|Sonic|Sora|||||||||Yes|
+598|2024-11-15 23:06:15|Kirby|Lucas|Falco|Falco|||||||||Yes|
+599|2024-11-15 23:08:40|Kirby|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+600|2024-11-15 23:10:59|Kirby|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+601|2024-11-15 23:16:03|Kirby|Kazuya|Ridley|Mewtwo|||||||||Yes|
+602|2024-11-15 23:19:25|Kirby|Kazuya|Ridley|Mewtwo|||||||||No|
+603|2024-11-15 23:26:06|Kirby|Kazuya|Ridley|Mewtwo|||||||||No|
+604|2024-11-15 23:26:16|Kirby|Kazuya|Ridley|Mewtwo|||||||||Yes|
+605|2024-11-15 23:30:04|Kirby|Kazuya|Mii Gunner|Mii Brawler|||||||||Yes|
+606|2024-11-15 23:33:50|Kirby|Kazuya|Little Mac|Little Mac|||||||||Yes|
+607|2024-11-15 23:36:08|Kirby|Kazuya|Little Mac|Little Mac|||||||||Yes|
+608|2024-11-15 23:39:40|Kirby|Kazuya|Little Mac|Little Mac|||||||||Yes|
+609|2024-11-15 23:43:38|Ganondorf|Ganondorf|King Dedede|Mr. Game & Watch|||||||||No|
+610|2024-11-15 23:47:05|Ganondorf|Ganondorf|King Dedede|Mr. Game & Watch|||||||||No|
+611|2024-11-15 23:50:12|Ganondorf|Ganondorf|King Dedede|Mr. Game & Watch|||||||||No|
+612|2024-11-15 23:53:00|Ganondorf|Ganondorf|King Dedede|Mr. Game & Watch|||||||||No|
+613|2024-11-15 23:57:51|Ganondorf|Kazuya|Hero|Palutena|||||||||Yes|
+614|2024-11-16 00:00:40|Ganondorf|Kazuya|Hero|Palutena|||||||||Yes|
+615|2024-11-16 00:04:28|Ganondorf|Kazuya|Zelda|Pyra & Mythra|||||||||No|
+616|2024-11-16 00:10:40|Ike|Kazuya|Mr. Game & Watch|Ike|||||||||Yes|
+617|2024-11-16 00:14:30|Ike|Kazuya|Mr. Game & Watch|Cloud|||||||||Yes|
+618|2024-11-16 00:18:48|Ike|Kazuya|Mario|Mario|||||||||Yes|
+619|2024-11-16 00:22:37|Ike|Kazuya|Ike|Little Mac|||||||||Yes|
+620|2024-11-16 00:27:33|Ike|Wario|Roy|Pyra & Mythra|||||||||No|
+621|2024-11-16 00:31:10|Ike|Wario|Roy|Pyra & Mythra|||||||||No|
+622|2024-11-16 00:36:14|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+623|2024-11-16 00:39:52|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+624|2024-11-16 00:43:16|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+625|2024-11-16 00:48:14|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+626|2024-11-16 16:38:18|Donkey Kong|Kazuya|Zelda|Ganondorf|||||||||No|
+627|2024-11-16 16:42:21|Donkey Kong|Kazuya|Zelda|Ganondorf|||||||||Yes|
+628|2024-11-16 16:47:04|Donkey Kong|Kazuya|Samus|Mii Gunner|||||||||Yes|
+629|2024-11-16 16:52:56|Donkey Kong|Kazuya|Snake|Duck Hunt|||||||||No|
+630|2024-11-16 16:56:24|Donkey Kong|Kazuya|Snake|Duck Hunt|||||||||Yes|
+631|2024-11-16 17:01:32|Donkey Kong|Kazuya|Snake|Duck Hunt|||||||||No|
+632|2024-11-16 17:07:02|Captain Falcon|Kazuya|Snake|Duck Hunt|||||||||Yes|
+633|2024-11-16 17:11:44|Captain Falcon|Kazuya|Donkey Kong|Banjo & Kazooie|||||||||Yes|
+634|2024-11-16 17:15:39|Captain Falcon|Kazuya|Donkey Kong|Banjo & Kazooie|||||||||Yes|
+635|2024-11-16 17:19:57|Captain Falcon|Kazuya|Captain Falcon|Pit|||||||||Yes|
+636|2024-11-16 22:35:37|Kirby|Kazuya|Fox|Hero|||||||||No|
+637|2024-11-16 22:40:07|Kirby|Kazuya|Falco|Lucas|||||||||No|
+638|2024-11-16 22:43:44|Kirby|Kazuya|Falco|Lucas|||||||||Yes|
+639|2024-11-16 22:48:20|Kirby|Kazuya|Falco|Lucas|||||||||No|
+640|2024-11-16 22:52:20|Kirby|Kazuya|Falco|Lucas|||||||||No|
+641|2024-11-16 22:56:38|Kirby|Kazuya|Falco|Lucas|||||||||No|
+642|2024-11-16 23:01:41|Kirby|Kazuya|Falco|Lucas|||||||||No|
+643|2024-11-16 23:05:09|Kirby|Kazuya|Captain Falcon|Ken|||||||||Yes|
+644|2024-11-16 23:14:16|Ganondorf|Kazuya|King K. Rool|Ganondorf|||||||||No|
+645|2024-11-16 23:18:16|Ganondorf|Kazuya|Lucas|Piranha Plant|||||||||No|
+646|2024-11-16 23:24:18|Incineroar|Incineroar|Lucario|Greninja|||||||||Yes|
+647|2024-11-16 23:28:57|Incineroar|Incineroar|Lucario|Greninja|||||||||Yes|
+648|2024-11-16 23:32:51|Incineroar|Incineroar|Zelda|Little Mac|||||||||No|
+649|2024-11-16 23:38:37|Captain Falcon|Kazuya|Sephiroth|Luigi|||||||||Yes|
+650|2024-11-17 18:26:54|Shulk|Lucina|Robin|Villager|||||||||No|
+651|2024-11-17 18:31:34|Shulk|Joker|Falco|Cloud|||||||||Yes|
+652|2024-11-17 18:35:25|Shulk|Joker|Ganondorf|R.O.B.|||||||||No|
+653|2024-11-17 18:38:12|Shulk|Joker|Ganondorf|R.O.B.|||||||||No|
+654|2024-11-17 18:40:42|Shulk|Kazuya|Meta Knight|Ganondorf|||||||||No|
+655|2024-11-17 18:43:28|Shulk|Kazuya|Meta Knight|Ganondorf|||||||||No|
+656|2024-11-17 18:46:45|Shulk|Kazuya|Meta Knight|Ganondorf|||||||||No|
+657|2024-11-17 18:50:59|Shulk|Kazuya|Meta Knight|Ganondorf|||||||||No|
+658|2024-11-17 18:54:51|Ike|Kazuya|Jigglypuff|Sephiroth|||||||||Yes|
+659|2024-11-17 18:58:19|Ike|Kazuya|Sonic|Sonic|||||||||Yes|
+660|2024-11-17 19:03:43|Ike|Kazuya|Mii Gunner|Mr. Game & Watch|||||||||Yes|
+661|2024-11-17 19:05:43|Ike|Kazuya|Mii Gunner|Mr. Game & Watch|||||||||Yes|
+662|2024-11-17 19:10:39|Ike|Kazuya|Joker|Diddy Kong|||||||||Yes|
+663|2024-11-18 22:36:09|Wii Fit Trainer|Kazuya|Ike|Pit|||||||||No|
+664|2024-11-18 22:39:31|Wii Fit Trainer|Kazuya|Ike|Pit|||||||||No|
+665|2024-11-18 22:43:24|Wii Fit Trainer|Kazuya|Ridley|Dark Samus|||||||||No|
+666|2024-11-18 22:47:09|Wii Fit Trainer|Kazuya|King Dedede|Zero suit Samus|||||||||Yes|
+667|2024-11-18 22:51:14|Wii Fit Trainer|Kazuya|Pyra & Mythra|Zelda|||||||||No|
+668|2024-11-18 22:55:55|Wii Fit Trainer|Kazuya|Samus|Samus|||||||||Yes|
+669|2024-11-19 22:45:44|Captain Falcon|Joker|Mr. Game & Watch|Lucas|||||||||No|
+670|2024-11-19 22:50:05|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||No|
+671|2024-11-19 22:54:09|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||No|
+672|2024-11-19 22:57:34|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||No|
+673|2024-11-19 23:00:39|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||No|
+674|2024-11-19 23:03:42|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||Yes|
+675|2024-11-19 23:07:22|Captain Falcon|Kazuya|Kirby|Ganondorf|||||||||No|
+676|2024-11-19 23:11:09|Captain Falcon|Kazuya|Meta Knight|Ganondorf|||||||||No|
+677|2024-11-19 23:14:26|Captain Falcon|Kazuya|Meta Knight|Ganondorf|||||||||No|
+678|2024-11-19 23:17:25|Captain Falcon|Kazuya|Meta Knight|Ganondorf|||||||||Yes|
+679|2024-11-19 23:22:37|Captain Falcon|Kazuya|Young Link|Wii Fit Trainer|||||||||No|
+680|2024-11-19 23:25:28|Captain Falcon|Kazuya|Pokemon Trainer|Peach|||||||||Yes|
+681|2024-11-19 23:31:31|Ike|Kazuya|Kirby|Little Mac|||||||||Yes|
+682|2024-11-19 23:34:39|Ike|Kazuya|Bowser|King K. Rool|||||||||Yes|
+683|2024-11-19 23:37:41|Ike|Kazuya|Bowser|King K. Rool|||||||||Yes|
+684|2024-11-20 22:15:52|Captain Falcon|Lucas|Lucas|Sora|||||||||No|
+685|2024-11-20 22:21:32|Captain Falcon|Lucas|Lucas|Sora|||||||||Yes|
+686|2024-11-20 22:26:02|Captain Falcon|Lucas|Lucas|Sora|||||||||Yes|
+687|2024-11-20 22:30:01|Captain Falcon|Lucas|Lucas|Sora|||||||||No|
+688|2024-11-20 22:35:03|Captain Falcon|Lucas|King K. Rool|Sephiroth|||||||||Yes|
+689|2024-11-24 22:47:45|Captain Falcon|Kazuya|Mewtwo|Sonic|||||||||Yes|
+690|2024-11-24 22:50:27|Captain Falcon|Kazuya|Link|Kirby|||||||||Yes|
+691|2024-11-24 22:54:44|Captain Falcon|Kazuya|Link|Kirby|||||||||Yes|
+692|2024-11-24 23:00:55|Incineroar|Incineroar|Joker|Donkey Kong|||||||||No|
+693|2024-11-24 23:04:42|Incineroar|Incineroar|Terry|Hero|||||||||No|
+694|2024-11-24 23:10:19|King K. Rool|Kazuya|Byleth|Wii Fit Trainer|||||||||No|
+695|2024-11-24 23:13:31|King K. Rool|Kazuya|Byleth|Wii Fit Trainer|||||||||Yes|
+696|2024-11-24 23:18:14|King K. Rool|Kazuya|Byleth|Wii Fit Trainer|||||||||No|
+697|2024-11-24 23:22:26|King K. Rool|Kazuya|Byleth|Wii Fit Trainer|||||||||No|
+698|2024-11-24 23:26:30|King K. Rool|Kazuya|Byleth|Wii Fit Trainer|||||||||Yes|
+699|2024-11-24 23:31:53|Ike|Kazuya|Pit|Samus|||||||||Yes|
+700|2024-11-24 23:35:18|Ike|Kazuya|Donkey Kong|Duck Hunt|||||||||Yes|
+701|2024-11-24 23:38:04|Ike|Kazuya|Bowser|Incineroar|||||||||No|
+702|2024-11-24 23:43:48|Ike|Kazuya|Mr. Game & Watch|Lucas|||||||||No|
+703|2024-11-24 23:47:23|Ike|Kazuya|Mr. Game & Watch|Lucas|||||||||No|
+704|2024-11-24 23:52:54|Ike|Kazuya|Byleth|Pyra & Mythra|||||||||Yes|
+705|2024-11-25 20:15:20|King K. Rool|Kazuya|Pyra & Mythra|Sephiroth|||||||||Yes|
+706|2024-11-25 20:18:57|King K. Rool|Kazuya|Pit|Wario|||||||||Yes|
+707|2024-11-25 20:23:49|King K. Rool|Kazuya|Mario|Yoshi|||||||||Yes|
+708|2024-11-27 17:16:09|Ike|Kazuya|Ganondorf|Jigglypuff|||||||||No|
+709|2024-11-27 17:20:05|Ike|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+710|2024-11-27 17:22:50|Ike|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+711|2024-11-27 17:25:52|Ike|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+712|2024-12-01 13:51:21|Captain Falcon|Kazuya|Dark Samus|Snake|||||||||Yes|
+713|2024-12-01 20:00:03|Wii Fit Trainer|Kazuya|Bayonetta|Min Min|||||||||No|
+714|2024-12-01 20:08:05|Captain Falcon|Kazuya|Ike|Palutena|||||||||Yes|
+715|2024-12-01 20:12:01|Captain Falcon|Kazuya|Ice Climbers|Kirby|||||||||Yes|
+716|2024-12-01 20:27:49|King K. Rool|Kazuya|Pyra & Mythra|Sephiroth|||||||||Yes|
+717|2024-12-01 20:32:04|King K. Rool|Kazuya|Pyra & Mythra|Cloud|||||||||No|
+718|2024-12-01 20:35:07|King K. Rool|Kazuya|Pyra & Mythra|Cloud|||||||||No|
+719|2024-12-04 22:25:59|Captain Falcon|Kazuya|Lucas|Samus|||||||||Yes|
+720|2024-12-04 22:30:27|Captain Falcon|Kazuya|Lucas|Samus|||||||||Yes|
+721|2024-12-04 22:36:24|Captain Falcon|Kazuya|Ness|Sora|||||||||No|
+722|2024-12-04 22:41:28|Captain Falcon|Kazuya|Ness|Sora|||||||||Yes|
+723|2024-12-04 22:44:27|Captain Falcon|Kazuya|Bowser|Little Mac|||||||||Yes|
+724|2024-12-04 22:49:25|Captain Falcon|Kazuya|Sora|Sephiroth|||||||||Yes|
+725|2024-12-04 22:52:54|Captain Falcon|Kazuya|Sora|Sephiroth|||||||||Yes|
+726|2024-12-05 22:58:21|King K. Rool|Kazuya|Jigglypuff|Palutena|||||||||No|
+727|2024-12-05 23:03:22|King K. Rool|Kazuya|Jigglypuff|Palutena|||||||||Yes|
+728|2024-12-05 23:06:27|King K. Rool|Kazuya|Jigglypuff|Palutena|||||||||No|
+729|2024-12-05 23:16:24|Kirby|Kazuya|Yoshi|Meta Knight|||||||||Yes|
+730|2024-12-06 22:33:19|Donkey Kong|Kazuya|Lucina|Ike|||||||||Yes|
+731|2024-12-06 22:37:48|Donkey Kong|Kazuya|Roy|Zero suit Samus|||||||||No|
+732|2024-12-06 22:41:44|Donkey Kong|Kazuya|Roy|Zero suit Samus|||||||||Yes|
+733|2024-12-06 22:45:28|Donkey Kong|Kazuya|Donkey Kong|Kazuya|||||||||No|
+734|2024-12-06 22:50:49|Donkey Kong|Kazuya|Inlking|Ridley|||||||||No|
+735|2024-12-06 22:55:58|King K. Rool|King K. Rool|Ganondorf|Donkey Kong|||||||||No|
+736|2024-12-06 23:00:07|King K. Rool|King K. Rool|Link|Ness|||||||||No|
+737|2024-12-06 23:04:27|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||No|
+738|2024-12-06 23:06:57|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+739|2024-12-06 23:13:08|Captain Falcon|Kazuya|Mario|King K. Rool|||||||||No|
+740|2024-12-06 23:15:55|Captain Falcon|Kazuya|Hero|Snake|||||||||No|
+741|2024-12-06 23:19:52|Captain Falcon|Kazuya|Ness|Link|||||||||Yes|
+742|2024-12-06 23:23:28|Captain Falcon|Kazuya|Min Min|Sephiroth|||||||||Yes|
+743|2024-12-06 23:32:03|Captain Falcon|Kazuya|Duck Hunt|Ganondorf|||||||||No|
+744|2024-12-06 23:36:03|Captain Falcon|Kazuya|Duck Hunt|Ganondorf|||||||||Yes|
+745|2024-12-06 23:42:10|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+746|2024-12-06 23:46:49|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+747|2024-12-06 23:50:56|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+748|2024-12-06 23:56:02|Ike|Kazuya|Link|King K. Rool|||||||||Yes|
+749|2024-12-07 00:00:30|Ike|Kazuya|Mario|Kazuya|||||||||Yes|
+750|2024-12-07 00:04:10|Ike|Kazuya|Link|King K. Rool|||||||||Yes|
+751|2024-12-07 00:08:16|Ike|Kazuya|Captain Falcon|Ken|||||||||Yes|
+752|2024-12-07 00:11:21|Ike|Kazuya|Captain Falcon|Ken|||||||||Yes|
+753|2024-12-07 00:16:48|Ike|Kazuya|Link|Little Mac|||||||||Yes|
+754|2024-12-07 20:02:04|Incineroar|Incineroar|Pyra & Mythra|Sephiroth|||||||||No|
+755|2024-12-07 20:05:29|Incineroar|Incineroar|Kirby|Kirby|||||||||No|
+756|2024-12-07 20:08:09|Incineroar|Incineroar|Kirby|Kirby|||||||||No|
+757|2024-12-07 20:12:38|Incineroar|Incineroar|Kirby|Kirby|||||||||No|
+758|2024-12-07 20:15:31|Incineroar|Incineroar|Kirby|Kirby|||||||||No|
+759|2024-12-07 20:19:08|Incineroar|Incineroar|Kirby|Kirby|||||||||No|
+760|2024-12-07 20:22:50|Ganondorf|Kazuya|Kirby|Kirby|||||||||No|
+761|2024-12-07 20:27:46|Ganondorf|Kazuya|Kirby|Kirby|||||||||No|
+762|2024-12-07 20:31:09|Ganondorf|Kazuya|Kirby|Kirby|||||||||Yes|
+763|2024-12-07 20:34:41|Ganondorf|Kazuya|Kirby|Kirby|||||||||No|
+764|2024-12-07 20:38:14|Ganondorf|Kazuya|Ness|Kirby|||||||||Yes|
+765|2024-12-07 20:41:34|Ganondorf|Kazuya|Mario|King K. Rool|||||||||Yes|
+766|2024-12-07 20:45:16|Ganondorf|Kazuya|Byleth|Yoshi|||||||||No|
+767|2024-12-07 20:49:18|Captain Falcon|Kazuya|Ike|Duck Hunt|||||||||Yes|
+768|2024-12-07 20:57:54|Captain Falcon|Kazuya|Captain Falcon|Inlking|||||||||Yes|
+769|2024-12-07 21:02:06|Captain Falcon|Kazuya|Captain Falcon|Inlking|||||||||Yes|
+770|2024-12-07 21:06:44|Captain Falcon|Kazuya|Kirby|Kirby|||||||||No|
+771|2024-12-07 21:11:06|Captain Falcon|Kazuya|Kirby|Kirby|||||||||Yes|
+772|2024-12-07 21:15:33|Captain Falcon|Kazuya|Pikachu|Kirby|||||||||Yes|
+773|2024-12-07 21:22:50|Ike|Kazuya|Link|Wario|||||||||Yes|
+774|2024-12-07 22:42:46|Donkey Kong|Lucas|Incineroar|Ike|||||||||Yes|
+775|2024-12-07 22:46:49|Donkey Kong|Lucas|Incineroar|Ike|||||||||No|
+776|2024-12-07 22:49:57|Donkey Kong|Lucas|Incineroar|Ike|||||||||Yes|
+777|2024-12-07 22:53:15|Donkey Kong|Lucas|Bowser|Kirby|||||||||Yes|
+778|2024-12-07 22:57:24|Donkey Kong|Lucas|Zelda|Toon Link|||||||||No|
+779|2024-12-07 23:01:55|Donkey Kong|Lucas|Zelda|Toon Link|||||||||No|
+780|2024-12-07 23:06:33|Donkey Kong|Lucas|Zelda|Toon Link|||||||||No|
+781|2024-12-07 23:10:49|Donkey Kong|Ness|Sephiroth|Byleth|||||||||No|
+782|2024-12-07 23:13:39|Donkey Kong|Ness|Kirby|Wolf|||||||||No|
+783|2024-12-07 23:17:17|Donkey Kong|Ness|Kirby|Wolf|||||||||Yes|
+784|2024-12-07 23:21:01|Donkey Kong|Ness|Kirby|Wolf|||||||||Yes|
+785|2024-12-07 23:24:53|Wii Fit Trainer|Kazuya|Byleth|Sephiroth|||||||||No|
+786|2024-12-07 23:28:20|Wii Fit Trainer|Kazuya|Byleth|Sephiroth|||||||||Yes|
+787|2024-12-07 23:32:12|Wii Fit Trainer|Kazuya|Byleth|Sephiroth|||||||||No|
+788|2024-12-07 23:36:01|Wii Fit Trainer|Kazuya|Byleth|Sephiroth|||||||||No|
+789|2024-12-07 23:45:29|Wii Fit Trainer|Kazuya|Fox|Hero|||||||||Yes|
+790|2024-12-08 18:49:17|Donkey Kong|Lucas|Lucas|Ganondorf|||||||||No|
+791|2024-12-08 18:53:50|Donkey Kong|Lucas|Lucas|Ganondorf|||||||||No|
+792|2024-12-08 19:06:23|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+793|2024-12-08 19:06:35|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+794|2024-12-08 19:06:40|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+795|2024-12-08 19:09:33|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+796|2024-12-08 19:13:00|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+797|2024-12-08 19:15:44|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+798|2024-12-08 19:18:30|Donkey Kong|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+799|2024-12-08 21:59:48|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||Yes|
+800|2024-12-08 22:03:53|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||No|
+801|2024-12-08 22:08:41|Captain Falcon|Kazuya|R.O.B.|R.O.B.|||||||||No|
+802|2024-12-08 22:13:03|Captain Falcon|Kazuya|Sonic|Sonic|||||||||Yes|
+803|2024-12-08 22:17:00|Captain Falcon|Kazuya|Lucas|Mr. Game & Watch|||||||||No|
+804|2024-12-08 22:21:02|Captain Falcon|Lucas|Kirby|Duck Hunt|||||||||Yes|
+805|2024-12-08 22:26:11|Captain Falcon|Lucas|King Dedede|Piranha Plant|||||||||Yes|
+806|2024-12-08 22:30:20|Captain Falcon|Lucas|Pikachu|Pikachu|||||||||Yes|
+807|2024-12-08 22:33:33|Captain Falcon|Lucas|Pyra & Mythra|Bayonetta|||||||||Yes|
+808|2024-12-08 22:37:52|Captain Falcon|Lucas|Palutena|Palutena|||||||||No|
+809|2024-12-09 22:06:05|Kirby|Lucas|Byleth|Link|||||||||No|
+810|2024-12-09 22:08:48|Kirby|Lucas|Byleth|Zero suit Samus|||||||||Yes|
+811|2024-12-09 22:18:10|Donkey Kong|Ness|Duck Hunt|Kirby|||||||||Yes|
+812|2024-12-09 22:21:58|Donkey Kong|Ness|Duck Hunt|Kirby|||||||||Yes|
+813|2024-12-09 22:22:29|Kirby|Lucas|Byleth|Link|||||||||No|
+814|2024-12-09 22:27:41|Donkey Kong|Donkey Kong|Ness|Zero suit Samus|||||||||No|
+815|2024-12-09 22:33:19|Donkey Kong|Donkey Kong|Bowser|Pyra & Mythra|||||||||Yes|
+816|2024-12-09 22:36:31|Donkey Kong|Incineroar|Bowser|Pyra & Mythra|||||||||Yes|
+817|2024-12-09 22:40:26|Donkey Kong|Kazuya|Donkey Kong|Falco|||||||||Yes|
+818|2024-12-09 22:44:58|Donkey Kong|Kazuya|Kirby|Duck Hunt|||||||||Yes|
+819|2024-12-09 22:49:10|Donkey Kong|Kazuya|Cloud|Corrin|||||||||Yes|
+820|2024-12-09 22:54:03|Donkey Kong|Kazuya|Cloud|Corrin|||||||||Yes|
+821|2024-12-09 22:56:25|Donkey Kong|Kazuya|Cloud|Corrin|||||||||Yes|
+822|2024-12-09 23:01:18|Donkey Kong|Kazuya|Captain Falcon|King K. Rool|||||||||Yes|
+823|2024-12-09 23:04:05|Donkey Kong|Kazuya|Captain Falcon|King K. Rool|||||||||Yes|
+824|2024-12-10 22:01:53|Wii Fit Trainer|Lucas|Pyra & Mythra|Hero|||||||||Yes|
+825|2024-12-10 22:09:47|Wii Fit Trainer|Lucas|Mario|Lucas|||||||||Yes|
+826|2024-12-10 22:15:41|Wii Fit Trainer|Lucas|Donkey Kong|Bowser Jr.|||||||||No|
+827|2024-12-10 22:19:33|Wii Fit Trainer|Lucas|Donkey Kong|Bowser Jr.|||||||||Yes|
+828|2024-12-10 22:23:07|Wii Fit Trainer|Lucas|Donkey Kong|Bowser Jr.|||||||||Yes|
+829|2024-12-10 22:27:52|Wii Fit Trainer|Lucas|Yoshi|Bowser|||||||||Yes|
+830|2024-12-10 22:31:48|Wii Fit Trainer|Lucas|Little Mac|Little Mac|||||||||Yes|
+831|2024-12-10 22:36:21|Wii Fit Trainer|Lucas|Steve|Kirby|||||||||Yes|
+832|2024-12-10 22:42:05|Wii Fit Trainer|Lucas|Ness|Ness|||||||||Yes|
+833|2024-12-10 22:45:11|Wii Fit Trainer|Lucas|Mii Swordfighter|Ike|||||||||Yes|
+834|2024-12-10 22:48:14|Wii Fit Trainer|Lucas|Pikachu|Donkey Kong|||||||||Yes|
+835|2024-12-10 22:51:13|Wii Fit Trainer|Lucas|Bayonetta|Samus|||||||||Yes|
+836|2024-12-10 22:55:36|Wii Fit Trainer|Lucas|Bayonetta|Samus|||||||||Yes|
+837|2024-12-10 23:01:13|Wii Fit Trainer|Lucas|Inlking|Lucas|||||||||No|
+838|2024-12-10 23:08:22|Wii Fit Trainer|Lucas|Ness|Donkey Kong|||||||||No|
+839|2024-12-10 23:11:20|Wii Fit Trainer|Lucas|Ness|Donkey Kong|||||||||No|
+840|2024-12-10 23:14:44|Ike|Kazuya|Captain Falcon|Ken|||||||||Yes|
+841|2024-12-11 22:28:11|Wii Fit Trainer|Lucas|King K. Rool|King K. Rool|||||||||No|
+842|2024-12-11 22:35:34|Wii Fit Trainer|Lucas|Mario|Zero suit Samus|||||||||Yes|
+843|2024-12-11 22:40:00|Wii Fit Trainer|Lucas|Kirby|Samus|||||||||Yes|
+844|2024-12-11 22:48:12|Wii Fit Trainer|Lucas|Pit|Robin|||||||||No|
+845|2024-12-11 22:53:19|Wii Fit Trainer|Lucas|Cloud|Cloud|||||||||No|
+846|2024-12-11 22:58:30|Wii Fit Trainer|Lucas|Pyra & Mythra|Sephiroth|||||||||No|
+847|2024-12-11 23:01:19|Wii Fit Trainer|Lucas|Pyra & Mythra|Sephiroth|||||||||Yes|
+848|2024-12-11 23:06:37|Ganondorf|Ness|Ridley|Bowser|||||||||Yes|
+849|2024-12-11 23:10:14|Ganondorf|Ness|Cloud|R.O.B.|||||||||Yes|
+850|2024-12-11 23:14:22|Ganondorf|Ness|Donkey Kong|R.O.B.|||||||||No|
+851|2024-12-11 23:19:15|Wii Fit Trainer|Kazuya|Cloud|Snake|||||||||No|
+852|2024-12-11 23:23:03|Wii Fit Trainer|Kazuya|Cloud|Snake|||||||||Yes|
+853|2024-12-11 23:27:23|Wii Fit Trainer|Kazuya|Cloud|Snake|||||||||No|
+854|2024-12-11 23:31:55|Ike|Kazuya|Cloud|Ganondorf|||||||||Yes|
+855|2024-12-14 22:16:45|Captain Falcon|Kazuya|Kirby|Lucas|||||||||No|
+856|2024-12-14 22:20:36|Captain Falcon|Kazuya|Wii Fit Trainer|Dr. Mario|||||||||Yes|
+857|2024-12-14 22:24:54|Captain Falcon|Kazuya|Ryu|Luigi|||||||||Yes|
+858|2024-12-14 22:28:37|King K. Rool|Lucas|Banjo & Kazooie|Link|||||||||Yes|
+859|2024-12-14 22:32:56|King K. Rool|Lucas|Fox|Hero|||||||||No|
+860|2024-12-14 22:37:51|King K. Rool|Lucas|Fox|Hero|||||||||No|
+861|2024-12-14 22:42:31|King K. Rool|Lucas|Pichu|Kirby|||||||||No|
+862|2024-12-14 22:48:01|Donkey Kong|Ness|Cloud|Joker|||||||||No|
+863|2024-12-14 22:50:07|Donkey Kong|Ness|Fox|Link|||||||||Yes|
+864|2024-12-14 22:53:39|Donkey Kong|Ness|Fox|Link|||||||||Yes|
+865|2024-12-14 22:58:49|Wii Fit Trainer|Lucas|Dr. Mario|Toon Link|||||||||Yes|
+866|2024-12-14 23:08:19|Wii Fit Trainer|Lucas|Bowser|Luigi|||||||||Yes|
+867|2024-12-14 23:13:17|Wii Fit Trainer|Lucas|Inlking|King K. Rool|||||||||Yes|
+868|2024-12-14 23:17:12|Wii Fit Trainer|Lucas|Inlking|King K. Rool|||||||||No|
+869|2024-12-14 23:21:46|Wii Fit Trainer|Lucas|Inlking|King K. Rool|||||||||Yes|
+870|2024-12-14 23:25:32|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+871|2024-12-14 23:28:56|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+872|2024-12-15 14:04:51|Kirby|Lucas|Sora|Palutena|||||||||Yes|
+873|2024-12-15 14:09:26|Kirby|Lucas|Rosalina|Captain Falcon|||||||||Yes|
+874|2024-12-15 14:12:36|Kirby|Lucas|Kazuya|Ganondorf|||||||||Yes|
+875|2024-12-15 14:19:21|Kirby|Lucas|King K. Rool|Captain Falcon|||||||||Yes|
+876|2024-12-15 14:23:02|Kirby|Lucas|King K. Rool|Captain Falcon|||||||||Yes|
+877|2024-12-15 14:25:53|Kirby|Lucas|King K. Rool|Captain Falcon|||||||||Yes|
+878|2024-12-15 19:46:30|Wii Fit Trainer|Lucas|Wolf|Dark Pit|||||||||No|
+879|2024-12-15 19:50:58|Wii Fit Trainer|Lucas|Wolf|Dark Pit|||||||||No|
+880|2024-12-15 19:55:45|Wii Fit Trainer|Lucas|Chrom|R.O.B.|||||||||No|
+881|2024-12-15 20:00:40|Wii Fit Trainer|Lucas|Incineroar|Pac-Man|||||||||Yes|
+882|2024-12-15 20:07:11|Wii Fit Trainer|Lucas|Ness|Samus|||||||||No|
+883|2024-12-15 20:11:25|Wii Fit Trainer|Lucas|Byleth|Ganondorf|||||||||No|
+884|2024-12-15 20:16:16|Wii Fit Trainer|Lucas|Hero|Hero|||||||||Yes|
+885|2024-12-15 20:18:54|Wii Fit Trainer|Lucas|Bowser|Sephiroth|||||||||Yes|
+886|2024-12-16 19:35:19|Wii Fit Trainer|Lucas|Kirby|Isabelle|||||||||No|
+887|2024-12-16 19:40:11|Wii Fit Trainer|Lucas|Byleth|Donkey Kong|||||||||Yes|
+888|2024-12-16 19:44:49|Wii Fit Trainer|Lucas|Mewtwo|Ridley|||||||||No|
+889|2024-12-16 19:48:59|Wii Fit Trainer|Lucas|Mario|Corrin|||||||||No|
+890|2024-12-16 19:53:15|Wii Fit Trainer|Lucas|Mario|Corrin|||||||||No|
+891|2024-12-16 19:58:56|Wii Fit Trainer|Lucas|Mario|Corrin|||||||||Yes|
+892|2024-12-16 20:03:19|Wii Fit Trainer|Lucas|Mario|Isabelle|||||||||No|
+893|2024-12-16 20:03:27|Wii Fit Trainer|Lucas|Mario|Isabelle|||||||||No|
+894|2024-12-16 20:07:36|Wii Fit Trainer|Lucas|Mario|Isabelle|||||||||No|
+895|2024-12-16 20:11:59|Wii Fit Trainer|Lucas|Mario|Isabelle|||||||||No|
+896|2024-12-16 21:59:15|Wii Fit Trainer|Lucas|Pikachu|Kirby|||||||||Yes|
+897|2024-12-16 22:01:51|Wii Fit Trainer|Lucas|Pikachu|Kirby|||||||||Yes|
+898|2024-12-16 22:08:35|Wii Fit Trainer|Lucas|Captain Falcon|King K. Rool|||||||||No|
+899|2024-12-16 22:12:53|Wii Fit Trainer|Lucas|Captain Falcon|King K. Rool|||||||||Yes|
+900|2024-12-16 22:16:30|Wii Fit Trainer|Lucas|Captain Falcon|King K. Rool|||||||||Yes|
+901|2024-12-16 22:23:14|Wii Fit Trainer|Lucas|Bowser|Ness|||||||||Yes|
+902|2024-12-16 22:27:02|Wii Fit Trainer|Lucas|Little Mac|Captain Falcon|||||||||No|
+903|2024-12-16 22:31:54|Wii Fit Trainer|Lucas|Little Mac|Captain Falcon|||||||||No|
+904|2024-12-16 22:36:16|Wii Fit Trainer|Lucas|Zero suit Samus|Cloud|||||||||Yes|
+905|2024-12-16 22:40:56|Wii Fit Trainer|Lucas|Pyra & Mythra|Little Mac|||||||||Yes|
+906|2024-12-17 22:51:10|Ganondorf|Lucas|Mario|Pikachu|||||||||Yes|
+907|2024-12-17 22:54:23|Ganondorf|Lucas|Donkey Kong|Kirby|||||||||Yes|
+908|2024-12-17 22:57:28|Ganondorf|Lucas|Donkey Kong|Jigglypuff|||||||||No|
+909|2024-12-17 23:01:31|Ganondorf|Lucas|Ganondorf|Ganondorf|||||||||Yes|
+910|2024-12-17 23:04:15|Ganondorf|Lucas|Pyra & Mythra|Bayonetta|||||||||Yes|
+911|2024-12-17 23:04:21|Ganondorf|Lucas|Pyra & Mythra|Bayonetta|||||||||Yes|
+912|2024-12-17 23:09:16|Ganondorf|Lucas|Sonic|Toon Link|||||||||No|
+913|2024-12-17 23:12:28|Ganondorf|Lucas|Link|Captain Falcon|||||||||No|
+914|2024-12-17 23:17:11|Ganondorf|Lucas|Link|Captain Falcon|||||||||No|
+915|2024-12-17 23:20:24|Ganondorf|Lucas|Captain Falcon|Byleth|||||||||No|
+916|2024-12-17 23:26:10|Captain Falcon|Kazuya|Cloud|Shulk|||||||||Yes|
+917|2024-12-17 23:30:07|Captain Falcon|Kazuya|Captain Falcon|Terry|||||||||No|
+918|2024-12-17 23:35:13|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+919|2024-12-17 23:38:48|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+920|2024-12-17 23:41:39|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+921|2024-12-17 23:44:56|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||Yes|
+922|2024-12-17 23:51:43|Wii Fit Trainer|Lucas|Luigi|Ganondorf|||||||||Yes|
+923|2024-12-18 21:42:34|Wii Fit Trainer|Lucas|Donkey Kong|Pyra & Mythra|||||||||Yes|
+924|2024-12-18 21:47:17|Wii Fit Trainer|Lucas|Byleth|King K. Rool|||||||||No|
+925|2024-12-18 21:51:46|Wii Fit Trainer|Lucas|Byleth|King K. Rool|||||||||No|
+926|2024-12-18 21:56:28|Wii Fit Trainer|Lucas|Byleth|King K. Rool|||||||||No|
+927|2024-12-18 22:02:21|Wii Fit Trainer|Lucas|Byleth|King K. Rool|||||||||Yes|
+928|2024-12-18 22:06:33|Wii Fit Trainer|Lucas|Byleth|King K. Rool|||||||||Yes|
+929|2024-12-18 22:12:09|Wii Fit Trainer|Lucas|Ike|Pyra & Mythra|||||||||No|
+930|2024-12-18 22:16:39|Wii Fit Trainer|Lucas|Yoshi|Young Link|||||||||Yes|
+931|2024-12-18 22:20:36|Wii Fit Trainer|Lucas|Yoshi|Young Link|||||||||Yes|
+932|2024-12-18 22:25:28|Wii Fit Trainer|Lucas|Lucario|Captain Falcon|||||||||Yes|
+933|2024-12-18 22:29:12|Wii Fit Trainer|Lucas|Lucario|Captain Falcon|||||||||Yes|
+934|2024-12-18 22:33:05|Wii Fit Trainer|Lucas|Donkey Kong|Bowser|||||||||Yes|
+935|2024-12-18 22:37:37|Wii Fit Trainer|Lucas|Donkey Kong|Bowser|||||||||Yes|
+936|2024-12-18 22:43:18|Wii Fit Trainer|Lucas|Donkey Kong|Inlking|||||||||Yes|
+937|2024-12-18 22:47:26|Wii Fit Trainer|Lucas|Donkey Kong|Inlking|||||||||Yes|
+938|2024-12-18 22:53:49|Wii Fit Trainer|Lucas|Ness|Ness|||||||||No|
+939|2024-12-18 23:00:01|Wii Fit Trainer|Lucas|Pikachu|Inlking|||||||||Yes|
+940|2024-12-18 23:05:42|Wii Fit Trainer|Lucas|Little Mac|King K. Rool|||||||||Yes|
+941|2024-12-18 23:10:31|Wii Fit Trainer|Lucas|Link|Samus|||||||||Yes|
+942|2024-12-18 23:13:57|Wii Fit Trainer|Lucas|Duck Hunt|Ike|||||||||Yes|
+943|2024-12-18 23:19:11|Wii Fit Trainer|Lucas|Captain Falcon|Pit|||||||||Yes|
+944|2024-12-18 23:23:12|Wii Fit Trainer|Lucas|Greninja|Fox|||||||||Yes|
+945|2024-12-18 23:28:06|Wii Fit Trainer|Lucas|Ganondorf|King Dedede|||||||||Yes|
+946|2024-12-18 23:30:49|Wii Fit Trainer|Lucas|Ganondorf|King Dedede|||||||||Yes|
+947|2024-12-18 23:34:59|Wii Fit Trainer|Lucas|Ganondorf|King Dedede|||||||||Yes|
+948|2024-12-18 23:38:42|Wii Fit Trainer|Lucas|King K. Rool|King Dedede|||||||||Yes|
+949|2024-12-19 22:54:25|Wii Fit Trainer|Lucas|Donkey Kong|Donkey Kong|||||||||No|
+950|2024-12-19 22:57:44|Wii Fit Trainer|Lucas|Palutena|Samus|||||||||Yes|
+951|2024-12-19 23:03:02|Wii Fit Trainer|Lucas|Ness|Little Mac|||||||||No|
+952|2024-12-19 23:07:21|Wii Fit Trainer|Lucas|Ness|Little Mac|||||||||No|
+953|2024-12-19 23:11:53|Wii Fit Trainer|Lucas|Ness|Little Mac|||||||||Yes|
+954|2024-12-19 23:16:09|Wii Fit Trainer|Lucas|Ganondorf|King K. Rool|||||||||Yes|
+955|2024-12-19 23:19:56|Wii Fit Trainer|Lucas|Ganondorf|King K. Rool|||||||||Yes|
+956|2024-12-19 23:26:46|Wii Fit Trainer|Lucas|Ike|Ike|||||||||Yes|
+957|2024-12-19 23:29:51|Wii Fit Trainer|Lucas|Ike|Link|||||||||Yes|
+958|2024-12-19 23:33:24|Wii Fit Trainer|Lucas|Hero|Byleth|||||||||Yes|
+959|2025-01-05 22:22:08|Wii Fit Trainer|Kazuya|Pyra & Mythra|Palutena|||||||||No|
+960|2025-01-05 22:30:44|Wii Fit Trainer|Kazuya|Hero|King Dedede|||||||||Yes|
+961|2025-01-05 22:33:49|Wii Fit Trainer|Kazuya|Hero|King Dedede|||||||||Yes|
+962|2025-01-05 22:43:30|Wii Fit Trainer|Lucas|Bowser|Ness|||||||||No|
+963|2025-01-05 22:43:41|Wii Fit Trainer|Lucas|Bowser|Ness|||||||||Yes|
+964|2025-01-05 22:49:12|Wii Fit Trainer|Lucas|Kirby|Duck Hunt|||||||||Yes|
+965|2025-01-05 22:54:30|Wii Fit Trainer|Kazuya|Ness|Ness|||||||||Yes|
+966|2025-01-05 22:59:16|Wii Fit Trainer|Kazuya|Kirby|Isabelle|||||||||No|
+967|2025-01-05 23:03:07|Wii Fit Trainer|Kazuya|King K. Rool|Villager|||||||||Yes|
+968|2025-01-05 23:06:16|Wii Fit Trainer|Kazuya|Sephiroth|Fox|||||||||Yes|
+969|2025-01-05 23:09:19|Wii Fit Trainer|Kazuya|Sephiroth|Fox|||||||||Yes|
+970|2025-01-05 23:13:26|Wii Fit Trainer|Kazuya|Cloud|Fox|||||||||Yes|
+971|2025-01-05 23:17:32|Wii Fit Trainer|Incineroar|Cloud|Fox|||||||||Yes|
+972|2025-01-06 20:30:55|Captain Falcon|Kazuya|Terry|Marth|||||||||Yes|
+973|2025-01-06 20:35:03|Captain Falcon|Kazuya|Terry|Marth|||||||||Yes|
+974|2025-01-06 20:40:10|Captain Falcon|Kazuya|Terry|Marth|||||||||No|
+975|2025-01-06 20:46:09|Kirby|Lucas|R.O.B.|Zero suit Samus|||||||||No|
+976|2025-01-06 20:51:14|Kirby|Lucas|Pyra & Mythra|Dr. Mario|||||||||Yes|
+977|2025-01-06 20:54:33|Ganondorf|Ganondorf|Link|Byleth|||||||||No|
+978|2025-01-06 20:58:27|Wii Fit Trainer|Kazuya|Ganondorf|Incineroar|||||||||No|
+979|2025-01-06 21:01:39|Wii Fit Trainer|Kazuya|Ganondorf|Incineroar|||||||||Yes|
+980|2025-01-06 21:05:42|Wii Fit Trainer|Kazuya|Ganondorf|Incineroar|||||||||No|
+981|2025-01-06 21:10:18|Wii Fit Trainer|Kazuya|Hero|Incineroar|||||||||No|
+982|2025-01-06 21:13:55|Wii Fit Trainer|Kazuya|Piranha Plant|Mega Man|||||||||Yes|
+983|2025-01-06 22:15:14|Donkey Kong|Donkey Kong|Little Mac|Mii Brawler|||||||||No|
+984|2025-01-06 22:18:51|Donkey Kong|Donkey Kong|Little Mac|Mii Brawler|||||||||Yes|
+985|2025-01-06 22:22:21|Donkey Kong|Donkey Kong|Little Mac|Mii Brawler|||||||||Yes|
+986|2025-01-06 22:33:36|Incineroar|Incineroar|Dr. Mario|Isabelle|||||||||No|
+987|2025-01-06 22:33:47|Incineroar|Incineroar|Dr. Mario|Isabelle|||||||||No|
+988|2025-01-06 22:37:18|Ike|Kazuya|Cloud|Ganondorf|||||||||Yes|
+989|2025-01-06 22:41:14|Ike|Kazuya|Bowser|Donkey Kong|||||||||Yes|
+990|2025-01-06 22:45:42|Ike|Kazuya|Sephiroth|King K. Rool|||||||||Yes|
+991|2025-01-07 22:49:54|Wii Fit Trainer|Lucas|Pyra & Mythra|Ike|||||||||Yes|
+992|2025-01-07 22:52:56|Wii Fit Trainer|Lucas|Pyra & Mythra|Ike|||||||||Yes|
+993|2025-01-07 22:57:52|Wii Fit Trainer|Lucas|King Dedede|Sephiroth|||||||||Yes|
+994|2025-01-07 23:02:13|Wii Fit Trainer|Incineroar|R.O.B.|Sephiroth|||||||||Yes|
+995|2025-01-07 23:06:39|Wii Fit Trainer|Incineroar|Bowser Jr.|Meta Knight|||||||||Yes|
+996|2025-01-07 23:10:07|Wii Fit Trainer|Ness|Donkey Kong|Ganondorf|||||||||No|
+997|2025-01-07 23:13:20|Wii Fit Trainer|Ness|Donkey Kong|Ganondorf|||||||||No|
+998|2025-01-07 23:17:13|Wii Fit Trainer|Ness|Donkey Kong|Ganondorf|||||||||No|
+999|2025-01-07 23:25:21|Wii Fit Trainer|Lucas|Kirby|Samus|||||||||No|
+1000|2025-01-07 23:30:45|Wii Fit Trainer|Kazuya|Kirby|King K. Rool|||||||||No|
+1001|2025-01-07 23:36:25|Wii Fit Trainer|Kazuya|Kirby|Robin|||||||||Yes|
+1002|2025-01-07 23:40:19|Wii Fit Trainer|Kazuya|Kirby|Robin|||||||||Yes|
+1003|2025-01-07 23:42:51|Wii Fit Trainer|Kazuya|Kirby|Robin|||||||||Yes|
+1004|2025-01-07 23:45:22|Wii Fit Trainer|Kazuya|Byleth|Bowser|||||||||Yes|
+1005|2025-01-07 23:51:39|Wii Fit Trainer|Kazuya|Ike|Kazuya|||||||||Yes|
+1006|2025-01-08 21:10:00|King K. Rool|Kazuya|Steve|Pikachu|||||||||Yes|
+1007|2025-01-08 21:14:17|King K. Rool|Incineroar|Zelda|Ness|||||||||No|
+1008|2025-01-08 21:18:24|King K. Rool|Incineroar|Kirby|Lucas|||||||||No|
+1009|2025-01-08 21:24:56|Wii Fit Trainer|Lucas|Young Link|Samus|||||||||No|
+1010|2025-01-08 21:28:38|Wii Fit Trainer|Lucas|King K. Rool|Jigglypuff|||||||||Yes|
+1011|2025-01-08 21:33:14|Wii Fit Trainer|Lucas|Ganondorf|Ganondorf|||||||||No|
+1012|2025-01-08 21:36:54|Wii Fit Trainer|Lucas|Yoshi|Dark Samus|||||||||No|
+1013|2025-01-08 21:41:52|Captain Falcon|Kazuya|Mr. Game & Watch|Pyra & Mythra|||||||||Yes|
+1014|2025-01-08 21:45:50|Captain Falcon|Kazuya|Captain Falcon|Bowser|||||||||Yes|
+1015|2025-01-08 21:49:15|Captain Falcon|Kazuya|Captain Falcon|Bowser|||||||||Yes|
+1016|2025-01-08 21:53:26|Captain Falcon|Kazuya|King Dedede|Dark Samus|||||||||No|
+1017|2025-01-08 21:57:07|Captain Falcon|Kazuya|Sephiroth|Ganondorf|||||||||No|
+1018|2025-01-08 22:01:06|Captain Falcon|Kazuya|Ganondorf|Jigglypuff|||||||||No|
+1019|2025-01-08 22:04:54|Ike|Kazuya|Zelda|Lucina|||||||||Yes|
+1020|2025-01-08 22:07:38|Ike|Kazuya|King K. Rool|Little Mac|||||||||Yes|
+1021|2025-01-08 22:23:02|Ike|Kazuya|Kirby|Meta Knight|||||||||Yes|
+1022|2025-01-08 22:32:02|Ike|Kazuya|Samus|Samus|||||||||Yes|
+1023|2025-01-08 22:34:21|Ike|Kazuya|Captain Falcon|Sephiroth|||||||||Yes|
+1024|2025-01-08 22:37:36|Ike|Kazuya|Ike|Kirby|||||||||Yes|
+1025|2025-01-08 22:43:09|Ike|Ike|Link|Samus|||||||||Yes|
+1026|2025-01-12 22:36:45|Link|Incineroar|King K. Rool|King K. Rool|||||||||No|
+1027|2025-01-12 22:41:49|Link|Incineroar|King K. Rool|King K. Rool|||||||||No|
+1028|2025-01-12 22:45:23|Link|Incineroar|King K. Rool|King K. Rool|||||||||No|
+1029|2025-01-12 22:50:14|Link|Incineroar|King K. Rool|King K. Rool|||||||||No|
+1030|2025-01-12 23:00:01|Wii Fit Trainer|Lucas|Mii Swordfighter|Sephiroth|||||||||No|
+1031|2025-01-12 23:06:15|Wii Fit Trainer|Lucas|Kirby|Steve|||||||||Yes|
+1032|2025-01-12 23:11:16|Wii Fit Trainer|Cloud|Kirby|Steve|||||||||Yes|
+1033|2025-01-12 23:16:47|Captain Falcon|Kazuya|Sora|Samus|||||||||Yes|
+1034|2025-01-12 23:21:35|Captain Falcon|Kazuya|Sora|Samus|||||||||Yes|
+1035|2025-01-12 23:26:56|Captain Falcon|Kazuya|Sora|Samus|||||||||Yes|
+1036|2025-01-12 23:32:03|Captain Falcon|Kazuya|King K. Rool|Donkey Kong|||||||||Yes|
+1037|2025-01-13 19:21:02|Wii Fit Trainer|Lucas|Incineroar|Cloud|||||||||Yes|
+1038|2025-01-13 19:40:11|Wii Fit Trainer|Lucas|Sephiroth|Ness|||||||||No|
+1039|2025-01-13 19:45:41|Wii Fit Trainer|Lucas|Mario|Luigi|||||||||Yes|
+1040|2025-01-13 19:50:16|Incineroar|Incineroar|Pyra & Mythra|Pokemon Trainer|||||||||Yes|
+1041|2025-01-13 19:53:05|Incineroar|Incineroar|Hero|Hero|||||||||No|
+1042|2025-01-13 19:56:04|Incineroar|Incineroar|Hero|Hero|||||||||No|
+1043|2025-01-13 20:00:39|Donkey Kong|Donkey Kong|Terry|Corrin|||||||||Yes|
+1044|2025-01-13 20:04:54|Donkey Kong|Donkey Kong|King K. Rool|King K. Rool|||||||||Yes|
+1045|2025-01-13 20:07:06|Donkey Kong|Donkey Kong|King K. Rool|King K. Rool|||||||||Yes|
+1046|2025-01-13 20:11:16|Donkey Kong|Donkey Kong|King K. Rool|Pyra & Mythra|||||||||No|
+1047|2025-01-13 20:15:28|Donkey Kong|Donkey Kong|King K. Rool|Pyra & Mythra|||||||||Yes|
+1048|2025-01-13 20:17:51|Donkey Kong|Donkey Kong|King K. Rool|Pyra & Mythra|||||||||Yes|
+1049|2025-01-13 20:21:59|Donkey Kong|Donkey Kong|Hero|Incineroar|||||||||No|
+1050|2025-01-13 20:25:05|Donkey Kong|Donkey Kong|Ganondorf|King K. Rool|||||||||No|
+1051|2025-01-13 20:29:05|Donkey Kong|Donkey Kong|Ganondorf|King K. Rool|||||||||No|
+1052|2025-01-13 20:41:25|Captain Falcon|Captain Falcon|Yoshi|Byleth|||||||||Yes|
+1053|2025-01-13 20:46:34|Captain Falcon|Captain Falcon|Yoshi|Byleth|||||||||No|
+1054|2025-01-13 20:51:11|Captain Falcon|Captain Falcon|Yoshi|Byleth|||||||||Yes|
+1055|2025-01-13 20:55:15|Ike|Kazuya|Ike|Hero|||||||||Yes|
+1056|2025-01-13 21:00:31|Ike|Kazuya|Marth|Roy|||||||||Yes|
+1057|2025-01-13 21:04:34|Ike|Ike|Jigglypuff|Jigglypuff|||||||||Yes|
+1058|2025-01-13 21:07:57|Ike|Kazuya|Ike|Sephiroth|||||||||Yes|
+1059|2025-01-13 21:11:43|Ike|Kazuya|Marth|Roy|||||||||Yes|
+1060|2025-01-14 22:39:50|Kirby|Lucas|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1061|2025-01-14 22:44:19|Kirby|Lucas|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1062|2025-01-14 22:49:53|Kirby|Lucas|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1063|2025-01-14 22:53:41|Kirby|Lucas|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1064|2025-01-14 22:59:31|Kirby|Incineroar|Donkey Kong|Kirby|||||||||Yes|
+1065|2025-01-14 23:02:03|Kirby|Incineroar|Incineroar|Ike|||||||||Yes|
+1066|2025-01-14 23:10:45|Donkey Kong|Donkey Kong|Lucas|Piranha Plant|||||||||No|
+1067|2025-01-14 23:15:07|Donkey Kong|Donkey Kong|Kirby|Donkey Kong|||||||||No|
+1068|2025-01-14 23:20:01|Donkey Kong|Donkey Kong|Kirby|Donkey Kong|||||||||No|
+1069|2025-01-14 23:23:06|Donkey Kong|Donkey Kong|Kirby|Donkey Kong|||||||||No|
+1070|2025-01-14 23:27:23|Donkey Kong|Donkey Kong|Kirby|Donkey Kong|||||||||Yes|
+1071|2025-01-14 23:35:30|Wii Fit Trainer|Kazuya|Kirby|Ridley|||||||||Yes|
+1072|2025-01-14 23:40:47|Wii Fit Trainer|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1073|2025-01-14 23:46:48|Captain Falcon|Kazuya|Pokemon Trainer|Link|||||||||No|
+1074|2025-01-14 23:50:40|Captain Falcon|Kazuya|Pokemon Trainer|Link|||||||||No|
+1075|2025-01-15 00:02:52|Captain Falcon|Kazuya|Mario|Mario|||||||||Yes|
+1076|2025-01-15 00:04:38|Captain Falcon|Kazuya|King Dedede|Dark Pit|||||||||No|
+1077|2025-01-15 21:03:15|Wii Fit Trainer|Incineroar|Lucas|Ness|||||||||Yes|
+1078|2025-01-15 21:09:10|Wii Fit Trainer|Incineroar|Donkey Kong|Joker|||||||||Yes|
+1079|2025-01-15 21:33:11|Donkey Kong|Donkey Kong|Bowser|Bayonetta|||||||||No|
+1080|2025-01-15 21:41:49|Donkey Kong|Donkey Kong|Zero suit Samus|Kirby|||||||||Yes|
+1081|2025-01-15 21:47:24|King K. Rool|Cloud|Zero suit Samus|Kirby|||||||||Yes|
+1082|2025-01-15 21:51:31|King K. Rool|Lucas|Pokemon Trainer|Wolf|||||||||No|
+1083|2025-01-15 21:54:40|King K. Rool|Lucas|Pokemon Trainer|Wolf|||||||||No|
+1084|2025-01-15 21:57:48|King K. Rool|Lucas|Pokemon Trainer|Wolf|||||||||No|
+1085|2025-01-15 22:01:52|Captain Falcon|Kazuya|Ganondorf|Lucas|||||||||No|
+1086|2025-01-15 22:05:50|Captain Falcon|Kazuya|Ganondorf|Lucas|||||||||No|
+1087|2025-01-15 22:08:55|Captain Falcon|Kazuya|Ganondorf|Lucas|||||||||No|
+1088|2025-01-15 22:14:22|Wii Fit Trainer|Kazuya|Ganondorf|Lucas|||||||||No|
+1089|2025-01-15 22:18:45|Wii Fit Trainer|Kazuya|Samus|Sephiroth|||||||||Yes|
+1090|2025-01-15 22:23:54|Wii Fit Trainer|Kazuya|Zero suit Samus|Kirby|||||||||Yes|
+1091|2025-01-17 23:05:56|Ganondorf|Kazuya|Snake|Kirby|||||||||Yes|
+1092|2025-01-17 23:09:40|Ganondorf|Kazuya|Lucas|Ness|||||||||Yes|
+1093|2025-01-17 23:12:35|Ganondorf|Kazuya|Lucas|Toon Link|||||||||Yes|
+1094|2025-01-17 23:15:39|Ganondorf|Kazuya|Lucas|Toon Link|||||||||Yes|
+1095|2025-01-17 23:23:03|Donkey Kong|Donkey Kong|Kirby|Ridley|||||||||Yes|
+1096|2025-01-17 23:26:31|Donkey Kong|Donkey Kong|Kirby|Wii Fit Trainer|||||||||Yes|
+1097|2025-01-17 23:29:35|Donkey Kong|Donkey Kong|Kirby|Ness|||||||||Yes|
+1098|2025-01-17 23:34:20|King K. Rool|Incineroar|Bowser|Link|||||||||Yes|
+1099|2025-01-17 23:39:18|King K. Rool|Incineroar|Zelda|Lucas|||||||||No|
+1100|2025-01-17 23:43:39|King K. Rool|Incineroar|Zelda|Lucas|||||||||No|
+1101|2025-01-17 23:47:56|Link|Captain Falcon|Little Mac|Ridley|||||||||No|
+1102|2025-01-17 23:52:15|Link|Captain Falcon|Little Mac|Ridley|||||||||No|
+1103|2025-01-17 23:56:07|Link|Captain Falcon|Little Mac|Ridley|||||||||No|
+1104|2025-01-18 00:08:08|Link|Kazuya|Wii Fit Trainer|Samus|||||||||Yes|
+1105|2025-01-18 00:12:17|Link|Kazuya|Wii Fit Trainer|Samus|||||||||No|
+1106|2025-01-18 00:17:35|Link|Kazuya|King K. Rool|Little Mac|||||||||Yes|
+1107|2025-01-18 00:21:04|Link|Kazuya|King K. Rool|Little Mac|||||||||No|
+1108|2025-01-18 00:24:52|Link|Kazuya|King K. Rool|Little Mac|||||||||Yes|
+1109|2025-01-18 21:29:10|Captain Falcon|Incineroar|R.O.B.|Corrin|||||||||Yes|
+1110|2025-01-18 21:35:40|Captain Falcon|Incineroar|Link|Yoshi|||||||||Yes|
+1111|2025-01-18 21:40:17|Captain Falcon|Incineroar|Link|Ness|||||||||Yes|
+1112|2025-01-18 21:45:05|Captain Falcon|Incineroar|Kazuya|King K. Rool|||||||||No|
+1113|2025-01-18 21:48:20|Captain Falcon|Incineroar|Kazuya|King K. Rool|||||||||Yes|
+1114|2025-01-18 21:51:59|Captain Falcon|Incineroar|Corrin|Donkey Kong|||||||||Yes|
+1115|2025-01-18 21:57:00|Captain Falcon|Incineroar|Ganondorf|Snake|||||||||No|
+1116|2025-01-18 22:00:17|Captain Falcon|Incineroar|Ganondorf|Snake|||||||||No|
+1117|2025-01-18 22:07:54|Wii Fit Trainer|Lucas|Ness|King K. Rool|||||||||Yes|
+1118|2025-01-18 22:13:47|Wii Fit Trainer|Lucas|Mario|Mii Swordfighter|||||||||Yes|
+1119|2025-01-18 22:18:12|Wii Fit Trainer|Donkey Kong|Ike|Mii Swordfighter|||||||||No|
+1120|2025-01-18 22:22:01|Wii Fit Trainer|Donkey Kong|Ike|Mii Swordfighter|||||||||Yes|
+1121|2025-01-18 22:26:06|Wii Fit Trainer|Donkey Kong|Ike|Mii Swordfighter|||||||||No|
+1122|2025-01-18 22:32:35|Wii Fit Trainer|Donkey Kong|Zelda|King Dedede|||||||||No|
+1123|2025-01-18 22:35:53|Wii Fit Trainer|Donkey Kong|Zelda|King Dedede|||||||||Yes|
+1124|2025-01-18 22:40:17|Wii Fit Trainer|Donkey Kong|Zelda|King Dedede|||||||||No|
+1125|2025-01-18 22:44:28|Wii Fit Trainer|Donkey Kong|Pyra & Mythra|Bowser|||||||||No|
+1126|2025-01-18 22:48:44|Wii Fit Trainer|Kazuya|King Dedede|Samus|||||||||Yes|
+1127|2025-01-18 22:54:04|Wii Fit Trainer|Kazuya|Ike|Cloud|||||||||Yes|
+1128|2025-01-18 23:00:03|Wii Fit Trainer|Kazuya|King K. Rool|Wolf|||||||||Yes|
+1129|2025-01-18 23:10:03|Wii Fit Trainer|Kazuya|Mario|Jigglypuff|||||||||Yes|
+1130|2025-01-18 23:16:24|Wii Fit Trainer|Kazuya|Mario|Jigglypuff|||||||||No|
+1131|2025-01-18 23:20:06|Wii Fit Trainer|Kazuya|King K. Rool|Roy|||||||||No|
+1132|2025-01-18 23:29:59|Wii Fit Trainer|Kazuya|R.O.B.|Wolf|||||||||Yes|
+1133|2025-01-18 23:33:30|Wii Fit Trainer|Kazuya|R.O.B.|Wolf|||||||||Yes|
+1134|2025-01-18 23:40:34|Wii Fit Trainer|Kazuya|Sonic|Lucario|||||||||Yes|
+1135|2025-01-18 23:45:45|Ike|Kazuya|Duck Hunt|R.O.B.|||||||||Yes|
+1136|2025-01-19 21:21:49|Wii Fit Trainer|Cloud|Kirby|Captain Falcon|||||||||Yes|
+1137|2025-01-19 21:24:29|Wii Fit Trainer|Cloud|Bowser|Ryu|||||||||Yes|
+1138|2025-01-19 21:29:32|Wii Fit Trainer|Cloud|Donkey Kong|Donkey Kong|||||||||Yes|
+1139|2025-01-19 21:34:05|Wii Fit Trainer|Cloud|Pyra & Mythra|Dark Pit|||||||||No|
+1140|2025-01-19 21:36:49|Wii Fit Trainer|Cloud|Pyra & Mythra|Dark Pit|||||||||Yes|
+1141|2025-01-19 21:40:53|Wii Fit Trainer|Cloud|Pyra & Mythra|Dark Pit|||||||||Yes|
+1142|2025-01-19 21:44:58|Wii Fit Trainer|Incineroar|Pyra & Mythra|Dark Pit|||||||||Yes|
+1143|2025-01-19 21:49:15|Wii Fit Trainer|Incineroar|Palutena|King K. Rool|||||||||No|
+1144|2025-01-19 21:55:37|Wii Fit Trainer|Kazuya|Inlking|Pyra & Mythra|||||||||Yes|
+1145|2025-01-19 21:58:58|Wii Fit Trainer|Kazuya|Inlking|Pyra & Mythra|||||||||Yes|
+1146|2025-01-19 22:03:15|Wii Fit Trainer|Kazuya|Terry|Zero suit Samus|||||||||Yes|
+1147|2025-01-19 22:07:28|Wii Fit Trainer|Kazuya|Terry|Zero suit Samus|||||||||Yes|
+1148|2025-01-19 22:10:29|Wii Fit Trainer|Kazuya|Little Mac|Bayonetta|||||||||Yes|
+1149|2025-01-19 22:15:32|Wii Fit Trainer|Kazuya|Corrin|Pyra & Mythra|||||||||Yes|
+1150|2025-01-20 21:02:37|Wii Fit Trainer|Incineroar|Min Min|Pac-Man|||||||||No|
+1151|2025-01-20 21:06:24|Wii Fit Trainer|Incineroar|Min Min|Pac-Man|||||||||Yes|
+1152|2025-01-20 21:12:04|Wii Fit Trainer|Incineroar|Cloud|Yoshi|||||||||Yes|
+1153|2025-01-20 21:21:52|Captain Falcon|Incineroar|Pyra & Mythra|Ryu|||||||||Yes|
+1154|2025-01-20 21:27:29|Captain Falcon|Incineroar|Young Link|Roy|||||||||No|
+1155|2025-01-20 21:32:23|Captain Falcon|Incineroar|Zelda|Lucas|||||||||No|
+1156|2025-01-20 21:35:30|Captain Falcon|Kazuya|Zelda|Lucas|||||||||No|
+1157|2025-01-20 21:40:29|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||No|
+1158|2025-01-20 21:44:06|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||Yes|
+1159|2025-01-20 21:48:54|Captain Falcon|Kazuya|King K. Rool|Sephiroth|||||||||Yes|
+1160|2025-01-20 21:53:45|Ike|Kazuya|Kirby|Piranha Plant|||||||||Yes|
+1161|2025-01-21 22:10:01|Link|Incineroar|Palutena|Palutena|||||||||No|
+1162|2025-01-21 22:15:33|Link|Incineroar|Ike|Mario|||||||||No|
+1163|2025-01-21 22:18:51|Link|Incineroar|Ike|Mario|||||||||No|
+1164|2025-01-21 22:22:21|Link|Incineroar|Ike|Mario|||||||||No|
+1165|2025-01-21 22:27:23|Captain Falcon|Incineroar|Palutena|Palutena|||||||||No|
+1166|2025-01-21 22:29:32|Captain Falcon|Kazuya|Pichu|Mario|||||||||Yes|
+1167|2025-01-21 22:33:15|Captain Falcon|Kazuya|Meta Knight|Kirby|||||||||Yes|
+1168|2025-01-21 22:39:52|Captain Falcon|Kazuya|Little Mac|Mii Brawler|||||||||Yes|
+1169|2025-01-21 22:42:17|Captain Falcon|Kazuya|Little Mac|Mii Brawler|||||||||Yes|
+1170|2025-01-21 22:48:22|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||No|
+1171|2025-01-21 22:52:22|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||Yes|
+1172|2025-01-21 22:55:57|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||No|
+1173|2025-01-21 23:00:18|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||Yes|
+1174|2025-01-21 23:04:08|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||No|
+1175|2025-01-21 23:07:18|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||Yes|
+1176|2025-01-21 23:10:47|Captain Falcon|Kazuya|Bayonetta|Ness|||||||||Yes|
+1177|2025-01-22 22:28:27|Donkey Kong|Donkey Kong|Piranha Plant|Ike|||||||||Yes|
+1178|2025-01-22 22:31:56|Donkey Kong|Donkey Kong|Piranha Plant|Ike|||||||||Yes|
+1179|2025-01-22 22:36:19|Donkey Kong|Donkey Kong|Byleth|Byleth|||||||||Yes|
+1180|2025-01-22 22:40:10|Donkey Kong|Donkey Kong|Donkey Kong|Piranha Plant|||||||||No|
+1181|2025-01-22 22:42:39|Donkey Kong|Donkey Kong|Donkey Kong|Piranha Plant|||||||||No|
+1182|2025-01-22 22:45:27|Donkey Kong|Donkey Kong|Donkey Kong|Piranha Plant|||||||||No|
+1183|2025-01-22 22:50:53|Wii Fit Trainer|Incineroar|Palutena|Palutena|||||||||No|
+1184|2025-01-22 22:54:33|Wii Fit Trainer|Incineroar|Palutena|Palutena|||||||||No|
+1185|2025-01-22 22:58:03|Wii Fit Trainer|Kazuya|Ike|King Dedede|||||||||No|
+1186|2025-01-22 23:03:54|Wii Fit Trainer|Kazuya|Ike|King Dedede|||||||||Yes|
+1187|2025-01-22 23:06:39|Wii Fit Trainer|Kazuya|Hero|Cloud|||||||||No|
+1188|2025-01-22 23:13:12|Wii Fit Trainer|Kazuya|Samus|Cloud|||||||||Yes|
+1189|2025-01-22 23:16:50|Wii Fit Trainer|Kazuya|Kirby|Pit|||||||||Yes|
+1190|2025-01-22 23:21:23|Wii Fit Trainer|Kazuya|Wolf|Samus|||||||||Yes|
+1191|2025-01-22 23:26:28|Wii Fit Trainer|Kazuya|Ganondorf|Ridley|||||||||Yes|
+1192|2025-01-22 23:31:06|Wii Fit Trainer|Kazuya|Palutena|Lucas|||||||||Yes|
+1193|2025-01-22 23:35:19|Wii Fit Trainer|Kazuya|Donkey Kong|Captain Falcon|||||||||Yes|
+1194|2025-01-22 23:37:48|Wii Fit Trainer|Kazuya|Link|Ike|||||||||Yes|
+1195|2025-01-22 23:42:23|Wii Fit Trainer|Kazuya|Hero|Cloud|||||||||No|
+1196|2025-01-22 23:47:00|Wii Fit Trainer|Kazuya|Ness|Captain Falcon|||||||||No|
+1197|2025-01-22 23:49:42|Wii Fit Trainer|Kazuya|Ness|Captain Falcon|||||||||Yes|
+1198|2025-01-22 23:54:45|Wii Fit Trainer|Kazuya|Ness|Captain Falcon|||||||||Yes|
+1199|2025-01-24 18:22:30|Wii Fit Trainer|Incineroar|Little Mac|Little Mac|||||||||Yes|
+1200|2025-01-24 18:26:18|Wii Fit Trainer|Incineroar|Meta Knight|Ice Climbers|||||||||Yes|
+1201|2025-01-24 18:31:56|Wii Fit Trainer|Incineroar|Donkey Kong|Ness|||||||||No|
+1202|2025-01-24 18:37:58|Wii Fit Trainer|Incineroar|Donkey Kong|Ness|||||||||No|
+1203|2025-01-24 18:41:33|Wii Fit Trainer|Incineroar|Donkey Kong|Ness|||||||||Yes|
+1204|2025-01-24 18:44:28|Wii Fit Trainer|Incineroar|Donkey Kong|Ness|||||||||Yes|
+1205|2025-01-24 18:48:24|Wii Fit Trainer|Incineroar|Donkey Kong|Ness|||||||||Yes|
+1206|2025-01-24 21:16:58|Donkey Kong|Donkey Kong|Donkey Kong|Kirby|||||||||Yes|
+1207|2025-01-24 21:21:12|Donkey Kong|Donkey Kong|Ganondorf|Wario|||||||||No|
+1208|2025-01-24 21:24:40|Donkey Kong|Donkey Kong|Ganondorf|Wario|||||||||No|
+1209|2025-01-24 21:33:08|Wii Fit Trainer|Incineroar|Donkey Kong|Donkey Kong|||||||||Yes|
+1210|2025-01-24 21:39:03|Wii Fit Trainer|Incineroar|Ness|Ryu|||||||||Yes|
+1211|2025-01-24 21:44:21|Wii Fit Trainer|Incineroar|Villager|Isabelle|||||||||Yes|
+1212|2025-01-24 21:48:25|Wii Fit Trainer|Incineroar|King K. Rool|Palutena|||||||||No|
+1213|2025-01-24 21:52:41|Wii Fit Trainer|Incineroar|Ice Climbers|Captain Falcon|||||||||Yes|
+1214|2025-01-24 21:56:37|Wii Fit Trainer|Incineroar|Ice Climbers|Captain Falcon|||||||||Yes|
+1215|2025-01-24 22:00:38|Wii Fit Trainer|Lucas|Diddy Kong|Bowser Jr.|||||||||Yes|
+1216|2025-01-24 22:04:30|Wii Fit Trainer|Lucas|Joker|Bowser Jr.|||||||||No|
+1217|2025-01-24 22:09:12|Wii Fit Trainer|Kazuya|Captain Falcon|Sephiroth|||||||||Yes|
+1218|2025-01-24 22:14:12|Captain Falcon|Kazuya|Young Link|Mario|||||||||Yes|
+1219|2025-01-25 12:49:56|Wii Fit Trainer|Incineroar|Joker|Villager|||||||||No|
+1220|2025-01-25 12:54:03|Wii Fit Trainer|Incineroar|Joker|Villager|||||||||Yes|
+1221|2025-01-25 12:58:02|Wii Fit Trainer|Incineroar|Joker|Villager|||||||||Yes|
+1222|2025-01-25 13:02:35|Wii Fit Trainer|Incineroar|Kirby|Bowser Jr.|||||||||Yes|
+1223|2025-01-25 13:05:49|Wii Fit Trainer|Incineroar|Kirby|Bowser Jr.|||||||||Yes|
+1224|2025-01-25 22:59:08|Donkey Kong|Incineroar|Kazuya|Pikachu|||||||||Yes|
+1225|2025-01-25 23:03:13|Donkey Kong|Incineroar|Kirby|King K. Rool|||||||||No|
+1226|2025-01-25 23:09:19|Donkey Kong|Incineroar|Kirby|King K. Rool|||||||||No|
+1227|2025-01-25 23:14:19|Donkey Kong|Incineroar|Kirby|Pikachu|||||||||No|
+1228|2025-01-25 23:19:29|Wii Fit Trainer|Cloud|King K. Rool|Samus|||||||||Yes|
+1229|2025-01-25 23:23:41|Wii Fit Trainer|Incineroar|Palutena|Palutena|||||||||No|
+1230|2025-01-25 23:27:25|Wii Fit Trainer|Kazuya|Palutena|Palutena|||||||||No|
+1231|2025-01-25 23:30:53|Wii Fit Trainer|Kazuya|Kirby|Sora|||||||||Yes|
+1232|2025-01-25 23:34:49|Wii Fit Trainer|Kazuya|Donkey Kong|Samus|||||||||No|
+1233|2025-01-25 23:38:52|Wii Fit Trainer|Kazuya|Ganondorf|Sephiroth|||||||||Yes|
+1234|2025-01-25 23:41:29|Wii Fit Trainer|Kazuya|Ganondorf|Sephiroth|||||||||Yes|
+1235|2025-01-25 23:46:11|Wii Fit Trainer|Kazuya|King K. Rool|Palutena|||||||||No|
+1236|2025-01-25 23:49:23|Wii Fit Trainer|Kazuya|Ganondorf|Ness|||||||||Yes|
+1237|2025-01-25 23:54:51|Wii Fit Trainer|Kazuya|Byleth|Corrin|||||||||No|
+1238|2025-01-25 23:58:55|Wii Fit Trainer|Kazuya|Ganondorf|Ness|||||||||No|
+1239|2025-01-26 00:01:42|Wii Fit Trainer|Kazuya|King K. Rool|Sonic|||||||||Yes|
+1240|2025-01-26 00:06:36|Ike|Kazuya|Ganondorf|Dark Samus|||||||||No|
+1241|2025-01-26 00:10:17|Ike|Kazuya|Ganondorf|Dark Samus|||||||||No|
+1242|2025-01-26 00:13:42|Ike|Kazuya|Ganondorf|Dark Samus|||||||||No|
+1243|2025-01-26 00:16:37|Ike|Kazuya|Kirby|Kirby|||||||||Yes|
+1244|2025-01-26 00:22:41|Ike|Kazuya|Wii Fit Trainer|Robin|||||||||Yes|
+1245|2025-01-26 18:00:39|Wii Fit Trainer|Incineroar|Ike|King K. Rool|||||||||Yes|
+1246|2025-01-26 18:04:52|Wii Fit Trainer|Incineroar|Zelda|Sora|||||||||No|
+1247|2025-01-26 18:09:23|Wii Fit Trainer|Incineroar|Zelda|Sora|||||||||No|
+1248|2025-01-26 18:13:19|Wii Fit Trainer|Incineroar|Zelda|Sora|||||||||No|
+1249|2025-01-26 18:18:11|Wii Fit Trainer|Incineroar|Pyra & Mythra|Joker|||||||||Yes|
+1250|2025-01-26 21:32:21|Wii Fit Trainer|Incineroar|Piranha Plant|Corrin|||||||||No|
+1251|2025-01-26 21:36:32|Wii Fit Trainer|Incineroar|Piranha Plant|Corrin|||||||||No|
+1252|2025-01-26 21:41:13|Wii Fit Trainer|Incineroar|Piranha Plant|Corrin|||||||||No|
+1253|2025-01-26 21:46:41|Wii Fit Trainer|Incineroar|Piranha Plant|Corrin|||||||||No|
+1254|2025-01-26 21:51:57|Wii Fit Trainer|Lucas|Corrin|Corrin|||||||||Yes|
+1255|2025-01-26 21:56:24|Captain Falcon|Kazuya|King K. Rool|King K. Rool|||||||||Yes|
+1256|2025-01-26 22:02:46|Captain Falcon|Kazuya|R.O.B.|Lucas|||||||||Yes|
+1257|2025-01-26 22:06:34|Captain Falcon|Kazuya|Hero|Ike|||||||||No|
+1258|2025-01-26 22:10:43|Captain Falcon|Kazuya|Hero|Ike|||||||||Yes|
+1259|2025-01-26 22:16:35|Captain Falcon|Kazuya|Captain Falcon|Captain Falcon|||||||||No|
+1260|2025-01-26 22:19:28|Captain Falcon|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+1261|2025-01-26 22:22:20|Captain Falcon|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+1262|2025-01-26 22:27:57|Captain Falcon|Kazuya|Dr. Mario|Dr. Mario|||||||||Yes|
+1263|2025-01-27 20:21:58|Wii Fit Trainer|Incineroar|Samus|King K. Rool|||||||||No|
+1264|2025-01-27 20:23:55|Wii Fit Trainer|Incineroar|Samus|King K. Rool|||||||||No|
+1265|2025-01-27 20:26:26|Wii Fit Trainer|Incineroar|Samus|King K. Rool|||||||||No|
+1266|2025-01-27 20:32:35|Wii Fit Trainer|Kazuya|Zelda|Yoshi|||||||||Yes|
+1267|2025-01-27 20:35:54|Wii Fit Trainer|Kazuya|Kirby|Byleth|||||||||No|
+1268|2025-01-27 20:41:47|Wii Fit Trainer|Kazuya|Kirby|Byleth|||||||||No|
+1269|2025-01-27 20:46:48|Wii Fit Trainer|Kazuya|Kirby|Byleth|||||||||No|
+1270|2025-01-27 20:51:03|Wii Fit Trainer|Kazuya|Lucas|King Dedede|||||||||No|
+1271|2025-01-27 20:54:24|Wii Fit Trainer|Kazuya|Kirby|Sora|||||||||Yes|
+1272|2025-01-27 20:57:02|Wii Fit Trainer|Kazuya|Kirby|Pikachu|||||||||Yes|
+1273|2025-01-27 21:01:58|Wii Fit Trainer|Kazuya|King K. Rool|Wolf|||||||||Yes|
+1274|2025-01-27 23:14:48|Wii Fit Trainer|Kazuya|Ganondorf|Ganondorf|||||||||No|
+1275|2025-01-27 23:18:21|Wii Fit Trainer|Kazuya|Ganondorf|Ganondorf|||||||||No|
+1276|2025-01-27 23:22:34|Wii Fit Trainer|Kazuya|Ganondorf|Ganondorf|||||||||No|
+1277|2025-01-27 23:28:00|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1278|2025-01-27 23:32:52|Wii Fit Trainer|Kazuya|Sora|Ganondorf|||||||||Yes|
+1279|2025-01-29 20:41:15|Wii Fit Trainer|Incineroar|Byleth|Byleth|||||||||No|
+1280|2025-01-29 20:44:04|Wii Fit Trainer|Incineroar|Byleth|Byleth|||||||||No|
+1281|2025-01-29 20:46:53|Wii Fit Trainer|Incineroar|Ness|Ness|||||||||No|
+1282|2025-01-29 20:51:29|Wii Fit Trainer|Incineroar|Ness|Ness|||||||||No|
+1283|2025-01-29 20:54:39|Wii Fit Trainer|Incineroar|Ness|Ness|||||||||No|
+1284|2025-01-29 20:58:45|Wii Fit Trainer|Kazuya|Ness|Ness|||||||||No|
+1285|2025-01-29 21:02:45|Wii Fit Trainer|Kazuya|Ness|Ness|||||||||No|
+1286|2025-01-29 21:07:49|Wii Fit Trainer|Kazuya|Zelda|Zelda|||||||||No|
+1287|2025-01-29 21:15:22|Wii Fit Trainer|Kazuya|Little Mac|Cloud|||||||||Yes|
+1288|2025-01-29 21:19:04|Wii Fit Trainer|Kazuya|Sephiroth|Sephiroth|||||||||No|
+1289|2025-01-29 21:25:28|Wii Fit Trainer|Kazuya|Dr. Mario|Villager|||||||||No|
+1290|2025-01-29 21:28:07|Wii Fit Trainer|Kazuya|Dr. Mario|Villager|||||||||No|
+1291|2025-01-29 22:34:43|Captain Falcon|Kazuya|Little Mac|Little Mac|||||||||Yes|
+1292|2025-01-29 22:39:11|Captain Falcon|Kazuya|Bayonetta|Zero suit Samus|||||||||Yes|
+1293|2025-01-29 22:44:40|Captain Falcon|Kazuya|Sora|Bowser|||||||||Yes|
+1294|2025-01-29 22:53:26|Captain Falcon|Kazuya|Kirby|Mr. Game & Watch|||||||||No|
+1295|2025-01-29 22:53:50|Captain Falcon|Kazuya|Kirby|Mr. Game & Watch|||||||||Yes|
+1296|2025-01-29 22:56:36|Captain Falcon|Kazuya|Ness|Ness|||||||||No|
+1297|2025-01-29 23:00:11|Captain Falcon|Kazuya|Ness|Ness|||||||||No|
+1298|2025-01-29 23:03:53|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+1299|2025-01-29 23:11:30|Captain Falcon|Kazuya|Ness|Villager|||||||||No|
+1300|2025-01-29 23:11:38|Captain Falcon|Kazuya|Ness|Villager|||||||||Yes|
+1301|2025-01-29 23:16:41|Captain Falcon|Kazuya|Ness|Villager|||||||||Yes|
+1302|2025-01-29 23:21:24|Ike|Kazuya|Captain Falcon|Captain Falcon|||||||||Yes|
+1303|2025-02-02 21:09:43|Captain Falcon|Incineroar|Sonic|Kirby|||||||||Yes|
+1304|2025-02-02 21:14:06|Captain Falcon|Incineroar|Sonic|Lucario|||||||||Yes|
+1305|2025-02-02 21:18:27|Captain Falcon|Incineroar|Sonic|Lucario|||||||||Yes|
+1306|2025-02-02 21:22:45|Captain Falcon|Incineroar|Zero suit Samus|R.O.B.|||||||||Yes|
+1307|2025-02-02 21:27:10|Captain Falcon|Cloud|Mario|Mii Swordfighter|||||||||No|
+1308|2025-02-02 21:32:04|Captain Falcon|Cloud|Mario|Mii Swordfighter|||||||||No|
+1309|2025-02-02 21:39:16|Captain Falcon|Kazuya|Ness|Ness|||||||||No|
+1310|2025-02-02 21:43:21|Captain Falcon|Kazuya|Ganondorf|Hero|||||||||Yes|
+1311|2025-02-02 21:48:56|Wii Fit Trainer|Lucas|Sonic|Pac-Man|||||||||No|
+1312|2025-02-02 21:53:13|Wii Fit Trainer|Kazuya|Donkey Kong|R.O.B.|||||||||No|
+1313|2025-02-02 21:58:02|Wii Fit Trainer|Kazuya|Donkey Kong|R.O.B.|||||||||No|
+1314|2025-02-02 22:02:10|Wii Fit Trainer|Kazuya|Donkey Kong|R.O.B.|||||||||No|
+1315|2025-02-02 22:06:21|Wii Fit Trainer|Kazuya|Donkey Kong|R.O.B.|||||||||No|
+1316|2025-02-02 22:10:09|Wii Fit Trainer|Kazuya|Zelda|Sora|||||||||No|
+1317|2025-02-02 22:14:58|Wii Fit Trainer|Kazuya|Ganondorf|Ganondorf|||||||||No|
+1318|2025-02-02 22:19:19|Wii Fit Trainer|Kazuya|Ganondorf|Ganondorf|||||||||No|
+1319|2025-02-02 22:25:24|Wii Fit Trainer|Kazuya|Lucas|Ness|||||||||Yes|
+1320|2025-02-02 22:28:58|Wii Fit Trainer|Kazuya|Duck Hunt|Duck Hunt|||||||||Yes|
+1321|2025-02-03 20:30:08|Wii Fit Trainer|Kazuya|Donkey Kong|King K. Rool|||||||||Yes|
+1322|2025-02-03 20:33:22|Wii Fit Trainer|Kazuya|Ganondorf|Ike|||||||||Yes|
+1323|2025-02-03 20:36:44|Wii Fit Trainer|Kazuya|Donkey Kong|Little Mac|||||||||No|
+1324|2025-02-03 20:40:54|Wii Fit Trainer|Kazuya|Donkey Kong|Little Mac|||||||||Yes|
+1325|2025-02-03 20:43:57|Wii Fit Trainer|Kazuya|Donkey Kong|Little Mac|||||||||No|
+1326|2025-02-03 20:49:23|Wii Fit Trainer|Kazuya|Wario|Wario|||||||||Yes|
+1327|2025-02-03 20:55:36|Wii Fit Trainer|Kazuya|Little Mac|Bayonetta|||||||||Yes|
+1328|2025-02-03 21:01:20|Wii Fit Trainer|Kazuya|Corrin|Kirby|||||||||No|
+1329|2025-02-03 21:06:06|Wii Fit Trainer|Kazuya|King K. Rool|King K. Rool|||||||||No|
+1330|2025-02-03 21:10:41|Wii Fit Trainer|Kazuya|King K. Rool|King K. Rool|||||||||No|
+1331|2025-02-03 21:14:58|Wii Fit Trainer|Kazuya|Ganondorf|King Dedede|||||||||Yes|
+1332|2025-02-04 22:10:49|King K. Rool|Kazuya|Rosalina|Kirby|||||||||Yes|
+1333|2025-02-04 22:14:29|Donkey Kong|Donkey Kong|Hero|Kirby|||||||||Yes|
+1334|2025-02-04 22:19:22|Donkey Kong|Donkey Kong|Cloud|Mr. Game & Watch|||||||||Yes|
+1335|2025-02-04 22:24:20|Donkey Kong|Donkey Kong|Kirby|Byleth|||||||||No|
+1336|2025-02-04 22:28:35|Donkey Kong|Donkey Kong|Snake|Ganondorf|||||||||No|
+1337|2025-02-04 22:32:20|Donkey Kong|Donkey Kong|Snake|Ganondorf|||||||||No|
+1338|2025-02-04 22:37:03|Wii Fit Trainer|Kazuya|King Dedede|Ridley|||||||||Yes|
+1339|2025-02-04 22:41:40|Wii Fit Trainer|Kazuya|Hero|King Dedede|||||||||No|
+1340|2025-02-04 22:46:35|Wii Fit Trainer|Kazuya|Ness|Kirby|||||||||No|
+1341|2025-02-04 22:50:45|Wii Fit Trainer|Kazuya|Zelda|Sephiroth|||||||||No|
+1342|2025-02-04 22:54:39|Wii Fit Trainer|Kazuya|Kirby|Palutena|||||||||Yes|
+1343|2025-02-04 22:58:33|Wii Fit Trainer|Kazuya|Kirby|Incineroar|||||||||Yes|
+1344|2025-02-05 21:57:13|Kirby|Lucas|Ridley|Marth|||||||||Yes|
+1345|2025-02-05 22:02:30|Kirby|Lucas|Snake|Cloud|||||||||Yes|
+1346|2025-02-05 22:06:34|Kirby|Lucas|Luigi|Incineroar|||||||||Yes|
+1347|2025-02-05 22:11:15|Kirby|Lucas|Corrin|Sonic|||||||||Yes|
+1348|2025-02-05 22:16:29|Kirby|Lucas|Pac-Man|Zero suit Samus|||||||||Yes|
+1349|2025-02-05 22:20:26|Kirby|Incineroar|Little Mac|Little Mac|||||||||Yes|
+1350|2025-02-05 22:25:57|Kirby|Incineroar|Corrin|Corrin|||||||||Yes|
+1351|2025-02-05 22:29:13|Kirby|Kazuya|Bowser|King K. Rool|||||||||Yes|
+1352|2025-02-05 22:31:51|Kirby|Kazuya|Bowser|King K. Rool|||||||||Yes|
+1353|2025-02-05 22:36:13|Kirby|Kazuya|Corrin|Corrin|||||||||Yes|
+1354|2025-02-09 21:22:09|King K. Rool|Kazuya|Pikachu|Simon|||||||||No|
+1355|2025-02-09 21:26:39|King K. Rool|Kazuya|Pikachu|Simon|||||||||Yes|
+1356|2025-02-09 21:30:30|King K. Rool|King K. Rool|Jigglypuff|Jigglypuff|||||||||No|
+1357|2025-02-09 21:35:10|Wii Fit Trainer|Lucas|Sonic|Wii Fit Trainer|||||||||Yes|
+1358|2025-02-09 21:39:04|Wii Fit Trainer|Lucas|Donkey Kong|Ridley|||||||||Yes|
+1359|2025-02-09 21:43:57|Wii Fit Trainer|Lucas|Kirby|Sora|||||||||Yes|
+1360|2025-02-09 21:46:57|Wii Fit Trainer|Lucas|Kirby|Ike|||||||||Yes|
+1361|2025-02-09 21:54:37|Wii Fit Trainer|Lucas|Sonic|Wii Fit Trainer|||||||||No|
+1362|2025-02-09 21:59:19|Wii Fit Trainer|Incineroar|Roy|King K. Rool|||||||||No|
+1363|2025-02-09 22:04:06|Wii Fit Trainer|Incineroar|Roy|King K. Rool|||||||||No|
+1364|2025-02-09 22:07:20|Wii Fit Trainer|Kazuya|Mewtwo|Bowser|||||||||Yes|
+1365|2025-02-09 22:13:04|Wii Fit Trainer|Kazuya|Mario|Piranha Plant|||||||||Yes|
+1366|2025-02-10 22:35:40|Captain Falcon|Kazuya|Marth|Lucina|||||||||No|
+1367|2025-02-10 22:43:27|Wii Fit Trainer|Kazuya|Donkey Kong|Pyra & Mythra|||||||||Yes|
+1368|2025-02-10 22:46:59|Wii Fit Trainer|Kazuya|Zero suit Samus|Zero suit Samus|||||||||Yes|
+1369|2025-02-10 22:53:34|Wii Fit Trainer|Kazuya|Marth|Lucina|||||||||No|
+1370|2025-02-10 23:01:27|Wii Fit Trainer|Kazuya|Marth|Lucina|||||||||No|
+1371|2025-02-10 23:06:41|Wii Fit Trainer|Kazuya|Marth|Lucina|||||||||No|
+1372|2025-02-10 23:11:51|Wii Fit Trainer|Kazuya|Marth|Lucina|||||||||Yes|
+1373|2025-02-10 23:16:59|Wii Fit Trainer|Kazuya|Ness|Ness|||||||||No|
+1374|2025-02-10 23:28:30|Wii Fit Trainer|Kazuya|Pyra & Mythra|Kazuya|||||||||No|
+1375|2025-02-12 22:22:29|Wii Fit Trainer|Kazuya|Captain Falcon|Young Link|||||||||Yes|
+1376|2025-02-12 22:22:58|Wii Fit Trainer|Kazuya|Ganondorf|Donkey Kong|||||||||Yes|
+1377|2025-02-12 22:27:07|Wii Fit Trainer|Kazuya|Kirby|Mr. Game & Watch|||||||||Yes|
+1378|2025-02-12 22:31:36|Wii Fit Trainer|Incineroar|Sephiroth|Mii Gunner|||||||||Yes|
+1379|2025-02-12 22:35:26|Wii Fit Trainer|Incineroar|Sephiroth|Mii Gunner|||||||||No|
+1380|2025-02-12 22:40:44|Wii Fit Trainer|Kazuya|Joker|Mii Brawler|||||||||Yes|
+1381|2025-02-12 22:45:18|Wii Fit Trainer|Kazuya|Samus|R.O.B.|||||||||Yes|
+1382|2025-02-12 22:50:57|Wii Fit Trainer|Kazuya|King Dedede|King K. Rool|||||||||No|
+1383|2025-02-12 22:55:57|Wii Fit Trainer|Kazuya|King Dedede|King K. Rool|||||||||No|
+1384|2025-02-12 23:00:01|Wii Fit Trainer|Kazuya|Mario|Luigi|||||||||No|
+1385|2025-02-12 23:04:23|Wii Fit Trainer|Kazuya|Mario|Luigi|||||||||No|
+1386|2025-02-12 23:12:48|Wii Fit Trainer|Kazuya|Kirby|Zelda|||||||||No|
+1387|2025-02-12 23:17:57|Wii Fit Trainer|Kazuya|Kirby|Zelda|||||||||Yes|
+1388|2025-02-12 23:23:11|Wii Fit Trainer|Kazuya|Kirby|Zelda|||||||||Yes|
+1389|2025-02-14 20:29:02|Kirby|Lucas|Duck Hunt|Duck Hunt|||||||||Yes|
+1390|2025-02-14 20:36:07|Kirby|Cloud|Captain Falcon|Captain Falcon|||||||||No|
+1391|2025-02-14 20:40:14|Kirby|Kazuya|Donkey Kong|Bowser|||||||||Yes|
+1392|2025-02-14 20:45:16|Kirby|Kazuya|Mario|Wario|||||||||No|
+1393|2025-02-14 20:50:30|Kirby|Kazuya|Mario|Wario|||||||||No|
+1394|2025-02-14 20:55:15|Kirby|Kazuya|Mario|Wario|||||||||No|
+1395|2025-02-14 20:59:46|Kirby|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+1396|2025-02-14 21:03:43|Kirby|Kazuya|Mii Swordfighter|Mii Swordfighter|||||||||No|
+1397|2025-02-14 21:07:57|Kirby|Kazuya|Ike|Kirby|||||||||Yes|
+1398|2025-02-14 21:11:59|Kirby|Kazuya|Pokemon Trainer|Sephiroth|||||||||Yes|
+1399|2025-02-14 21:15:46|Kirby|Kazuya|Little Mac|Little Mac|||||||||No|
+1400|2025-02-14 21:22:12|Kirby|Kazuya|Pikachu|Ness|||||||||Yes|
+1401|2025-02-14 21:27:40|Kirby|Kazuya|Hero|Hero|||||||||No|
+1402|2025-02-14 21:32:41|Kirby|Donkey Kong|Hero|Donkey Kong|||||||||No|
+1403|2025-02-14 21:35:00|Kirby|Donkey Kong|Hero|Donkey Kong|||||||||No|
+1404|2025-02-14 21:39:55|Donkey Kong|Donkey Kong|Pikachu|Ness|||||||||No|
+1405|2025-02-14 21:45:33|Donkey Kong|Donkey Kong|Pikachu|Ness|||||||||Yes|
+1406|2025-02-14 21:50:27|Wii Fit Trainer|Kazuya|Little Mac|Little Mac|||||||||No|
+1407|2025-02-14 21:53:52|Wii Fit Trainer|Kazuya|Little Mac|Little Mac|||||||||Yes|
+1408|2025-02-14 21:57:11|Wii Fit Trainer|Kazuya|Little Mac|Little Mac|||||||||Yes|
+1409|2025-02-14 22:01:37|Wii Fit Trainer|Kazuya|Dark Pit|Pyra & Mythra|||||||||Yes|
+1410|2025-02-14 22:05:25|Wii Fit Trainer|Kazuya|Sephiroth|Samus|||||||||Yes|
+1411|2025-02-14 22:08:42|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1412|2025-02-14 22:12:09|Wii Fit Trainer|Kazuya|Inlking|Fox|||||||||Yes|
+1413|2025-02-14 22:15:36|Wii Fit Trainer|Kazuya|Sephiroth|Samus|||||||||Yes|
+1414|2025-02-15 19:16:30|King K. Rool|Kazuya|Sephiroth|Ness|||||||||No|
+1415|2025-02-15 19:20:17|King K. Rool|Kazuya|Sephiroth|Ness|||||||||No|
+1416|2025-02-15 19:25:26|Kirby|Kazuya|Mii Brawler|Hero|||||||||Yes|
+1417|2025-02-15 19:29:38|Captain Falcon|Kazuya|Mii Gunner|Duck Hunt|||||||||Yes|
+1418|2025-02-15 19:33:35|Captain Falcon|Kazuya|Ike|Zelda|||||||||Yes|
+1419|2025-02-15 19:37:15|Captain Falcon|Kazuya|Kirby|Kirby|||||||||Yes|
+1420|2025-02-15 19:45:03|Captain Falcon|Kazuya|Kirby|Yoshi|||||||||Yes|
+1421|2025-02-15 19:49:53|Captain Falcon|Kazuya|Ganondorf|Ganondorf|||||||||Yes|
+1422|2025-02-15 19:59:53|Captain Falcon|Kazuya|Mii Brawler|Lucas|||||||||Yes|
+1423|2025-02-15 20:04:06|Captain Falcon|Kazuya|Mii Brawler|Lucas|||||||||No|
+1424|2025-02-15 20:07:21|Captain Falcon|Kazuya|Mii Brawler|Lucas|||||||||No|
+1425|2025-02-15 20:12:33|Captain Falcon|Kazuya|Dark Samus|Little Mac|||||||||Yes|
+1426|2025-02-15 22:21:52|Kazuya|Kazuya|Kirby|Sephiroth|||||||||No|
+1427|2025-02-15 22:25:08|Kazuya|Kazuya|Kirby|Sephiroth|||||||||No|
+1428|2025-02-15 22:29:55|Donkey Kong|Donkey Kong|Little Mac|Bowser Jr.|||||||||Yes|
+1429|2025-02-15 22:33:32|Donkey Kong|Donkey Kong|Sora|Sephiroth|||||||||Yes|
+1430|2025-02-15 22:38:19|Donkey Kong|Kazuya|Pikachu|Snake|||||||||Yes|
+1431|2025-02-16 19:09:53|Captain Falcon|Kazuya|Hero|Hero|||||||||Yes|
+1432|2025-02-16 20:43:29|Ike|Kazuya|Ganondorf|Pyra & Mythra|||||||||Yes|
+1433|2025-02-16 20:46:50|Ike|Kazuya|Ganondorf|Zero suit Samus|||||||||Yes|
+1434|2025-02-16 20:51:16|Ike|Kazuya|Little Mac|Dark Samus|||||||||Yes|
+1435|2025-02-16 20:57:03|Wii Fit Trainer|Kazuya|Captain Falcon|Toon Link|||||||||Yes|
+1436|2025-02-16 21:01:32|Wii Fit Trainer|Kazuya|Captain Falcon|Toon Link|||||||||Yes|
+1437|2025-02-16 21:09:48|Wii Fit Trainer|Kazuya|Ness|Lucas|||||||||Yes|
+1438|2025-02-16 21:14:28|Wii Fit Trainer|Kazuya|Greninja|King K. Rool|||||||||Yes|
+1439|2025-02-16 21:18:45|Wii Fit Trainer|Kazuya|Sephiroth|Link|||||||||Yes|
+1440|2025-02-16 21:22:33|Wii Fit Trainer|Kazuya|Greninja|King K. Rool|||||||||Yes|
+1441|2025-02-16 21:27:31|Wii Fit Trainer|Kazuya|Ness|Mii Brawler|||||||||Yes|
+1442|2025-02-16 21:30:20|Wii Fit Trainer|Kazuya|Snake|Pyra & Mythra|||||||||Yes|
+1443|2025-02-16 21:33:36|Wii Fit Trainer|Kazuya|Sonic|Lucina|||||||||Yes|
+1444|2025-02-16 21:37:29|Wii Fit Trainer|Kazuya|Mario|King K. Rool|||||||||Yes|
+1445|2025-02-16 21:41:09|Wii Fit Trainer|Kazuya|Lucas|Mr. Game & Watch|||||||||No|
+1446|2025-02-16 21:48:19|Wii Fit Trainer|Kazuya|Sonic|Mr. Game & Watch|||||||||No|
+1447|2025-02-16 21:54:41|Wii Fit Trainer|Kazuya|Jigglypuff|Wii Fit Trainer|||||||||Yes|
+1448|2025-02-17 17:24:42|Donkey Kong|Kazuya|Kirby|Kirby|||||||||No|
+1449|2025-02-17 17:28:21|Donkey Kong|Kazuya|Kirby|Kirby|||||||||No|
+1450|2025-02-17 17:33:24|Donkey Kong|Kazuya|Kirby|Kirby|||||||||No|
+1451|2025-02-17 17:36:54|Donkey Kong|Kazuya|Kirby|Kirby|||||||||Yes|
+1452|2025-02-17 17:41:02|Donkey Kong|Kazuya|Kirby|Kirby|||||||||Yes|
+1453|2025-02-17 17:44:14|Donkey Kong|Kazuya|Kirby|Mii Brawler|||||||||Yes|
+1454|2025-02-18 22:41:49|King K. Rool|Kazuya|Kirby|Pyra & Mythra|||||||||Yes|
+1455|2025-02-18 22:46:56|King K. Rool|Kazuya|Sephiroth|Corrin|||||||||Yes|
+1456|2025-02-18 22:51:58|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1457|2025-02-18 22:55:42|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1458|2025-02-18 23:00:47|Wii Fit Trainer|Kazuya|Bowser|King K. Rool|||||||||Yes|
+1459|2025-02-19 22:20:44|Wii Fit Trainer|Kazuya|Captain Falcon|Terry|||||||||Yes|
+1460|2025-02-19 22:25:51|Wii Fit Trainer|Kazuya|Captain Falcon|Terry|||||||||No|
+1461|2025-02-19 22:29:26|Wii Fit Trainer|Kazuya|Isabelle|Snake|||||||||Yes|
+1462|2025-02-19 22:33:50|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||No|
+1463|2025-02-19 22:37:29|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||No|
+1464|2025-02-19 22:41:43|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||Yes|
+1465|2025-02-19 22:45:45|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||No|
+1466|2025-02-19 22:49:21|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||Yes|
+1467|2025-02-19 22:54:09|Wii Fit Trainer|Kazuya|Sephiroth|King K. Rool|||||||||Yes|
+1468|2025-02-20 23:31:44|Wii Fit Trainer|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1469|2025-02-20 23:37:44|Wii Fit Trainer|Kazuya|Robin|Bowser|||||||||Yes|
+1470|2025-02-20 23:41:48|Wii Fit Trainer|Kazuya|Byleth|Yoshi|||||||||No|
+1471|2025-02-20 23:47:59|Wii Fit Trainer|Kazuya|Cloud|Mii Gunner|||||||||No|
+1472|2025-02-20 23:53:00|Wii Fit Trainer|Kazuya|Cloud|Mii Gunner|||||||||No|
+1473|2025-02-20 23:58:18|Wii Fit Trainer|Kazuya|Samus|Duck Hunt|||||||||No|
+1474|2025-02-21 22:42:30|Captain Falcon|Kazuya|Kirby|Incineroar|||||||||Yes|
+1475|2025-02-21 22:47:25|Captain Falcon|Kazuya|Lucas|Roy|||||||||Yes|
+1476|2025-02-21 22:49:39|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1477|2025-02-21 22:54:06|Captain Falcon|Kazuya|Lucas|Lucas|||||||||Yes|
+1478|2025-02-21 22:58:36|Captain Falcon|Kazuya|Ike|Cloud|||||||||No|
+1479|2025-02-21 23:03:14|Captain Falcon|Kazuya|Ike|Cloud|||||||||Yes|
+1480|2025-02-21 23:08:15|Captain Falcon|Kazuya|Ike|Cloud|||||||||Yes|
+1481|2025-02-21 23:12:49|Wii Fit Trainer|Kazuya|Dr. Mario|Bowser Jr.|||||||||Yes|
+1482|2025-02-21 23:16:56|Wii Fit Trainer|Kazuya|Joker|Pyra & Mythra|||||||||No|
+1483|2025-02-21 23:20:17|Wii Fit Trainer|Kazuya|Kazuya|Byleth|||||||||No|
+1484|2025-02-21 23:24:39|Wii Fit Trainer|Kazuya|Zelda|Sora|||||||||No|
+1485|2025-02-21 23:28:03|Wii Fit Trainer|Kazuya|Zelda|Sora|||||||||No|
+1486|2025-02-21 23:32:56|Wii Fit Trainer|Kazuya|Pyra & Mythra|Samus|||||||||No|
+1487|2025-02-21 23:37:51|Wii Fit Trainer|Kazuya|Donkey Kong|Cloud|||||||||Yes|
+1488|2025-02-22 21:02:00|Wii Fit Trainer|Kazuya|Isabelle|Ganondorf|||||||||No|
+1489|2025-02-22 21:08:24|Wii Fit Trainer|Kazuya|Isabelle|Ganondorf|||||||||Yes|
+1490|2025-02-22 21:12:30|Wii Fit Trainer|Kazuya|Isabelle|Ganondorf|||||||||Yes|
+1491|2025-02-22 21:19:24|Wii Fit Trainer|Kazuya|Zelda|Sora|||||||||Yes|
+1492|2025-02-22 21:24:10|Wii Fit Trainer|Kazuya|Incineroar|Fox|||||||||Yes|
+1493|2025-02-22 22:13:56|Donkey Kong|Cloud|Kirby|Banjo & Kazooie|||||||||No|
+1494|2025-02-22 22:17:12|Donkey Kong|Ness|Ganondorf|Bowser|||||||||No|
+1495|2025-02-22 22:21:00|Donkey Kong|Ness|Ganondorf|Bowser|||||||||No|
+1496|2025-02-22 22:24:48|Donkey Kong|Ness|Ganondorf|Bowser|||||||||Yes|
+1497|2025-02-22 22:27:59|Donkey Kong|Ness|Ganondorf|Bowser|||||||||Yes|
+1498|2025-02-22 22:32:33|Donkey Kong|Ness|Ganondorf|Bowser|||||||||Yes|
+1499|2025-02-22 22:37:47|Wii Fit Trainer|Kazuya|Sonic|Bowser|||||||||Yes|
+1500|2025-02-22 22:41:05|Wii Fit Trainer|Kazuya|Kirby|Samus|||||||||Yes|
+1501|2025-02-22 22:45:23|Wii Fit Trainer|Kazuya|Bowser|Jigglypuff|||||||||Yes|
+1502|2025-02-22 22:50:50|Wii Fit Trainer|Kazuya|Villager|Terry|||||||||No|
+1503|2025-02-22 22:54:48|Wii Fit Trainer|Kazuya|Villager|Terry|||||||||No|
+1504|2025-02-22 22:58:18|Wii Fit Trainer|Kazuya|Villager|Terry|||||||||Yes|
+1505|2025-02-22 23:02:59|Wii Fit Trainer|Kazuya|Villager|Terry|||||||||No|
+1506|2025-02-22 23:07:04|Wii Fit Trainer|Kazuya|Villager|Terry|||||||||No|
+1507|2025-02-23 22:23:39|Wii Fit Trainer|Kazuya|King K. Rool|King Dedede|||||||||No|
+1508|2025-02-23 22:27:57|Wii Fit Trainer|Kazuya|King K. Rool|King Dedede|||||||||No|
+1509|2025-02-23 22:28:11|Wii Fit Trainer|Kazuya|King K. Rool|King Dedede|||||||||Yes|
+1510|2025-02-23 22:32:27|Wii Fit Trainer|Kazuya|King K. Rool|King Dedede|||||||||Yes|
+1511|2025-02-23 22:36:52|Wii Fit Trainer|Kazuya|King K. Rool|King Dedede|||||||||Yes|
+1512|2025-02-24 20:53:44|Wii Fit Trainer|Kazuya|Donkey Kong|Inlking|||||||||No|
+1513|2025-02-24 21:24:40|Wii Fit Trainer|Kazuya|Little Mac|Ness|||||||||No|
+1514|2025-02-24 21:28:04|Wii Fit Trainer|Kazuya|Little Mac|Ness|||||||||No|
+1515|2025-02-24 21:40:45|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+1516|2025-02-24 21:44:32|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+1517|2025-02-24 21:49:17|Wii Fit Trainer|Kazuya|Bowser|Mr. Game & Watch|||||||||No|
+1518|2025-02-24 21:53:27|Wii Fit Trainer|Kazuya|Piranha Plant|Samus|||||||||No|
+1519|2025-02-24 21:57:47|Wii Fit Trainer|Kazuya|Mr. Game & Watch|Samus|||||||||No|
+1520|2025-02-24 22:02:23|Wii Fit Trainer|Kazuya|Palutena|Pyra & Mythra|||||||||No|
+1521|2025-02-25 22:25:49|Wii Fit Trainer|Kazuya|King K. Rool|Zelda|||||||||No|
+1522|2025-02-25 22:30:04|Wii Fit Trainer|Kazuya|Sora|Falco|||||||||Yes|
+1523|2025-02-25 22:33:39|Wii Fit Trainer|Kazuya|Sora|Falco|||||||||No|
+1524|2025-02-25 22:37:27|Wii Fit Trainer|Kazuya|Sora|Falco|||||||||No|
+1525|2025-02-25 22:40:22|Wii Fit Trainer|Kazuya|Sora|Falco|||||||||No|
+1526|2025-02-25 22:47:02|Wii Fit Trainer|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1527|2025-02-25 22:51:58|Wii Fit Trainer|Kazuya|Dark Samus|Lucario|||||||||No|
+1528|2025-02-25 22:55:03|Ike|Kazuya|Ganondorf|Link|||||||||Yes|
+1529|2025-02-25 22:58:59|Ike|Kazuya|King K. Rool|Samus|||||||||Yes|
+1530|2025-02-25 23:03:03|Ike|Kazuya|Ike|Captain Falcon|||||||||Yes|
+1531|2025-02-26 21:04:45|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1532|2025-02-26 21:08:22|Captain Falcon|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1533|2025-02-26 21:12:49|Wii Fit Trainer|Lucas|Bayonetta|Mii Swordfighter|||||||||No|
+1534|2025-02-26 21:17:06|Wii Fit Trainer|Lucas|Bayonetta|Mii Swordfighter|||||||||Yes|
+1535|2025-02-26 21:22:39|Wii Fit Trainer|Lucas|Bayonetta|Mii Swordfighter|||||||||Yes|
+1536|2025-02-26 21:26:58|Kirby|Lucas|Ness|Ness|||||||||No|
+1537|2025-02-26 21:32:42|Kirby|Lucas|Ness|Ness|||||||||Yes|
+1538|2025-02-26 21:36:18|Kirby|Lucas|Ganondorf|Bowser|||||||||Yes|
+1539|2025-03-02 17:32:51|Captain Falcon|Kazuya|Pikachu|Ness|||||||||No|
+1540|2025-03-02 17:36:47|Captain Falcon|Kazuya|Pikachu|Ness|||||||||Yes|
+1541|2025-03-02 17:41:47|Captain Falcon|Kazuya|Dark Samus|Falco|||||||||No|
+1542|2025-03-02 17:46:00|Wii Fit Trainer|Kazuya|Min Min|Palutena|||||||||No|
+1543|2025-03-02 17:50:03|Wii Fit Trainer|Kazuya|Bowser|Link|||||||||Yes|
+1544|2025-03-02 17:53:59|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1545|2025-03-02 17:57:44|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+1546|2025-03-02 18:01:13|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1547|2025-03-02 18:04:32|Wii Fit Trainer|Kazuya|Donkey Kong|Donkey Kong|||||||||No|
+1548|2025-03-02 19:52:42|Wii Fit Trainer|Kazuya|Joker|King K. Rool|||||||||Yes|
+1549|2025-03-02 19:56:00|Wii Fit Trainer|Kazuya|Kirby|Pikachu|||||||||Yes|
+1550|2025-03-02 19:59:59|Wii Fit Trainer|Kazuya|Little Mac|Bowser|||||||||Yes|
+1551|2025-03-02 20:04:31|Wii Fit Trainer|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||Yes|
+1552|2025-03-04 22:20:56|Kirby|Kazuya|King K. Rool|Samus|||||||||No|
+1553|2025-03-04 22:24:19|Kirby|Kazuya|King K. Rool|Samus|||||||||Yes|
+1554|2025-03-04 22:28:55|Kirby|Kazuya|King K. Rool|Samus|||||||||No|
+1555|2025-03-04 22:33:20|Kirby|Kazuya|King K. Rool|Samus|||||||||No|
+1556|2025-03-04 22:37:33|Wii Fit Trainer|Kazuya|Donkey Kong|Pyra & Mythra|||||||||No|
+1557|2025-03-04 22:42:04|Wii Fit Trainer|Kazuya|Pokemon Trainer|Ganondorf|||||||||Yes|
+1558|2025-03-04 22:46:12|Wii Fit Trainer|Kazuya|Kirby|Kirby|||||||||No|
+1559|2025-03-04 22:49:36|Wii Fit Trainer|Kazuya|Captain Falcon|Samus|||||||||No|
+1560|2025-03-04 22:53:12|Wii Fit Trainer|Kazuya|Captain Falcon|Samus|||||||||No|
+1561|2025-03-04 22:57:27|Wii Fit Trainer|Kazuya|King K. Rool|King K. Rool|||||||||No|
+1562|2025-03-04 23:01:33|Wii Fit Trainer|Kazuya|King K. Rool|Sephiroth|||||||||No|
+1563|2025-03-04 23:06:04|Ike|Kazuya|Mewtwo|Mr. Game & Watch|||||||||Yes|
+1564|2025-03-04 23:09:50|Ike|Kazuya|Corrin|Pyra & Mythra|||||||||Yes|
+1565|2025-03-04 23:14:15|Ike|Kazuya|King K. Rool|King Dedede|||||||||Yes|
+1566|2025-03-04 23:19:50|Ike|Kazuya|Ganondorf|Meta Knight|||||||||Yes|
+1567|2025-03-04 23:23:42|Ike|Kazuya|Ganondorf|Meta Knight|||||||||Yes|
+1568|2025-03-04 23:28:23|Ike|Kazuya|Donkey Kong|Donkey Kong|||||||||Yes|
+1569|2025-03-23 21:28:16|Wii Fit Trainer|Kazuya|King K. Rool|Byleth|||||||||No|
+1570|2025-03-23 21:31:47|Wii Fit Trainer|Kazuya|King K. Rool|Byleth|||||||||Yes|
+1571|2025-03-23 21:35:50|Wii Fit Trainer|Kazuya|Sephiroth|Pyra & Mythra|||||||||No|
+1572|2025-03-23 21:39:42|Wii Fit Trainer|Kazuya|Sephiroth|Pyra & Mythra|||||||||No|
+1573|2025-03-23 21:43:13|Wii Fit Trainer|Kazuya|Sephiroth|Pyra & Mythra|||||||||No|
+1574|2025-03-23 21:48:14|Wii Fit Trainer|Kazuya|King Dedede|Ness|||||||||No|
+1575|2025-03-23 21:53:54|Wii Fit Trainer|Kazuya|Byleth|Joker|||||||||Yes|
+1576|2025-03-23 21:57:46|Wii Fit Trainer|Kazuya|Sephiroth|Pyra & Mythra|||||||||No|
+1577|2025-03-23 22:02:58|Ike|Kazuya|Roy|Lucas|||||||||Yes|
+1578|2025-03-23 22:08:18|Ike|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1579|2025-03-23 22:12:10|Ike|Kazuya|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1580|2025-03-31 20:47:30|Wii Fit Trainer|Kazuya|Diddy Kong|Pichu|||||||||Yes|
+1581|2025-03-31 20:51:30|Wii Fit Trainer|Kazuya|Ganondorf|Kirby|||||||||Yes|
+1582|2025-03-31 20:55:34|Wii Fit Trainer|Kazuya|Zelda|Link|||||||||No|
+1583|2025-03-31 21:00:41|Wii Fit Trainer|Kazuya|Zelda|Link|||||||||No|
+1584|2025-03-31 21:06:23|Wii Fit Trainer|Kazuya|Joker|Dark Samus|||||||||Yes|
+1585|2025-03-31 21:11:13|Wii Fit Trainer|Kazuya|Ness|Banjo & Kazooie|||||||||No|
+1586|2025-04-02 22:13:19|Donkey Kong|Incineroar|Sephiroth|Ike|||||||||Yes|
+1587|2025-04-05 16:05:14|Wii Fit Trainer|Kazuya|Cloud|Bowser|||||||||No|
+1588|2025-04-05 16:08:51|Wii Fit Trainer|Kazuya|Cloud|Bowser|||||||||Yes|
+1589|2025-04-05 16:14:08|Wii Fit Trainer|Kazuya|Mario|Mario|||||||||Yes|
+1590|2025-04-05 16:18:28|Wii Fit Trainer|Kazuya|Robin|Robin|||||||||Yes|
+1591|2025-04-05 16:33:22|Wii Fit Trainer|Kazuya|Kirby|Wolf|||||||||No|
+1592|2025-04-05 16:38:54|Wii Fit Trainer|Kazuya|Ike|Samus|||||||||Yes|
+1593|2025-06-15 17:37:23|Captain Falcon|Captain Falcon|Wii Fit Trainer|Villager|||||||||No|
+1594|2025-06-15 17:41:21|Captain Falcon|Captain Falcon|Wii Fit Trainer|Villager|||||||||No|
+1595|2025-06-15 17:46:30|Captain Falcon|Captain Falcon|Wii Fit Trainer|Villager|||||||||No|
+1596|2025-06-15 17:51:56|Captain Falcon|Captain Falcon|Wii Fit Trainer|Villager|||||||||No|
+1597|2025-06-15 20:47:41|King K. Rool|Captain Falcon|King K. Rool|Ganondorf|||||||||No|
+1598|2025-08-26 19:58:20|Ganondorf|Captain Falcon|Ike|Little Mac|||||||||Yes|
+1599|2025-08-26 20:02:23|Ganondorf|Captain Falcon|Zelda|King K. Rool|||||||||No|
+1600|2025-08-26 20:06:07|Ganondorf|Captain Falcon|Zelda|King K. Rool|||||||||Yes|
+1601|2025-08-26 20:09:23|Ganondorf|Captain Falcon|Zelda|King K. Rool|||||||||Yes|
+1602|2025-08-26 20:16:18|Ganondorf|Captain Falcon|Piranha Plant|Donkey Kong|||||||||No|
+1603|2025-08-26 20:19:09|Ganondorf|Captain Falcon|Piranha Plant|Donkey Kong|||||||||No|
+1604|2025-08-26 20:22:18|Ganondorf|Captain Falcon|Piranha Plant|Donkey Kong|||||||||Yes|
+1605|2025-08-26 20:25:11|Ganondorf|Captain Falcon|Piranha Plant|Donkey Kong|||||||||Yes|
+1606|2025-08-26 20:27:40|Ganondorf|Captain Falcon|Byleth|Donkey Kong|||||||||Yes|
+1607|2025-08-26 20:30:21|Ganondorf|Captain Falcon|Byleth|Donkey Kong|||||||||No|
+1608|2025-08-26 20:33:09|Ganondorf|Captain Falcon|Byleth|Donkey Kong|||||||||Yes|
+1609|2025-08-26 20:36:23|Captain Falcon|Captain Falcon|Byleth|Donkey Kong|||||||||Yes|
+1610|2025-08-26 20:41:18|Captain Falcon|Captain Falcon|Kirby|Donkey Kong|||||||||No|
+1611|2025-08-26 20:47:20|Captain Falcon|Captain Falcon|Mario|Mario|||||||||Yes|
+1612|2025-08-26 20:55:51|Captain Falcon|Captain Falcon|Sheik|Link|||||||||Yes|
+1613|2025-08-26 22:31:54|Wii Fit Trainer|Captain Falcon|Sephiroth|Zelda|||||||||No|
+1614|2025-08-26 22:36:19|Wii Fit Trainer|Captain Falcon|R.O.B.|Samus|||||||||No|
+1615|2025-08-26 22:41:05|Wii Fit Trainer|Captain Falcon|R.O.B.|Samus|||||||||Yes|
+1616|2025-08-27 20:20:21|King K. Rool|Captain Falcon|Hero|Joker|||||||||Yes|
+1617|2025-08-27 20:26:24|Ganondorf|Ganondorf|Sephiroth|Ike|||||||||Yes|
+1618|2025-08-27 20:32:14|Donkey Kong|Captain Falcon|Mii Gunner|Kirby|||||||||No|
+1619|2025-08-27 20:35:31|Donkey Kong|Captain Falcon|Mii Gunner|Kirby|||||||||No|
+1620|2025-08-27 20:39:52|Donkey Kong|Captain Falcon|Mii Gunner|Kirby|||||||||Yes|
+1621|2025-08-27 20:44:37|Donkey Kong|Captain Falcon|Mii Gunner|Kirby|||||||||No|
+1622|2025-08-27 20:49:42|Wii Fit Trainer|Captain Falcon|King Dedede|Little Mac|||||||||No|
+1623|2025-08-27 20:52:35|Wii Fit Trainer|Captain Falcon|King Dedede|Little Mac|||||||||No|
+1624|2025-08-27 20:56:08|Wii Fit Trainer|Captain Falcon|King Dedede|Little Mac|||||||||No|
+1625|2025-08-27 21:00:00|Wii Fit Trainer|Captain Falcon|King Dedede|Little Mac|||||||||No|
+1626|2025-08-27 21:04:13|Wii Fit Trainer|Captain Falcon|King Dedede|Little Mac|||||||||No|
+1627|2025-08-27 21:12:23|Ike|Captain Falcon|King Dedede|Lucario|||||||||Yes|
+1628|2025-08-28 19:26:12|Incineroar|Captain Falcon|R.O.B.|Ganondorf|||||||||No|
+1629|2025-08-28 19:30:32|Incineroar|Captain Falcon|R.O.B.|Ganondorf|||||||||No|
+1630|2025-08-28 19:41:25|Incineroar|Captain Falcon|Sonic|Captain Falcon|||||||||Yes|
+1631|2025-08-28 19:45:47|Zelda|Captain Falcon|Sonic|Captain Falcon|||||||||Yes|
+1632|2025-08-28 19:51:41|Ganondorf|Ganondorf|Steve|Little Mac|||||||||No|
+1633|2025-08-28 19:55:13|Ganondorf|Ganondorf|Steve|Little Mac|||||||||No|
+1634|2025-08-28 19:58:02|Ganondorf|Ganondorf|Steve|Little Mac|||||||||No|
+1635|2025-08-28 21:57:06|Incineroar|Captain Falcon|Captain Falcon|Pac-Man|||||||||No|
+1636|2025-08-28 22:00:43|Incineroar|Captain Falcon|Incineroar|Robin|||||||||No|
+1637|2025-08-28 22:05:34|Captain Falcon|Captain Falcon|Cloud|Pikachu|||||||||Yes|
+1638|2025-08-28 22:09:05|Captain Falcon|Captain Falcon|Cloud|Pikachu|||||||||Yes|
+1639|2025-09-02 22:37:43|Donkey Kong|Captain Falcon|Joker|Byleth|||||||||Yes|
+1640|2025-09-02 22:38:19|Donkey Kong|Captain Falcon|Palutena|Byleth|||||||||Yes|
+1641|2025-09-02 22:45:19|Donkey Kong|Captain Falcon|Hero|Cloud|||||||||Yes|
+1642|2025-09-02 22:49:02|Donkey Kong|Captain Falcon|Richter|King K. Rool|||||||||Yes|
+1643|2025-09-02 22:51:56|Donkey Kong|Captain Falcon|Richter|King K. Rool|||||||||Yes|
+1644|2025-09-02 22:57:00|Donkey Kong|Captain Falcon|Ike|Falco|||||||||No|
+1645|2025-09-02 23:02:01|Donkey Kong|Captain Falcon|Cloud|Dr. Mario|||||||||Yes|
+1646|2025-09-02 23:05:03|Donkey Kong|Captain Falcon|Captain Falcon|Samus|||||||||No|
+1647|2025-09-02 23:14:51|Captain Falcon|Captain Falcon|Yoshi|Ganondorf|||||||||Yes|
+1648|2025-09-03 21:51:01|Roy|Captain Falcon|King K. Rool|King K. Rool|||||||||No|
+1649|2025-09-03 21:55:34|Ganondorf|Captain Falcon|Pyra & Mythra|Luigi|||||||||No|
+1650|2025-09-03 21:59:30|Ike|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1651|2025-09-03 22:03:02|Ike|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1652|2025-09-03 22:07:39|Ike|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1653|2025-09-03 22:11:14|Ike|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1654|2025-09-03 22:19:31|Ike|Captain Falcon|Mario|Luigi|||||||||No|
+1655|2025-09-03 22:22:49|Ike|Captain Falcon|Mario|Luigi|||||||||No|
+1656|2025-09-03 22:26:33|Ike|Captain Falcon|King K. Rool|Min Min|||||||||No|
+1657|2025-09-03 22:30:33|Ike|Captain Falcon|King K. Rool|Min Min|||||||||No|
+1658|2025-09-03 22:34:20|Ike|Captain Falcon|King K. Rool|Min Min|||||||||No|
+1659|2025-09-06 13:46:38|Ganondorf|Captain Falcon|Meta Knight|Meta Knight|||||||||Yes|
+1660|2025-09-06 13:50:27|Ganondorf|Captain Falcon|Donkey Kong|Diddy Kong|||||||||Yes|
+1661|2025-09-06 13:53:31|Ganondorf|Captain Falcon|Ganondorf|Mii Brawler|||||||||No|
+1662|2025-09-06 17:39:42|Luigi|Captain Falcon|Luigi|Mario|||||||||No|
+1663|2025-09-06 17:44:51|Luigi|Captain Falcon|Luigi|Mario|||||||||No|
+1664|2025-09-08 21:56:52|Ganondorf|Captain Falcon|King K. Rool|Incineroar|||||||||No|
+1665|2025-09-08 22:00:42|Ganondorf|Captain Falcon|King K. Rool|Incineroar|||||||||Yes|
+1666|2025-09-08 22:05:58|Ganondorf|Captain Falcon|Donkey Kong|Kirby|||||||||Yes|
+1667|2025-09-08 22:10:23|Ganondorf|Captain Falcon|Ike|Marth|||||||||Yes|
+1668|2025-09-08 22:13:40|Ganondorf|Captain Falcon|Donkey Kong|King Dedede|||||||||No|
+1669|2025-09-08 22:17:17|Ganondorf|Captain Falcon|Donkey Kong|King Dedede|||||||||Yes|
+1670|2025-09-08 22:21:05|Ganondorf|Captain Falcon|Donkey Kong|King Dedede|||||||||Yes|
+1671|2025-09-08 22:24:18|Ganondorf|Captain Falcon|Little Mac|Ness|||||||||Yes|
+1672|2025-09-08 22:28:14|Ganondorf|Captain Falcon|Kirby|Kirby|||||||||No|
+1673|2025-09-08 22:32:57|Ganondorf|Captain Falcon|Lucas|Young Link|||||||||No|
+1674|2025-09-08 22:39:11|Captain Falcon|Captain Falcon|Lucas|Young Link|||||||||Yes|
+1675|2025-09-08 22:43:21|Captain Falcon|Captain Falcon|Donkey Kong|Samus|||||||||Yes|
+1676|2025-09-11 22:28:37|Bowser|Captain Falcon|Jigglypuff|Kazuya|||||||||Yes|
+1677|2025-09-11 22:30:17|Bowser|Captain Falcon|Inlking|Diddy Kong|||||||||Yes|
+1678|2025-09-11 22:35:06|Bowser|Captain Falcon|Kirby|Diddy Kong|||||||||No|
+1679|2025-09-11 22:43:30|Bowser|Captain Falcon|Sonic|Cloud|||||||||No|
+1680|2025-09-11 22:47:22|Wii Fit Trainer|Captain Falcon|Kirby|Yoshi|||||||||No|
+1681|2025-09-11 22:50:52|Wii Fit Trainer|Captain Falcon|Kirby|Yoshi|||||||||No|
+1682|2025-09-11 22:55:42|Wii Fit Trainer|Captain Falcon|Kirby|Yoshi|||||||||No|
+1683|2025-09-11 23:01:10|Wii Fit Trainer|Captain Falcon|Kirby|Toon Link|||||||||No|
+1684|2025-09-11 23:05:23|Wii Fit Trainer|Captain Falcon|Richter|Richter|||||||||Yes|
+1685|2025-09-12 22:44:54|Incineroar|Captain Falcon|Captain Falcon|Falco|||||||||No|
+1686|2025-09-12 22:49:23|Incineroar|Captain Falcon|Ness|Samus|||||||||No|
+1687|2025-09-12 22:53:42|Incineroar|Incineroar|Ness|Samus|||||||||No|
+1688|2025-09-12 22:59:17|Incineroar|Incineroar|Link|Kirby|||||||||No|
+1689|2025-09-12 23:02:46|Wii Fit Trainer|Kazuya|Ness|Kirby|||||||||No|
+1690|2025-09-12 23:09:42|Wii Fit Trainer|Captain Falcon|Lucas|Kirby|||||||||No|
+1691|2025-09-12 23:13:17|Wii Fit Trainer|Captain Falcon|Captain Falcon|Bayonetta|||||||||No|
+1692|2025-09-12 23:18:41|Wii Fit Trainer|Captain Falcon|Samus|King K. Rool|||||||||No|
+1693|2025-09-12 23:24:19|Wii Fit Trainer|Captain Falcon|Hero|Pyra & Mythra|||||||||No|
+1694|2025-09-12 23:29:52|Wii Fit Trainer|Captain Falcon|Byleth|Peach|||||||||No|
+1695|2025-09-12 23:36:45|Wii Fit Trainer|Captain Falcon|Samus|King K. Rool|||||||||Yes|
+1696|2025-09-13 13:01:32|King K. Rool|Captain Falcon|Wii Fit Trainer|Toon Link|||||||||No|
+1697|2025-09-13 13:05:09|King K. Rool|Captain Falcon|Sephiroth|Kirby|||||||||No|
+1698|2025-09-13 13:09:19|King K. Rool|Captain Falcon|Samus|King Dedede|||||||||No|
+1699|2025-09-13 13:13:11|King K. Rool|Captain Falcon|Samus|King Dedede|||||||||No|
+1700|2025-09-13 13:20:18|King K. Rool|Kazuya|Wii Fit Trainer|Toon Link|||||||||No|
+1701|2025-09-13 13:25:12|King K. Rool|Kazuya|Wii Fit Trainer|Toon Link|||||||||No|
+1702|2025-09-13 13:29:56|Ike|Incineroar|King K. Rool|Dark Samus|||||||||Yes|
+1703|2025-09-13 13:36:18|Ike|Incineroar|King K. Rool|Dark Samus|||||||||No|
+1704|2025-09-13 13:36:50|Ike|Incineroar|King K. Rool|Dark Samus|||||||||Yes|
+1705|2025-09-13 19:44:13|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1706|2025-09-13 19:48:11|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1707|2025-09-13 19:51:23|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1708|2025-09-13 19:55:24|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1709|2025-09-13 19:59:44|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1710|2025-09-13 20:03:05|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1711|2025-09-13 20:05:22|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1712|2025-09-13 20:10:19|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1713|2025-09-13 20:14:19|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1714|2025-09-13 20:17:46|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1715|2025-09-13 20:20:55|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1716|2025-09-13 20:24:14|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1717|2025-09-13 20:27:42|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1718|2025-09-13 20:31:20|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||Yes|
+1719|2025-09-13 20:35:04|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1720|2025-09-13 20:38:44|Ganondorf|Captain Falcon|Ganondorf|King K. Rool|||||||||No|
+1721|2025-09-14 17:49:58|Ganondorf|Ganondorf|Byleth|Wolf|||||||||Yes|
+1722|2025-09-14 17:53:39|Ganondorf|Ganondorf|Byleth|Wolf|||||||||Yes|
+1723|2025-09-14 17:58:37|Ganondorf|Ganondorf|Cloud|Captain Falcon|||||||||Yes|
+1724|2025-09-14 18:02:03|Ganondorf|Ganondorf|Cloud|Captain Falcon|||||||||Yes|
+1725|2025-09-14 18:06:06|Ganondorf|Ganondorf|Mii Swordfighter|Mii Swordfighter|||||||||No|
+1726|2025-09-14 18:09:52|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1727|2025-09-14 18:15:04|Ganondorf|Ganondorf|Kirby|Kirby|||||||||Yes|
+1728|2025-09-14 18:18:28|Ganondorf|Ganondorf|Kirby|Kirby|||||||||Yes|
+1729|2025-09-16 21:28:41|Ganondorf|Ganondorf|Palutena|Palutena|||||||||No|
+1730|2025-09-16 21:33:23|Ganondorf|Ganondorf|Palutena|Palutena|||||||||No|
+1731|2025-09-16 21:37:06|Ganondorf|Ganondorf|Byleth|Pyra & Mythra|||||||||Yes|
+1732|2025-09-16 21:40:13|Ganondorf|Ganondorf|Byleth|Pyra & Mythra|||||||||No|
+1733|2025-09-16 21:43:57|Ganondorf|Ganondorf|Byleth|Pyra & Mythra|||||||||Yes|
+1734|2025-09-16 21:46:42|Ganondorf|Ganondorf|Byleth|Pyra & Mythra|||||||||Yes|
+1735|2025-09-16 21:51:48|Ganondorf|Ganondorf|Ike|Young Link|||||||||Yes|
+1736|2025-09-16 21:55:48|Ganondorf|Ganondorf|Ike|Young Link|||||||||No|
+1737|2025-09-16 22:00:38|Ganondorf|Ganondorf|Ike|Young Link|||||||||Yes|
+1738|2025-09-16 22:03:08|Ganondorf|Ganondorf|Ike|Young Link|||||||||Yes|
+1739|2025-09-17 20:38:48|Ganondorf|Ganondorf|Ridley|Peach|||||||||No|
+1740|2025-09-17 20:42:47|Ganondorf|Ganondorf|Ridley|Peach|||||||||Yes|
+1741|2025-09-17 20:49:08|Ganondorf|Ganondorf|Zero suit Samus|Marth|||||||||Yes|
+1742|2025-09-17 20:52:34|Ganondorf|Ganondorf|Young Link|Mewtwo|||||||||Yes|
+1743|2025-09-17 20:56:11|Ganondorf|Ganondorf|Kirby|Ridley|||||||||Yes|
+1744|2025-09-17 21:00:20|Ganondorf|Ganondorf|Kirby|Jigglypuff|||||||||Yes|
+1745|2025-09-17 21:03:46|Ganondorf|Ganondorf|Kirby|Jigglypuff|||||||||Yes|
+1746|2025-09-17 21:07:40|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||No|
+1747|2025-09-17 21:11:55|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||No|
+1748|2025-09-17 21:15:52|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||No|
+1749|2025-09-17 21:19:53|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||Yes|
+1750|2025-09-17 21:23:26|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||Yes|
+1751|2025-09-17 21:26:27|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||Yes|
+1752|2025-09-17 21:29:02|Ganondorf|Ganondorf|King K. Rool|Ike|||||||||No|
+1753|2025-09-17 21:33:35|Ganondorf|Ganondorf|King Dedede|Cloud|||||||||No|
+1754|2025-09-17 21:38:54|Ganondorf|Ganondorf|King Dedede|Cloud|||||||||No|
+1755|2025-09-17 21:42:44|Ganondorf|Ganondorf|King Dedede|Cloud|||||||||No|
+1756|2025-09-17 21:47:22|Ganondorf|Ganondorf|Zelda|Corrin|||||||||No|
+1757|2025-09-17 21:50:57|Ganondorf|Ganondorf|Marth|Fox|||||||||No|
+1758|2025-09-17 21:57:49|Ike|Captain Falcon|Palutena|Ness|||||||||No|
+1759|2025-09-17 22:01:10|Ike|Captain Falcon|Palutena|Ness|||||||||Yes|
+1760|2025-09-17 22:04:52|Ike|Captain Falcon|Palutena|Ness|||||||||No|
+1761|2025-09-17 22:08:08|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||No|
+1762|2025-09-17 22:13:02|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||Yes|
+1763|2025-09-17 22:17:42|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||No|
+1764|2025-09-17 22:21:08|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||Yes|
+1765|2025-09-17 22:25:45|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||Yes|
+1766|2025-09-17 22:25:50|Ike|Ganondorf|King K. Rool|Captain Falcon|||||||||Yes|
+1767|2025-09-22 22:59:40|Ganondorf|Ganondorf|Samus|Mii Brawler|||||||||Yes|
+1768|2025-09-22 23:03:25|Ganondorf|Ganondorf|Kirby|Link|||||||||Yes|
+1769|2025-09-22 23:06:48|Ganondorf|Ganondorf|Byleth|Byleth|||||||||Yes|
+1770|2025-09-22 23:09:13|Ganondorf|Ganondorf|Byleth|Byleth|||||||||Yes|
+1771|2025-09-22 23:12:15|Ganondorf|Ganondorf|Byleth|Byleth|||||||||Yes|
+1772|2025-09-22 23:15:55|Ganondorf|Ganondorf|King K. Rool|King K. Rool|||||||||Yes|
+1773|2025-09-22 23:18:51|Ganondorf|Ganondorf|King K. Rool|King K. Rool|||||||||Yes|
+1774|2025-09-22 23:22:10|Ganondorf|Ganondorf|King K. Rool|King K. Rool|||||||||No|
+1775|2025-09-22 23:26:00|Ganondorf|Ganondorf|King K. Rool|King K. Rool|||||||||No|
+1776|2025-09-22 23:28:49|Ganondorf|Ganondorf|King K. Rool|King K. Rool|||||||||Yes|
+1777|2025-09-23 22:19:31|Ganondorf|Ganondorf|Bowser|Inlking|||||||||Yes|
+1778|2025-09-23 22:21:45|Ganondorf|Ganondorf|Ganondorf|Ness|||||||||No|
+1779|2025-09-23 22:24:08|Ganondorf|Ganondorf|Ganondorf|Ness|||||||||No|
+1780|2025-09-23 22:26:57|Ganondorf|Ganondorf|Ganondorf|Ness|||||||||No|
+1781|2025-09-23 22:31:45|Ganondorf|Ganondorf|Donkey Kong|Lucario|||||||||Yes|
+1782|2025-09-23 22:35:50|Ganondorf|Ganondorf|King K. Rool|Samus|||||||||Yes|
+1783|2025-09-23 22:39:51|Ganondorf|Ganondorf|Mario|Bowser|||||||||Yes|
+1784|2025-09-23 22:43:41|Ganondorf|Ganondorf|Ganondorf|Ness|||||||||No|
+1785|2025-09-23 22:46:54|Wii Fit Trainer|Ganondorf|Kirby|King Dedede|||||||||No|
+1786|2025-09-23 22:51:39|Wii Fit Trainer|Ganondorf|Kirby|King Dedede|||||||||Yes|
+1787|2025-09-24 22:11:16|Ganondorf|Ganondorf|King K. Rool|Bowser|||||||||Yes|
+1788|2025-09-24 22:21:50|Ganondorf|Ganondorf|Kazuya|Jigglypuff|||||||||No|
+1789|2025-09-24 22:24:19|Ganondorf|Ganondorf|Kazuya|Jigglypuff|||||||||No|
+1790|2025-09-24 22:31:06|Ganondorf|Ganondorf|Lucario|Mii Brawler|||||||||No|
+1791|2025-09-24 22:35:00|Ganondorf|Ganondorf|Link|Mr. Game & Watch|||||||||No|
+1792|2025-09-24 22:41:34|Ike|Ganondorf|Fox|Byleth|||||||||No|
+1793|2025-09-25 23:02:43|Ganondorf|Ganondorf|Cloud|King K. Rool|||||||||No|
+1794|2025-09-25 23:06:05|Ganondorf|Ganondorf|Cloud|King K. Rool|||||||||No|
+1795|2025-09-25 23:10:21|Ganondorf|Ganondorf|Sora|Falco|||||||||No|
+1796|2025-09-25 23:13:26|Ganondorf|Ganondorf|Sora|Falco|||||||||No|
+1797|2025-09-25 23:17:10|Ganondorf|Ganondorf|Jigglypuff|Kazuya|||||||||No|
+1798|2025-09-25 23:20:08|Ganondorf|Ganondorf|Jigglypuff|Kazuya|||||||||No|
+1799|2025-09-25 23:23:56|Ganondorf|Ganondorf|Jigglypuff|Kazuya|||||||||No|
+1800|2025-09-25 23:28:32|Ganondorf|Ganondorf|Kirby|Kirby|||||||||Yes|
+1801|2025-09-28 21:42:24|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1802|2025-09-28 21:43:09|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1803|2025-09-28 21:44:28|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1804|2025-09-28 21:47:29|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1805|2025-09-28 21:50:47|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1806|2025-09-28 21:53:24|Ganondorf|Ganondorf|Ganondorf|Donkey Kong|||||||||No|
+1807|2025-09-28 21:56:12|Ganondorf|Ganondorf|Young Link|Mii Swordfighter|||||||||Yes|
+1808|2025-09-28 21:58:35|Ganondorf|Ganondorf|Ganondorf|Hero|||||||||No|
+1809|2025-09-28 22:01:35|Ganondorf|Ganondorf|Ganondorf|Hero|||||||||No|
+1810|2025-09-28 22:04:35|Ganondorf|Ganondorf|Ganondorf|Hero|||||||||No|
+1811|2025-09-28 22:07:36|Ike|Ganondorf|Sephiroth|Min Min|||||||||No|
+1812|2025-09-28 22:10:58|Ike|Ganondorf|King K. Rool|Ike|||||||||Yes|
+1813|2025-09-28 22:21:16|Ike|Ganondorf|Link|Ike|||||||||Yes|
+1814|2025-09-28 22:24:22|Ike|Ganondorf|Link|Ike|||||||||Yes|
+1815|2025-09-28 22:29:49|Ike|Ganondorf|Ganondorf|King Dedede|||||||||No|
+1816|2025-09-28 22:33:32|Ike|Ganondorf|Joker|Incineroar|||||||||Yes|
+1817|2025-09-29 21:16:48|Ganondorf|Ganondorf|Snake|King K. Rool|||||||||No|
+1818|2025-09-29 21:19:35|Ganondorf|Ganondorf|Snake|King K. Rool|||||||||Yes|
+1819|2025-09-29 21:24:02|Ganondorf|Ganondorf|Snake|King K. Rool|||||||||No|
+1820|2025-09-29 21:27:43|Ganondorf|Ganondorf|Snake|King K. Rool|||||||||Yes|
+1821|2025-09-29 21:30:05|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1822|2025-09-29 21:33:38|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1823|2025-09-29 21:36:19|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||Yes|
+1824|2025-09-29 21:38:35|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1825|2025-09-29 21:41:22|Ganondorf|Ganondorf|Ike|Pyra & Mythra|||||||||No|
+1826|2025-09-29 21:45:39|Captain Falcon|Captain Falcon|Meta Knight|Ganondorf|||||||||Yes|
+1827|2025-09-29 21:52:06|Captain Falcon|Captain Falcon|Link|Kirby|||||||||Yes|
+1828|2025-10-06 17:52:02|Wii Fit Trainer|Ganondorf|Roy|Ike|||||||||Yes|
+1829|2025-10-06 17:58:26|Wii Fit Trainer|Ganondorf|Ganondorf|Donkey Kong|||||||||Yes|
+1830|2025-10-06 18:01:50|Wii Fit Trainer|Ganondorf|Ganondorf|Dark Pit|||||||||Yes|
+1831|2025-10-06 18:05:10|Wii Fit Trainer|Ganondorf|Terry|Donkey Kong|||||||||Yes|
+1832|2025-10-06 18:10:10|Wii Fit Trainer|Ganondorf|Pokemon Trainer|Mii Gunner|||||||||No|
+1833|2025-10-10 23:24:35|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1834|2025-10-10 23:28:46|Ganondorf|Ganondorf|Meta Knight|Pyra & Mythra|||||||||Yes|
+1835|2025-10-10 23:32:23|Ganondorf|Ganondorf|Corrin|Incineroar|||||||||Yes|
+1836|2025-10-10 23:36:28|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1837|2025-10-10 23:39:57|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1838|2025-10-10 23:43:21|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1839|2025-10-10 23:46:28|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1840|2025-10-10 23:50:41|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1841|2025-10-11 00:00:45|Captain Falcon|Captain Falcon|Zero suit Samus|Samus|||||||||Yes|
+1842|2025-10-11 13:35:24|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||Yes|
+1843|2025-10-11 13:39:30|Ganondorf|Ganondorf|Cloud|Mr. Game & Watch|||||||||Yes|
+1844|2025-10-11 13:42:33|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1845|2025-10-11 13:45:26|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1846|2025-10-11 13:48:51|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1847|2025-10-11 13:51:21|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1848|2025-10-11 13:53:58|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1849|2025-10-11 14:00:39|Ganondorf|Ganondorf|Zero suit Samus|Zero suit Samus|||||||||Yes|
+1850|2025-10-11 14:03:15|Ganondorf|Ganondorf|Zero suit Samus|Zero suit Samus|||||||||Yes|
+1851|2025-10-11 14:07:19|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+1852|2025-10-11 14:10:58|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1853|2025-10-11 14:14:49|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1854|2025-10-11 14:18:36|Ganondorf|Ganondorf|Bowser|Samus|||||||||Yes|
+1855|2025-10-12 23:00:58|Ganondorf|Ganondorf|Kirby|Kirby|||||||||Yes|
+1856|2025-10-12 23:03:53|Ganondorf|Ganondorf|Kirby|Kirby|||||||||Yes|
+1857|2025-10-12 23:08:30|Ganondorf|Ganondorf|Kirby|Sonic|||||||||Yes|
+1858|2025-10-12 23:11:56|Ganondorf|Ganondorf|Kirby|Sonic|||||||||Yes|
+1859|2025-10-12 23:16:00|Ganondorf|Ganondorf|Terry|Chrom|||||||||No|
+1860|2025-10-12 23:19:01|Ganondorf|Ganondorf|Terry|Chrom|||||||||Yes|
+1861|2025-10-12 23:22:22|Ganondorf|Ganondorf|Terry|Chrom|||||||||No|
+1862|2025-10-12 23:25:09|Ganondorf|Ganondorf|Terry|Chrom|||||||||Yes|
+1863|2025-10-12 23:28:23|Ganondorf|Ganondorf|Terry|Chrom|||||||||Yes|
+1864|2025-10-13 22:01:46|Ganondorf|Ganondorf|Ice Climbers|Pokemon Trainer|||||||||No|
+1865|2025-10-13 22:02:20|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1866|2025-10-13 22:02:20|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1867|2025-10-13 22:07:39|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||Yes|
+1868|2025-10-13 22:11:10|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||Yes|
+1869|2025-10-13 22:16:06|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+1870|2025-10-13 22:21:21|Ganondorf|Ganondorf|Ganondorf|Incineroar|||||||||Yes|
+1871|2025-10-13 22:25:09|Ganondorf|Ganondorf|Little Mac|King K. Rool|||||||||Yes|
+1872|2025-10-13 22:30:27|Ganondorf|Ganondorf|Bowser|King K. Rool|||||||||Yes|
+1873|2025-10-14 22:55:59|Ganondorf|Ganondorf|Captain Falcon|Ganondorf|||||||||Yes|
+1874|2025-10-14 22:58:28|Ganondorf|Ganondorf|Captain Falcon|Ganondorf|||||||||Yes|
+1875|2025-10-14 23:04:51|Ganondorf|Ganondorf|R.O.B.|Byleth|||||||||Yes|
+1876|2025-10-14 23:09:14|Ganondorf|Ganondorf|Zelda|Donkey Kong|||||||||Yes|
+1877|2025-10-16 22:39:11|Ganondorf|Ganondorf|Byleth|Mario|||||||||Yes|
+1878|2025-10-16 22:40:57|Ganondorf|Ganondorf|Kirby|Little Mac|||||||||Yes|
+1879|2025-10-16 22:42:43|Ganondorf|Ganondorf|Kirby|Little Mac|||||||||Yes|
+1880|2025-10-16 22:44:43|Ganondorf|Ganondorf|Kirby|Little Mac|||||||||Yes|
+1881|2025-10-16 22:47:11|Ganondorf|Ganondorf|Lucas|Little Mac|||||||||No|
+1882|2025-10-16 22:50:08|Ganondorf|Ganondorf|Ganondorf|Little Mac|||||||||Yes|
+1883|2025-10-20 21:28:51|Zelda|Zelda|Kirby|Samus|||||||||No|
+1884|2025-10-20 21:33:02|Zelda|Zelda|Yoshi|Sora|||||||||No|
+1885|2025-10-20 21:37:16|Ganondorf|Ganondorf|Yoshi|Sora|||||||||Yes|
+1886|2025-10-20 21:39:56|Ganondorf|Ganondorf|Mario|Pokemon Trainer|||||||||Yes|
+1887|2025-10-20 21:45:00|Ganondorf|Ganondorf|Sora|Isabelle|||||||||Yes|
+1888|2025-10-21 22:17:25|Ganondorf|Ganondorf|Mii Swordfighter|Mii Swordfighter|||||||||Yes|
+1889|2025-10-21 22:20:52|Ganondorf|Ganondorf|Byleth|Byleth|||||||||Yes|
+1890|2025-10-21 22:24:30|Ganondorf|Ganondorf|Byleth|Piranha Plant|||||||||No|
+1891|2025-10-21 22:28:16|Ganondorf|Ganondorf|Byleth|Piranha Plant|||||||||No|
+1892|2025-11-07 22:26:29|Ganondorf|Ganondorf|Byleth|Ness|||||||||Yes|
+1893|2025-11-07 22:30:58|Ganondorf|Ganondorf|Ness|Ness|||||||||No|
+1894|2025-11-07 22:34:52|Ganondorf|Ganondorf|Kirby|Richter|||||||||Yes|
+1895|2025-11-07 22:38:27|Ganondorf|Ganondorf|Kirby|Sephiroth|||||||||Yes|
+1896|2025-11-07 22:42:56|Ganondorf|Ganondorf|Ganondorf|Isabelle|||||||||Yes|
+1897|2025-11-07 22:46:22|Ganondorf|Ganondorf|Kirby|Kirby|||||||||No|
+1898|2025-11-07 22:50:32|Ganondorf|Ganondorf|Lucas|King Dedede|||||||||Yes|
+1899|2025-11-07 22:54:12|Ganondorf|Ganondorf|Lucas|King Dedede|||||||||No|
+1900|2025-11-07 22:58:35|Ganondorf|Ganondorf|Lucas|King Dedede|||||||||Yes|
+1901|2025-11-07 23:03:46|Ganondorf|Ganondorf|Captain Falcon|Link|||||||||Yes|
+1902|2025-11-08 10:25:59|Ganondorf|Ganondorf|Sephiroth|Steve|||||||||Yes|
+1903|2025-11-08 10:28:39|Ganondorf|Ganondorf|Sephiroth|Steve|||||||||Yes|
+1904|2025-11-08 10:32:40|Ganondorf|Ganondorf|Lucas|Sephiroth|||||||||Yes|
+1905|2025-11-08 10:36:39|Ganondorf|Ganondorf|Dark Samus|Ganondorf|||||||||No|
+1906|2025-11-08 10:39:45|Ganondorf|Ganondorf|Dark Samus|Ganondorf|||||||||Yes|
+1907|2025-11-08 10:43:01|Ganondorf|Ganondorf|Captain Falcon|Captain Falcon|||||||||No|
+1908|2025-11-08 10:46:35|Ganondorf|Ganondorf|Captain Falcon|Captain Falcon|||||||||Yes|
+1909|2025-11-08 10:51:00|Ganondorf|Ganondorf|Incineroar|Incineroar|||||||||No|
+1910|2025-11-08 10:55:08|Ganondorf|Ganondorf|Roy|Ridley|||||||||Yes|
+1911|2025-11-09 20:02:46|Ganondorf|Ganondorf|Link|Pokemon Trainer|||||||||No|
+1912|2025-11-09 20:06:37|Ganondorf|Ganondorf|Mario|Luigi|||||||||No|
+1913|2025-11-09 20:10:51|Ganondorf|Ganondorf|Mario|Luigi|||||||||No|
+1914|2025-11-09 20:14:37|Ganondorf|Ganondorf|Mario|Luigi|||||||||No|
+1915|2025-11-09 20:17:35|Ganondorf|Ganondorf|Link|Samus|||||||||Yes|
+1916|2025-11-09 20:21:01|Ganondorf|Ganondorf|Joker|Robin|||||||||No|
+1917|2025-11-09 20:25:33|Ganondorf|Ganondorf|Corrin|Mewtwo|||||||||No|
+1918|2025-11-09 20:30:34|Ganondorf|Ganondorf|Joker|Robin|||||||||Yes|
+1919|2025-11-12 20:40:33|Captain Falcon|Ganondorf|Mii Gunner|Richter|||||||||No|
+1920|2025-11-12 20:43:01|Donkey Kong|Donkey Kong|Zelda|King K. Rool|||||||||No|
+1921|2025-11-12 20:46:16|Donkey Kong|Donkey Kong|Zelda|King K. Rool|||||||||No|
+1922|2025-11-12 20:52:05|Donkey Kong|Donkey Kong|Zelda|King K. Rool|||||||||No|
+1923|2025-11-12 20:57:00|Donkey Kong|Donkey Kong|Isabelle|Toon Link|||||||||No|
+1924|2025-11-12 21:00:43|Donkey Kong|Donkey Kong|Isabelle|Toon Link|||||||||No|
+1925|2025-11-12 21:04:22|Ganondorf|Ganondorf|Pyra & Mythra|Pyra & Mythra|||||||||No|
+1926|2025-11-13 22:31:13|Ganondorf|Ganondorf|Link|Young Link|||||||||No|
+1927|2025-11-13 22:33:49|Ganondorf|Ganondorf|Robin|Marth|||||||||Yes|
+1928|2025-11-13 22:45:22|Ganondorf|Ganondorf|Cloud|Donkey Kong|||||||||No|
+1929|2025-11-13 22:45:43|Ganondorf|Ganondorf|Wolf|Wolf|||||||||No|
+1930|2025-11-13 22:48:46|Ganondorf|Ganondorf|Captain Falcon|Captain Falcon|||||||||No|
+1931|2025-11-13 22:51:15|Ganondorf|Ganondorf|Captain Falcon|Captain Falcon|||||||||No|
+1932|2025-11-13 22:54:23|Ganondorf|Ganondorf|Donkey Kong|Rosalina|||||||||No|
+1933|2025-11-13 22:58:15|Ganondorf|Ganondorf|Sephiroth|Ice Climbers|||||||||No|
+1934|2025-11-15 22:08:55|Ganondorf|Ganondorf|Pac-Man|Piranha Plant|||||||||No|
+1935|2025-11-15 22:12:33|Ganondorf|Ganondorf|Pac-Man|Piranha Plant|||||||||No|
+1936|2025-11-15 22:16:08|Ganondorf|Ganondorf|Pac-Man|Piranha Plant|||||||||No|
+1937|2025-11-15 22:20:05|Ganondorf|Ganondorf|Kirby|Villager|||||||||Yes|
+1938|2025-11-15 22:23:23|Ganondorf|Ganondorf|Kirby|Ganondorf|||||||||Yes|
+1939|2025-11-15 22:26:42|Ganondorf|Ganondorf|Fox|Chrom|||||||||Yes|
+1940|2025-11-16 14:39:28|Ganondorf|Ganondorf|Lucas|King K. Rool|||||||||Yes|
+1941|2025-11-16 14:44:52|Ganondorf|Ganondorf|Hero|Hero|||||||||Yes|
+1942|2025-11-16 14:48:42|Ganondorf|Ganondorf|Byleth|Little Mac|||||||||Yes|
+1943|2025-11-16 21:43:34|Ganondorf|Ganondorf|Sora|Terry|||||||||Yes|
+1944|2025-11-16 21:46:51|Ganondorf|Ganondorf|Sora|Ganondorf|||||||||No|
+1945|2025-11-16 21:50:47|Ganondorf|Ganondorf|Link|Young Link|||||||||No|
+1946|2025-11-17 21:34:43|Ganondorf|Ganondorf|Palutena|Ike|||||||||Yes|
+1947|2025-11-17 21:38:45|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||Yes|
+1948|2025-11-17 21:41:30|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1949|2025-11-17 21:44:33|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1950|2025-11-17 21:47:32|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1951|2025-11-17 21:51:01|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1952|2025-11-17 21:53:39|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1953|2025-11-17 21:56:37|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1954|2025-11-17 21:59:38|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1955|2025-11-17 22:03:58|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1956|2025-11-17 22:06:10|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1957|2025-11-17 22:09:40|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1958|2025-11-17 22:13:30|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1959|2025-11-17 22:16:30|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1960|2025-11-17 22:19:57|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1961|2025-11-17 22:22:42|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+1962|2025-11-18 21:56:24|Ganondorf|Ganondorf|King K. Rool|Wolf|||||||||Yes|
+1963|2025-11-18 22:33:29|Ganondorf|Ganondorf|King K. Rool|Pikachu|||||||||Yes|
+1964|2025-11-18 22:36:50|Ganondorf|Ganondorf|Sephiroth|Pyra & Mythra|||||||||Yes|
+1965|2025-11-18 22:41:05|Ganondorf|Ganondorf|Sephiroth|Ganondorf|||||||||No|
+1966|2025-11-18 22:45:04|Ganondorf|Ganondorf|Kirby|Steve|||||||||Yes|
+1967|2025-11-18 22:49:56|Ganondorf|Ganondorf|Kirby|Steve|||||||||Yes|
+1968|2025-11-19 20:03:15|Incineroar|Donkey Kong|Lucas|Samus|||||||||Yes|
+1969|2025-11-19 20:12:22|Incineroar|Donkey Kong|Kirby|Sora|||||||||Yes|
+1970|2025-11-19 20:21:56|Ganondorf|Ganondorf|Corrin|Kirby|||||||||Yes|
+1971|2025-11-19 20:24:42|Ganondorf|Ganondorf|Ganondorf|Samus|||||||||Yes|
+1972|2025-11-19 21:57:02|Ganondorf|Ganondorf|Captain Falcon|Ryu|||||||||No|
+1973|2025-11-19 22:00:44|Captain Falcon|Kazuya|Samus|Dark Samus|||||||||Yes|
+1974|2025-11-19 22:06:01|Captain Falcon|Kazuya|Link|Byleth|||||||||Yes|
+1975|2025-11-19 22:10:24|Wii Fit Trainer|Kazuya|Duck Hunt|Mii Brawler|||||||||Yes|
+1976|2025-11-19 22:14:14|Wii Fit Trainer|Kazuya|King K. Rool|Steve|||||||||Yes|
+1977|2025-11-19 22:19:44|Wii Fit Trainer|Kazuya|Palutena|Richter|||||||||No|
+1978|2025-11-19 22:23:51|Wii Fit Trainer|Kazuya|Little Mac|Joker|||||||||No|
+1979|2025-11-19 22:27:33|Wii Fit Trainer|Kazuya|Little Mac|Joker|||||||||No|
+1980|2025-11-19 22:30:35|Ike|Ganondorf|Link|Byleth|||||||||No|
+1981|2025-11-19 22:34:19|Ike|Ganondorf|Captain Falcon|Captain Falcon|||||||||Yes|
+1982|2025-11-20 22:05:02|King K. Rool|Kazuya|Donkey Kong|Sephiroth|||||||||Yes|
+1983|2025-11-22 19:51:06|Wii Fit Trainer|Lucas|Ness|Mewtwo|||||||||Yes|
+1984|2025-11-22 19:56:00|Wii Fit Trainer|Incineroar|Kirby|Kirby|||||||||No|
+1985|2025-11-22 20:00:18|Wii Fit Trainer|Incineroar|Meta Knight|Little Mac|||||||||Yes|
+1986|2025-11-22 20:05:17|Wii Fit Trainer|Incineroar|Link|Lucina|||||||||No|
+1987|2025-11-22 20:08:50|Wii Fit Trainer|Incineroar|Banjo & Kazooie|Byleth|||||||||No|
+1988|2025-11-22 20:17:38|Wii Fit Trainer|Incineroar|Captain Falcon|Captain Falcon|||||||||No|
+1989|2025-11-22 20:21:25|Wii Fit Trainer|Incineroar|Ganondorf|Captain Falcon|||||||||Yes|
+1990|2025-11-22 20:25:27|Wii Fit Trainer|Incineroar|Samus|Dark Samus|||||||||Yes|
+1991|2025-11-22 20:29:02|Wii Fit Trainer|Incineroar|Donkey Kong|Link|||||||||No|
+1992|2025-11-22 20:33:59|Wii Fit Trainer|Incineroar|Piranha Plant|Ganondorf|||||||||Yes|
+1993|2025-11-23 20:49:37|Ganondorf|Ganondorf|Jigglypuff|Ganondorf|||||||||No|
+1994|2025-11-23 20:53:59|Ganondorf|Ganondorf|Ness|Mr. Game & Watch|||||||||No|
+1995|2025-11-23 20:55:47|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1996|2025-11-23 20:58:10|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1997|2025-11-23 21:00:27|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1998|2025-11-23 21:03:42|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+1999|2025-11-23 21:06:04|Ganondorf|Ganondorf|Donkey Kong|Donkey Kong|||||||||No|
+2000|2025-11-23 21:10:31|Ganondorf|Ganondorf|Kirby|Dr. Mario|||||||||Yes|
+2001|2025-11-23 21:17:50|Ganondorf|Ganondorf|Snake|Dark Pit|||||||||Yes|
+2002|2025-11-24 21:11:07|Ganondorf|Ganondorf|Sora|Cloud|||||||||No|
+2003|2025-11-24 21:14:12|Ganondorf|Ganondorf|Zero suit Samus|King K. Rool|||||||||No|
+2004|2025-11-24 21:17:25|Ganondorf|Ganondorf|Zero suit Samus|King K. Rool|||||||||No|
+2005|2025-11-24 21:20:22|Ganondorf|Ganondorf|Zero suit Samus|King K. Rool|||||||||No|
+2006|2025-11-24 21:22:46|Ganondorf|Ganondorf|Sora|Hero|||||||||No|
+2007|2025-11-24 21:27:02|Ganondorf|Ganondorf|Sephiroth|Terry|||||||||Yes|
+2008|2025-11-24 21:29:55|Ganondorf|Ganondorf|Joker|Dark Pit|||||||||Yes|
+2009|2025-11-24 21:32:36|Ganondorf|Ganondorf|Lucas|Lucas|||||||||Yes|
+2010|2025-11-24 21:35:24|Ganondorf|Ganondorf|Hero|Dr. Mario|||||||||Yes|
+2011|2025-11-24 21:40:26|Ganondorf|Ganondorf|King Dedede|Min Min|||||||||Yes|
+2012|2025-11-24 21:44:45|Ganondorf|Ganondorf|Roy|Snake|||||||||No|
+2013|2025-11-24 21:48:53|Ganondorf|Ganondorf|Pikachu|Cloud|||||||||No|
+2014|2025-11-24 21:52:53|Ike|Ganondorf|King Dedede|King Dedede|||||||||No|
+2015|2025-11-24 21:56:29|Ike|Ganondorf|Donkey Kong|Donkey Kong|||||||||Yes|
+2016|2025-11-24 22:18:26|Ganondorf|Ganondorf|Joker|Mega Man|||||||||No|
+2017|2025-11-24 22:21:43|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+2018|2025-11-24 22:33:44|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||Yes|
+2019|2025-11-24 22:37:08|Ganondorf|Ganondorf|King Dedede|King Dedede|||||||||No|
+2020|2025-11-25 20:13:53|Ganondorf|Ganondorf|Donkey Kong|Young Link|||||||||Yes|
+2021|2025-11-25 20:20:17|Ganondorf|Ganondorf|Ike|Mr. Game & Watch|||||||||Yes|
+2022|2025-11-25 20:24:06|Ganondorf|Ganondorf|Pyra & Mythra|Bayonetta|||||||||No|
+2023|2025-11-25 20:27:12|Ganondorf|Ganondorf|R.O.B.|Pyra & Mythra|||||||||No|
+2024|2025-11-25 20:32:11|Ganondorf|Ganondorf|Luigi|Cloud|||||||||No|
+2025|2025-11-30 21:02:38|Ganondorf|Ganondorf|Hero|King K. Rool|||||||||No|
+2026|2025-11-30 21:05:03|Ganondorf|Ganondorf|Hero|King K. Rool|||||||||No|
+2027|2025-11-30 21:08:13|Ganondorf|Ganondorf|Sephiroth|Ice Climbers|||||||||Yes|
+2028|2025-11-30 21:13:23|Ganondorf|Ganondorf|Samus|Terry|||||||||No|
+2029|2025-11-30 21:16:42|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+2030|2025-11-30 21:19:49|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||Yes|
+2031|2025-11-30 21:22:51|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||Yes|
+2032|2025-11-30 21:24:49|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+2033|2025-11-30 21:28:15|Ganondorf|Ganondorf|Donkey Kong|King K. Rool|||||||||No|
+2034|2025-12-04 22:15:20|Wii Fit Trainer|Ganondorf|Sonic|Hero|||||||||No|
+2035|2025-12-04 22:18:11|Wii Fit Trainer|Ganondorf|Kazuya|Pyra & Mythra|||||||||No|
+2036|2025-12-04 22:21:39|Wii Fit Trainer|Ganondorf|Bowser|Mr. Game & Watch|||||||||No|
+2037|2025-12-04 22:28:45|Wii Fit Trainer|Ganondorf|Ness|Ike|||||||||Yes|
+2038|2025-12-04 22:32:53|Wii Fit Trainer|Ganondorf|Ness|Ike|||||||||Yes|
+2039|2025-12-04 22:37:19|Wii Fit Trainer|Ganondorf|Villager|Isabelle|||||||||No|
+2040|2025-12-04 22:42:34|Wii Fit Trainer|Ganondorf|Mega Man|Bowser|||||||||Yes|
+2041|2025-12-07 21:08:41|Ganondorf|Ganondorf|Bowser|Chrom|||||||||Yes|
+2042|2025-12-07 21:09:09|Ganondorf|Ganondorf|Shulk|Palutena|||||||||No|
+2043|2025-12-07 21:09:11|Ganondorf|Ganondorf|Shulk|Palutena|||||||||No|
+2044|2025-12-07 21:12:54|Ganondorf|Ganondorf|Young Link|Wolf|||||||||No|
+2045|2025-12-07 21:17:04|Ganondorf|Ganondorf|Sephiroth|Wii Fit Trainer|||||||||Yes|
+2046|2025-12-07 21:20:29|Ganondorf|Ganondorf|King K. Rool|Incineroar|||||||||No|
+2047|2025-12-07 21:23:07|Ganondorf|Ganondorf|King K. Rool|Incineroar|||||||||Yes|
+2048|2025-12-07 21:26:37|Ganondorf|Ganondorf|King K. Rool|Incineroar|||||||||No|
+2049|2025-12-07 21:29:14|Ganondorf|Ganondorf|Byleth|Cloud|||||||||No|
+2050|2025-12-09 21:12:12|Ganondorf|Ganondorf|Marth|R.O.B.|||||||||No|
+2051|2025-12-09 21:12:31|Ganondorf|Ganondorf|Steve|Steve|||||||||Yes|
+2052|2025-12-09 21:13:18|Ganondorf|Ganondorf|Steve|Mii Swordfighter|||||||||Yes|
+2053|2025-12-09 21:17:14|Ganondorf|Ganondorf|Little Mac|Little Mac|||||||||Yes|
+2054|2025-12-09 21:21:28|Ganondorf|Ganondorf|Ganondorf|Pyra & Mythra|||||||||No|
+2055|2025-12-09 21:25:59|Donkey Kong|Captain Falcon|Ganondorf|Hero|||||||||No|
+2056|2025-12-09 21:29:39|Donkey Kong|Captain Falcon|Ganondorf|Hero|||||||||No|
+2057|2025-12-09 21:33:17|Donkey Kong|Captain Falcon|Ganondorf|Hero|||||||||No|
+2058|2025-12-09 21:37:20|Donkey Kong|Captain Falcon|Ganondorf|Hero|||||||||No|
+2059|2025-12-09 21:40:11|Donkey Kong|Captain Falcon|Ganondorf|Hero|||||||||No|
+2060|2025-12-09 21:45:10|Donkey Kong|Captain Falcon|King K. Rool|Lucas|||||||||No|
+2061|2025-12-09 21:50:11|Donkey Kong|Captain Falcon|King K. Rool|Lucas|||||||||No|
+2062|2025-12-09 21:56:40|Donkey Kong|Captain Falcon|Chrom|Pyra & Mythra|||||||||Yes|
+2063|2025-12-09 22:01:38|Ike|Captain Falcon|Ganondorf|Samus|||||||||No|
+2064|2025-12-09 22:05:17|Ike|Captain Falcon|Hero|Pyra & Mythra|||||||||Yes|
+2065|2026-01-24 11:57:37|Ike|Captain Falcon|Hero|Pyra & Mythra|||||||||Yes|

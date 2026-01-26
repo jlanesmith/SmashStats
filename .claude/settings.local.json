@@ -12,7 +12,15 @@
       "Bash(python webapp/import_csv.py:*)",
       "Bash(sqlite3:*)",
       "Bash(pip3 show:*)",
-      "Bash(pip3 install:*)"
+      "Bash(pip3 install:*)",
+      "Bash(python import_csv.py:*)",
+      "Bash(python migrate_datetime_format.py:*)",
+      "Bash(for db in /Users/jonathanlanesmith/Code/SmashStats/*.db /Users/jonathanlanesmith/Code/SmashStats/webapp/*.db)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(ls:*)",
+      "Bash(cut:*)"
     ]
   }
 }

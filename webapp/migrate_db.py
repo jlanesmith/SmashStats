@@ -16,8 +16,9 @@ if __name__ == "__main__":
     print("=" * 50)
     print("SmashStats Database Migration")
     print("=" * 50)
-    print("\nThis will update your database to allow NULL values")
-    print("for all player stats (KOs, falls, damage).\n")
+    print("\nThis will update your database to:")
+    print("- Allow NULL values for all player stats")
+    print("- Remove falls columns (no longer tracked)\n")
 
     response = input("Continue? (y/n): ").strip().lower()
     if response == 'y':

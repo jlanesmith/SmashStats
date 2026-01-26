@@ -37,10 +37,6 @@ def init_db():
             p2_kos INTEGER,
             p3_kos INTEGER,
             p4_kos INTEGER,
-            p1_falls INTEGER,
-            p2_falls INTEGER,
-            p3_falls INTEGER,
-            p4_falls INTEGER,
             p1_damage INTEGER,
             p2_damage INTEGER,
             p3_damage INTEGER,
@@ -104,10 +100,9 @@ def save_game_result(result: dict) -> int:
             datetime,
             p1_character, p2_character, p3_character, p4_character,
             p1_kos, p2_kos, p3_kos, p4_kos,
-            p1_falls, p2_falls, p3_falls, p4_falls,
             p1_damage, p2_damage, p3_damage, p4_damage,
             win, opponent
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         result['datetime'],
         result.get('p1_character', ''),
@@ -118,10 +113,6 @@ def save_game_result(result: dict) -> int:
         result.get('p2_kos'),
         result.get('p3_kos'),
         result.get('p4_kos'),
-        result.get('p1_falls'),
-        result.get('p2_falls'),
-        result.get('p3_falls'),
-        result.get('p4_falls'),
         result.get('p1_damage'),
         result.get('p2_damage'),
         result.get('p3_damage'),
@@ -398,11 +389,13 @@ def get_today_stats():
         matchup_wins = sum(1 for m in matching_matchups if m['matchup_result'] == 1.0)
         matchup_losses = sum(1 for m in matching_matchups if m['matchup_result'] == 0.0)
         matchup_ties = len(matching_matchups) - matchup_wins - matchup_losses
-        matchup_win_pct = matchup_wins / len(matching_matchups) * 100
+        # Count ties as 0.5 wins and 0.5 losses for display
+        adjusted_wins = matchup_wins + (0.5 * matchup_ties)
+        adjusted_losses = matchup_losses + (0.5 * matchup_ties)
+        matchup_win_pct = (adjusted_wins / len(matching_matchups)) * 100
     else:
-        matchup_wins = 0
-        matchup_losses = 0
-        matchup_ties = 0
+        adjusted_wins = 0
+        adjusted_losses = 0
         matchup_win_pct = 0
 
     return {
@@ -410,9 +403,9 @@ def get_today_stats():
         "today_wins": wins_today,
         "today_losses": total_today - wins_today,
         "today_matchups": len(today_matchups),
-        "matchup_wins": matchup_wins,
-        "matchup_losses": matchup_losses,
-        "matchup_ties": matchup_ties,
+        "matchup_wins": adjusted_wins,
+        "matchup_losses": adjusted_losses,
+        "matchup_ties": 0,  # Don't show ties separately
         "matchup_win_pct": round(matchup_win_pct, 1)
     }
 
@@ -452,19 +445,21 @@ def get_last_month_stats():
         matchup_wins = sum(1 for m in matching_matchups if m['matchup_result'] == 1.0)
         matchup_losses = sum(1 for m in matching_matchups if m['matchup_result'] == 0.0)
         matchup_ties = len(matching_matchups) - matchup_wins - matchup_losses
+        # Count ties as 0.5 wins and 0.5 losses for display
+        adjusted_wins = matchup_wins + (0.5 * matchup_ties)
+        adjusted_losses = matchup_losses + (0.5 * matchup_ties)
         total = len(matching_matchups)
-        matchup_win_pct = matchup_wins / total * 100 if total > 0 else 0
+        matchup_win_pct = (adjusted_wins / total) * 100 if total > 0 else 0
     else:
-        matchup_wins = 0
-        matchup_losses = 0
-        matchup_ties = 0
+        adjusted_wins = 0
+        adjusted_losses = 0
         matchup_win_pct = 0
 
     return {
         "month_matchups": len(matching_matchups),
-        "matchup_wins": matchup_wins,
-        "matchup_losses": matchup_losses,
-        "matchup_ties": matchup_ties,
+        "matchup_wins": adjusted_wins,
+        "matchup_losses": adjusted_losses,
+        "matchup_ties": 0,  # Don't show ties separately
         "matchup_win_pct": round(matchup_win_pct, 1)
     }
 
@@ -498,7 +493,6 @@ def update_game(game_id: int, data: dict):
     values = []
     for key in ['datetime', 'p1_character', 'p2_character', 'p3_character', 'p4_character',
                 'p1_kos', 'p2_kos', 'p3_kos', 'p4_kos',
-                'p1_falls', 'p2_falls', 'p3_falls', 'p4_falls',
                 'p1_damage', 'p2_damage', 'p3_damage', 'p4_damage',
                 'win', 'opponent']:
         if key in data:
@@ -543,17 +537,60 @@ def delete_game(game_id: int):
     return deleted
 
 
-def migrate_to_nullable_stats():
+def get_character_stats():
     """
-    Migrate existing database to allow NULL values for all player stats.
-    This removes DEFAULT 0 constraints from KO/falls/damage columns.
+    Get character statistics for p1 and p2 based on matchups.
+
+    Returns:
+        dict: Stats for each player position with character counts and success rates
     """
     conn = get_connection()
     cursor = conn.cursor()
 
-    print("Migrating database schema to allow NULL stats...")
+    result = {'p1': [], 'p2': []}
 
-    # Create new table with nullable stats
+    for player in ['p1', 'p2']:
+        cursor.execute(f"""
+            SELECT
+                {player}_character as character,
+                COUNT(*) as count,
+                SUM(CASE WHEN matchup_result = 1.0 THEN 1 ELSE 0 END) as wins,
+                SUM(CASE WHEN matchup_result = 0.5 THEN 1 ELSE 0 END) as ties,
+                SUM(CASE WHEN matchup_result = 0.0 THEN 1 ELSE 0 END) as losses,
+                AVG(matchup_result) * 100 as success_rate
+            FROM matchups
+            WHERE {player}_character IS NOT NULL AND {player}_character != ''
+            GROUP BY {player}_character
+            ORDER BY count DESC
+        """)
+
+        for row in cursor.fetchall():
+            result[player].append({
+                'character': row['character'],
+                'count': row['count'],
+                'wins': row['wins'],
+                'ties': row['ties'],
+                'losses': row['losses'],
+                'win_pct': round(row['success_rate'], 1)
+            })
+
+    conn.close()
+    return result
+
+
+def migrate_to_nullable_stats():
+    """
+    Migrate existing database to allow NULL values for all player stats
+    and remove falls columns (no longer tracked).
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    print("Migrating database schema...")
+    print("- Allowing NULL stats")
+    print("- Removing falls columns")
+
+    # Create new table without falls columns
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS games_new (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -566,10 +603,6 @@ def migrate_to_nullable_stats():
             p2_kos INTEGER,
             p3_kos INTEGER,
             p4_kos INTEGER,
-            p1_falls INTEGER,
-            p2_falls INTEGER,
-            p3_falls INTEGER,
-            p4_falls INTEGER,
             p1_damage INTEGER,
             p2_damage INTEGER,
             p3_damage INTEGER,
@@ -579,9 +612,22 @@ def migrate_to_nullable_stats():
         )
     """)
 
-    # Copy data from old table to new table
+    # Copy data from old table to new table (excluding falls columns)
     cursor.execute("""
-        INSERT INTO games_new SELECT * FROM games
+        INSERT INTO games_new (
+            id, datetime,
+            p1_character, p2_character, p3_character, p4_character,
+            p1_kos, p2_kos, p3_kos, p4_kos,
+            p1_damage, p2_damage, p3_damage, p4_damage,
+            win, opponent
+        )
+        SELECT
+            id, datetime,
+            p1_character, p2_character, p3_character, p4_character,
+            p1_kos, p2_kos, p3_kos, p4_kos,
+            p1_damage, p2_damage, p3_damage, p4_damage,
+            win, opponent
+        FROM games
     """)
 
     # Drop old table
@@ -600,7 +646,9 @@ def migrate_to_nullable_stats():
     conn.commit()
     conn.close()
 
-    print("Migration complete! All player stats can now be NULL.")
+    print("Migration complete!")
+    print("- All player stats can now be NULL")
+    print("- Falls columns removed")
 
 
 if __name__ == "__main__":

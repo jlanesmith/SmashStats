@@ -211,7 +211,6 @@ class LiveAnalyzer:
         print(f"Debug frames will be saved to: {self.debug_frames_dir}")
 
         # Create frame processor with shared state machine logic
-        # Use shorter wait for live mode (12 frames at ~2.4fps capture rate = ~5 seconds)
         self.processor = FrameProcessor(
             templates=self.templates,
             threshold=self.threshold,
@@ -221,12 +220,11 @@ class LiveAnalyzer:
             on_game_complete=self._on_game_complete,
             verbose=True
         )
-        # Override wait time for live mode (fewer frames due to skip rate)
-        self.processor.WAIT_AFTER_GAME = 12
+        # Use default WAIT_AFTER_GAME (300 frames = 5 seconds at 60fps)
 
         print(f"\nStream opened: {video_width}x{video_height} @ {self.fps:.1f}fps (detected)")
         print(f"Processing at: {self.target_width}x{self.target_height}")
-        print(f"Capture rate: 1/25 frames for characters/game, 1/2 frames for player results")
+        print(f"Frame skip rates controlled by FrameProcessor.get_frame_skip()")
         print(f"Buffer size: {self.frame_buffer.max_size} frames max")
 
         frame_interval = 1.0 / self.fps if self.fps > 0 else 1.0 / 60
@@ -246,11 +244,8 @@ class LiveAnalyzer:
                 time.sleep(0.01)
                 continue
 
-            # Dynamic skip based on processor state
-            if self.processor.state == State.LOOKING_FOR_RESULTS:
-                capture_skip = 2  # Check every 2 frames for player results
-            else:
-                capture_skip = 25  # Check every 25 frames for characters/game
+            # Use processor's frame skip as single source of truth
+            capture_skip = self.processor.get_frame_skip()
 
             # Only add frames at the appropriate skip rate
             if frame_count % capture_skip == 0:
@@ -470,11 +465,11 @@ def main():
     if platform.system() == "Darwin":
         try:
             caffeinate_proc = subprocess.Popen(
-                ["caffeinate", "-s"],
+                ["caffeinate", "-d", "-i", "-s"],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL
             )
-            print("Started caffeinate to keep capture card active during display sleep")
+            print("Started caffeinate to prevent display/system sleep for capture card")
         except Exception as e:
             print(f"Warning: Could not start caffeinate: {e}")
 
