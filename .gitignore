@@ -6,7 +6,7 @@ game_captures/
 live_captures/
 
 # Python
-__pycache__/
+**/__pycache__
 *.py[cod]
 .venv/
 venv/

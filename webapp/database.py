@@ -4,11 +4,12 @@ Database module for SmashStats.
 Uses SQLite for local storage of game results.
 """
 
+import os
 import sqlite3
 from pathlib import Path
 
-# Database path - stored in the project root
-DB_PATH = Path(__file__).parent.parent / "smashstats.db"
+# Database path - use DATABASE_PATH env var if set (for Railway), otherwise project root
+DB_PATH = Path(os.environ.get("DATABASE_PATH", Path(__file__).parent.parent / "smashstats.db"))
 
 
 def get_connection():

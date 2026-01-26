@@ -20,7 +20,8 @@
       "Bash(echo:*)",
       "Bash(done)",
       "Bash(ls:*)",
-      "Bash(cut:*)"
+      "Bash(cut:*)",
+      "Bash(git check-ignore:*)"
     ]
   }
 }
