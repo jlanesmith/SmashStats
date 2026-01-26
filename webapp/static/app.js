@@ -9,9 +9,21 @@ let overallChart = null;
 let monthChart = null;
 let p1CharacterChart = null;
 let p2CharacterChart = null;
+let p1MonthChart = null;
+let p2MonthChart = null;
+let p1KoDamageChart = null;
+let p2KoDamageChart = null;
+let opponentsKoDamageChart = null;
+let opponentsCharacterChart = null;
+let weekdayChart = null;
+let halfhourChart = null;
+let dailyChart = null;
+let orderChart = null;
+let opponentPairsChart = null;
+let streaksChart = null;
 
 // Tab switching
-function showTab(tabName) {
+function showTab(tabName, updateHash = true) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
     document.querySelectorAll('.tab-btn').forEach(el => {
         el.classList.remove('tab-active');
@@ -22,6 +34,18 @@ function showTab(tabName) {
     const activeTab = document.getElementById(`tab-${tabName}`);
     activeTab.classList.add('tab-active');
     activeTab.classList.remove('text-gray-500');
+
+    // Update URL hash for tab persistence
+    if (updateHash) {
+        window.location.hash = tabName;
+    }
+}
+
+// Get tab from URL hash
+function getTabFromHash() {
+    const hash = window.location.hash.slice(1); // Remove the #
+    const validTabs = ['games', 'matchups', 'graphs'];
+    return validTabs.includes(hash) ? hash : 'games';
 }
 
 // Format date for display
@@ -453,6 +477,747 @@ async function loadCharacterCharts() {
     }
 }
 
+// Load and render monthly character charts
+async function loadMonthCharacterCharts() {
+    try {
+        const response = await fetch('/api/stats/characters/month');
+        const data = await response.json();
+
+        // Destroy existing charts if they exist
+        if (p1MonthChart) p1MonthChart.destroy();
+        if (p2MonthChart) p2MonthChart.destroy();
+
+        // Create P1 month character chart
+        p1MonthChart = createCharacterChart('p1-month-chart', data.p1, 'P1 Last 30 Days');
+
+        // Create P2 month character chart
+        p2MonthChart = createCharacterChart('p2-month-chart', data.p2, 'P2 Last 30 Days');
+
+    } catch (error) {
+        console.error('Error loading monthly character charts:', error);
+    }
+}
+
+// Create a KO/Damage chart for a player
+function createKoDamageChart(canvasId, characterData, title) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+
+    if (!characterData || characterData.length === 0) {
+        return new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ['No Data'], datasets: [{ data: [0] }] },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
+
+    const labels = characterData.map(d => d.character);
+    const kos = characterData.map(d => d.avg_kos);
+    const damage = characterData.map(d => d.avg_damage);
+    const counts = characterData.map(d => d.count);
+
+    return new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Count',
+                    data: counts,
+                    type: 'line',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointBackgroundColor: 'rgba(34, 197, 94, 1)',
+                    fill: false,
+                    yAxisID: 'y2',
+                    order: 0
+                },
+                {
+                    label: 'Avg KOs',
+                    data: kos,
+                    backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                    borderColor: 'rgba(96, 165, 250, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y',
+                    order: 1
+                },
+                {
+                    label: 'Avg Damage',
+                    data: damage,
+                    backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y1',
+                    order: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'KOs'
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true,
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Damage'
+                    }
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true,
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+// Load and render KO/Damage charts
+async function loadKoDamageCharts() {
+    try {
+        const response = await fetch('/api/stats/characters/ko-damage');
+        const data = await response.json();
+
+        // Destroy existing charts if they exist
+        if (p1KoDamageChart) p1KoDamageChart.destroy();
+        if (p2KoDamageChart) p2KoDamageChart.destroy();
+
+        // Create P1 KO/Damage chart
+        p1KoDamageChart = createKoDamageChart('p1-ko-damage-chart', data.p1, 'P1 KOs & Damage');
+
+        // Create P2 KO/Damage chart
+        p2KoDamageChart = createKoDamageChart('p2-ko-damage-chart', data.p2, 'P2 KOs & Damage');
+
+    } catch (error) {
+        console.error('Error loading KO/Damage charts:', error);
+    }
+}
+
+// Load and render opponents character chart
+async function loadOpponentsCharacterChart() {
+    try {
+        const response = await fetch('/api/stats/characters/opponents');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (opponentsCharacterChart) opponentsCharacterChart.destroy();
+
+        // Create opponents character chart
+        opponentsCharacterChart = createCharacterChart('opponents-characters-chart', data, 'Opponents Characters');
+
+    } catch (error) {
+        console.error('Error loading opponents character chart:', error);
+    }
+}
+
+// Load and render opponents KO/Damage chart
+async function loadOpponentsKoDamageChart() {
+    try {
+        const response = await fetch('/api/stats/characters/opponents/ko-damage');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (opponentsKoDamageChart) opponentsKoDamageChart.destroy();
+
+        // Create opponents KO/Damage chart
+        opponentsKoDamageChart = createKoDamageChart('opponents-ko-damage-chart', data, 'Opponents KOs & Damage');
+
+    } catch (error) {
+        console.error('Error loading opponents KO/Damage chart:', error);
+    }
+}
+
+// Load and render weekday performance chart
+async function loadWeekdayChart() {
+    try {
+        const response = await fetch('/api/stats/weekday');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (weekdayChart) weekdayChart.destroy();
+
+        const ctx = document.getElementById('weekday-chart').getContext('2d');
+
+        const labels = data.map(d => d.day);
+        const counts = data.map(d => d.count);
+        const winPcts = data.map(d => d.win_pct);
+
+        weekdayChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Count',
+                        data: counts,
+                        backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                        borderColor: 'rgba(96, 165, 250, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y',
+                        order: 1
+                    },
+                    {
+                        label: 'Success %',
+                        data: winPcts,
+                        type: 'line',
+                        borderColor: 'rgba(185, 80, 70, 1)',
+                        backgroundColor: 'rgba(185, 80, 70, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: 'rgba(185, 80, 70, 1)',
+                        pointRadius: 5,
+                        fill: false,
+                        tension: 0.1,
+                        yAxisID: 'y1',
+                        order: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Day'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: false
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'percentLabels',
+                afterDatasetsDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    const dataset = chart.data.datasets[1]; // Line dataset
+                    const meta = chart.getDatasetMeta(1);
+
+                    ctx.save();
+                    ctx.font = 'bold 12px Arial';
+                    ctx.fillStyle = 'rgba(185, 80, 70, 1)';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    meta.data.forEach((point, index) => {
+                        const value = dataset.data[index];
+                        if (value > 0) {
+                            ctx.fillText(value + '%', point.x, point.y - 8);
+                        }
+                    });
+
+                    ctx.restore();
+                }
+            }]
+        });
+
+    } catch (error) {
+        console.error('Error loading weekday chart:', error);
+    }
+}
+
+// Load and render half-hour performance chart
+async function loadHalfhourChart() {
+    try {
+        const response = await fetch('/api/stats/halfhour');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (halfhourChart) halfhourChart.destroy();
+
+        const ctx = document.getElementById('halfhour-chart').getContext('2d');
+
+        const labels = data.map(d => d.time);
+        const counts = data.map(d => d.count);
+        const successRates = data.map(d => d.success_rate);
+
+        halfhourChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Count',
+                        data: counts,
+                        backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                        borderColor: 'rgba(96, 165, 250, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y',
+                        order: 1
+                    },
+                    {
+                        label: 'Success %',
+                        data: successRates,
+                        type: 'line',
+                        borderColor: 'rgba(185, 80, 70, 1)',
+                        backgroundColor: 'rgba(185, 80, 70, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: 'rgba(185, 80, 70, 1)',
+                        pointRadius: 4,
+                        fill: false,
+                        tension: 0.1,
+                        yAxisID: 'y1',
+                        order: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: false
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error('Error loading half-hour chart:', error);
+    }
+}
+
+// Calculate linear regression trendline
+function calculateTrendline(data) {
+    const n = data.length;
+    if (n < 2) return data.map(() => data[0] || 0);
+
+    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+    for (let i = 0; i < n; i++) {
+        sumX += i;
+        sumY += data[i];
+        sumXY += i * data[i];
+        sumXX += i * i;
+    }
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return data.map((_, i) => slope * i + intercept);
+}
+
+// Load and render daily success rate chart
+async function loadDailyChart() {
+    try {
+        const response = await fetch('/api/stats/daily');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (dailyChart) dailyChart.destroy();
+
+        const ctx = document.getElementById('daily-chart').getContext('2d');
+
+        // Format dates as MM/DD/YYYY
+        const labels = data.map(d => {
+            const [year, month, day] = d.date.split('-');
+            return `${month}/${day}/${year}`;
+        });
+        const successRates = data.map(d => d.success_rate);
+        const trendline = calculateTrendline(successRates);
+
+        dailyChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Success %',
+                        data: successRates,
+                        borderColor: 'rgba(96, 165, 250, 1)',
+                        backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(96, 165, 250, 1)',
+                        pointRadius: 3,
+                        fill: false,
+                        tension: 0,
+                        order: 0
+                    },
+                    {
+                        label: 'Trendline',
+                        data: trendline,
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        },
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        min: 0,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Success %'
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error('Error loading daily chart:', error);
+    }
+}
+
+// Load and render order of games chart
+async function loadOrderChart() {
+    try {
+        const response = await fetch('/api/stats/order');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (orderChart) orderChart.destroy();
+
+        const ctx = document.getElementById('order-chart').getContext('2d');
+
+        const labels = data.map(d => d.pattern);
+        const counts = data.map(d => d.count);
+
+        orderChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Count',
+                    data: counts,
+                    backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                    borderColor: 'rgba(96, 165, 250, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Order'
+                        },
+                        ticks: {
+                            maxRotation: 90,
+                            minRotation: 90
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Count'
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'countLabels',
+                afterDatasetsDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    const dataset = chart.data.datasets[0];
+                    const meta = chart.getDatasetMeta(0);
+
+                    ctx.save();
+                    ctx.font = 'bold 10px Arial';
+                    ctx.fillStyle = 'rgba(96, 165, 250, 1)';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    meta.data.forEach((bar, index) => {
+                        const value = dataset.data[index];
+                        ctx.fillText(value, bar.x, bar.y - 2);
+                    });
+
+                    ctx.restore();
+                }
+            }]
+        });
+
+    } catch (error) {
+        console.error('Error loading order chart:', error);
+    }
+}
+
+// Load and render opponent pairs chart
+async function loadOpponentPairsChart() {
+    try {
+        const response = await fetch('/api/stats/opponent-pairs');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (opponentPairsChart) opponentPairsChart.destroy();
+
+        const ctx = document.getElementById('opponent-pairs-chart').getContext('2d');
+
+        const labels = data.map(d => d.pair);
+        const counts = data.map(d => d.count);
+        const successRates = data.map(d => d.success_rate);
+
+        opponentPairsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Count',
+                        data: counts,
+                        backgroundColor: 'rgba(96, 165, 250, 0.8)',
+                        borderColor: 'rgba(96, 165, 250, 1)',
+                        borderWidth: 1,
+                        xAxisID: 'x'
+                    },
+                    {
+                        label: 'Success %',
+                        data: successRates,
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1,
+                        xAxisID: 'x1'
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        beginAtZero: true,
+                        title: {
+                            display: false
+                        }
+                    },
+                    x1: {
+                        type: 'linear',
+                        position: 'top',
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'barLabels',
+                afterDatasetsDraw: function(chart) {
+                    const ctx = chart.ctx;
+
+                    // Draw count labels (blue)
+                    const countDataset = chart.data.datasets[0];
+                    const countMeta = chart.getDatasetMeta(0);
+                    ctx.save();
+                    ctx.font = 'bold 9px Arial';
+                    ctx.fillStyle = 'rgba(96, 165, 250, 1)';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                    countMeta.data.forEach((bar, index) => {
+                        const value = countDataset.data[index];
+                        ctx.fillText(value, bar.x + 3, bar.y);
+                    });
+                    ctx.restore();
+
+                    // Draw success rate labels (red)
+                    const successDataset = chart.data.datasets[1];
+                    const successMeta = chart.getDatasetMeta(1);
+                    ctx.save();
+                    ctx.font = 'bold 9px Arial';
+                    ctx.fillStyle = 'rgba(239, 68, 68, 1)';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                    successMeta.data.forEach((bar, index) => {
+                        const value = successDataset.data[index];
+                        ctx.fillText(value, bar.x + 3, bar.y);
+                    });
+                    ctx.restore();
+                }
+            }]
+        });
+
+    } catch (error) {
+        console.error('Error loading opponent pairs chart:', error);
+    }
+}
+
+// Load and render streaks chart
+async function loadStreaksChart() {
+    try {
+        const response = await fetch('/api/stats/streaks');
+        const data = await response.json();
+
+        // Destroy existing chart if it exists
+        if (streaksChart) streaksChart.destroy();
+
+        const ctx = document.getElementById('streaks-chart').getContext('2d');
+
+        streaksChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Win Streak', 'Loss Streak'],
+                datasets: [{
+                    data: [data.max_win_streak, data.max_loss_streak],
+                    backgroundColor: ['#22c55e', '#ef4444'],
+                    borderColor: ['#16a34a', '#dc2626'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.raw} matchups`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error('Error loading streaks chart:', error);
+    }
+}
+
 // Refresh all data
 function refreshData() {
     loadTodayStats();
@@ -461,6 +1226,16 @@ function refreshData() {
     loadMatchups();
     loadCharts();
     loadCharacterCharts();
+    loadMonthCharacterCharts();
+    loadKoDamageCharts();
+    loadOpponentsCharacterChart();
+    loadOpponentsKoDamageChart();
+    loadWeekdayChart();
+    loadHalfhourChart();
+    loadDailyChart();
+    loadOrderChart();
+    loadOpponentPairsChart();
+    loadStreaksChart();
     updateUndoButton();
 }
 
@@ -681,5 +1456,15 @@ async function confirmDelete() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    // Restore tab from URL hash
+    const savedTab = getTabFromHash();
+    showTab(savedTab, false);
+
     refreshData();
+});
+
+// Handle browser back/forward navigation
+window.addEventListener('hashchange', () => {
+    const tab = getTabFromHash();
+    showTab(tab, false);
 });

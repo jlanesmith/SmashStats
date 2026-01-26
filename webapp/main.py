@@ -13,7 +13,9 @@ from pathlib import Path
 from database import (
     init_db, get_all_games, get_all_matchups, get_game_count, get_matchup_count,
     get_today_stats, get_last_month_stats, get_game_by_id, save_game_result, update_game, delete_game,
-    get_character_stats
+    get_character_stats, get_character_stats_month, get_character_ko_damage_stats, get_opponent_character_stats,
+    get_opponent_ko_damage_stats, get_weekday_stats, get_halfhour_stats, get_daily_success_rate, get_order_stats,
+    get_opponent_pairs_stats, get_streak_stats
 )
 
 # Initialize database on startup
@@ -186,6 +188,66 @@ async def api_overall_stats():
 async def api_character_stats():
     """Get character statistics for p1 and p2."""
     return get_character_stats()
+
+
+@app.get("/api/stats/characters/month")
+async def api_character_stats_month():
+    """Get character statistics for p1 and p2 for the last 30 days."""
+    return get_character_stats_month()
+
+
+@app.get("/api/stats/characters/ko-damage")
+async def api_character_ko_damage_stats():
+    """Get average KOs and damage for p1 and p2 characters."""
+    return get_character_ko_damage_stats()
+
+
+@app.get("/api/stats/characters/opponents")
+async def api_opponent_character_stats():
+    """Get character statistics for opponents (p3 and p4 combined)."""
+    return get_opponent_character_stats()
+
+
+@app.get("/api/stats/characters/opponents/ko-damage")
+async def api_opponent_ko_damage_stats():
+    """Get average KOs and damage for opponents (p3 and p4 combined)."""
+    return get_opponent_ko_damage_stats()
+
+
+@app.get("/api/stats/weekday")
+async def api_weekday_stats():
+    """Get performance statistics by day of week."""
+    return get_weekday_stats()
+
+
+@app.get("/api/stats/halfhour")
+async def api_halfhour_stats():
+    """Get performance statistics by half-hour time slot."""
+    return get_halfhour_stats()
+
+
+@app.get("/api/stats/daily")
+async def api_daily_success_rate():
+    """Get daily success rate for each day with matchups."""
+    return get_daily_success_rate()
+
+
+@app.get("/api/stats/order")
+async def api_order_stats():
+    """Get counts of win_loss_order patterns."""
+    return get_order_stats()
+
+
+@app.get("/api/stats/opponent-pairs")
+async def api_opponent_pairs_stats():
+    """Get stats for opponent character pairings."""
+    return get_opponent_pairs_stats()
+
+
+@app.get("/api/stats/streaks")
+async def api_streak_stats():
+    """Get maximum win and loss streaks."""
+    return get_streak_stats()
 
 
 if __name__ == "__main__":

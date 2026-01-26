@@ -138,6 +138,16 @@
                 </div>
             </div>
 
+            <!-- Streaks Chart -->
+            <div class="flex justify-center mt-6">
+                <div class="bg-white rounded-lg shadow p-6 w-full max-w-md">
+                    <h3 class="text-lg font-bold mb-4 text-center">Max Streaks</h3>
+                    <div class="relative" style="height: 200px;">
+                        <canvas id="streaks-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
             <!-- Character Stats Charts -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                 <!-- P1 Characters Chart -->
@@ -153,6 +163,114 @@
                     <h3 class="text-lg font-bold mb-4 text-center">P2 Characters</h3>
                     <div class="relative" style="height: 350px;">
                         <canvas id="p2-characters-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last Month Character Stats Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <!-- P1 Last Month Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P1 Last 30 Days</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p1-month-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- P2 Last Month Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P2 Last 30 Days</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p2-month-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KO/Damage Stats Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <!-- P1 KO/Damage Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P1 KOs & Damage</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p1-ko-damage-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- P2 KO/Damage Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">P2 KOs & Damage</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="p2-ko-damage-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opponents Characters Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Opponents Characters</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="opponents-characters-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opponents KOs & Damage Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Opponents KOs & Damage</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="opponents-ko-damage-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance per Day Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Performance per Day</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="weekday-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance per 15 Minutes Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Performance per 15 Minutes</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="halfhour-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Success Rate Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Daily Success Rate</h3>
+                    <div class="relative" style="height: 400px;">
+                        <canvas id="daily-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order of Games Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Order of Games</h3>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="order-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opponent Pairs Chart -->
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold mb-4 text-center">Opponent Pairs</h3>
+                    <div class="relative" style="height: 2000px;">
+                        <canvas id="opponent-pairs-chart"></canvas>
                     </div>
                 </div>
             </div>

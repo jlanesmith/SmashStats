@@ -1,5 +1,23 @@
+# Video files
 *.mov
-game_captures/*
-live_captures/*
-__pycache__/*
+
+# Capture directories
+game_captures/
+live_captures/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Data files
 data.csv
+*.db.backup
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

@@ -54,7 +54,7 @@ def init_db():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_games_p2_character ON games(p2_character)")
 
     # Create matchups table for aggregated matchup data
-    # Groups by 4 characters only (opponent name comes from first game)
+    # A matchup is a consecutive series of games with the same 4 characters
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS matchups (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,8 +68,7 @@ def init_db():
             wins INTEGER DEFAULT 0,
             losses INTEGER DEFAULT 0,
             win_loss_order TEXT,
-            matchup_result REAL,
-            UNIQUE (p1_character, p2_character, p3_character, p4_character)
+            matchup_result REAL
         )
     """)
 
@@ -135,8 +134,11 @@ def save_game_result(result: dict) -> int:
 def _update_matchup_for_game(cursor, result: dict):
     """
     Incrementally update the matchups table for a single game.
-    Groups by 4 characters only (opponent name comes from first game).
+    A matchup is a consecutive series of games with the same 4 characters.
     Called internally by save_game_result().
+
+    Note: For simplicity, new games always create a new matchup or extend
+    the most recent one if characters match. Full rebuild handles historical data.
     """
     p1 = result.get('p1_character', '')
     p2 = result.get('p2_character', '')
@@ -146,18 +148,23 @@ def _update_matchup_for_game(cursor, result: dict):
     game_date = result['datetime']
     is_win = result['win'] == 'Yes'
 
-    # Check if matchup exists (grouped by 4 characters only)
+    # Check if the most recent matchup has the same 4 characters
     cursor.execute("""
-        SELECT id, wins, losses, win_loss_order, first_game_date
+        SELECT id, wins, losses, win_loss_order, first_game_date,
+               p1_character, p2_character, p3_character, p4_character
         FROM matchups
-        WHERE p1_character = ? AND p2_character = ? AND p3_character = ?
-              AND p4_character = ?
-    """, (p1, p2, p3, p4))
+        ORDER BY last_game_date DESC
+        LIMIT 1
+    """)
 
     existing = cursor.fetchone()
 
-    if existing:
-        # Update existing matchup (keep original opponent name)
+    # Only extend if it's the same 4 characters
+    if existing and (existing['p1_character'] == p1 and
+                     existing['p2_character'] == p2 and
+                     existing['p3_character'] == p3 and
+                     existing['p4_character'] == p4):
+        # Update existing matchup
         matchup_id = existing['id']
         wins = existing['wins'] + (1 if is_win else 0)
         losses = existing['losses'] + (0 if is_win else 1)
@@ -178,7 +185,7 @@ def _update_matchup_for_game(cursor, result: dict):
             WHERE id = ?
         """, (wins, losses, win_loss_order, game_date, matchup_result, matchup_id))
     else:
-        # Create new matchup (use opponent name from this first game)
+        # Create new matchup
         wins = 1 if is_win else 0
         losses = 0 if is_win else 1
         win_loss_order = 'y' if is_win else 'n'
@@ -227,15 +234,33 @@ def get_game_count():
 def rebuild_matchups():
     """
     Rebuild the matchups table from games data.
-    Groups games by all 4 characters only (opponent name from first game).
+    A matchup is a consecutive series of games with the same 4 characters.
     """
     conn = get_connection()
     cursor = conn.cursor()
 
-    # Clear existing matchups
-    cursor.execute("DELETE FROM matchups")
+    # Drop and recreate matchups table (to remove old UNIQUE constraint if present)
+    cursor.execute("DROP TABLE IF EXISTS matchups")
+    cursor.execute("""
+        CREATE TABLE matchups (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            first_game_date TEXT NOT NULL,
+            last_game_date TEXT NOT NULL,
+            p1_character TEXT,
+            p2_character TEXT,
+            p3_character TEXT,
+            p4_character TEXT,
+            opponent TEXT,
+            wins INTEGER DEFAULT 0,
+            losses INTEGER DEFAULT 0,
+            win_loss_order TEXT,
+            matchup_result REAL
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_matchups_opponent ON matchups(opponent)")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_matchups_result ON matchups(matchup_result)")
 
-    # Get all games ordered by datetime for correct win_loss_order
+    # Get all games ordered by datetime for correct consecutive grouping
     cursor.execute("""
         SELECT datetime, p1_character, p2_character, p3_character, p4_character,
                opponent, win
@@ -244,42 +269,61 @@ def rebuild_matchups():
     """)
     games = cursor.fetchall()
 
-    # Group games by matchup key (4 characters only, not opponent)
-    matchups = {}
+    # Build matchups from consecutive games with same 4 characters
+    matchups = []
+    current_matchup = None
+
     for game in games:
-        key = (
+        game_chars = (
             game['p1_character'],
             game['p2_character'],
             game['p3_character'],
             game['p4_character']
         )
 
-        if key not in matchups:
-            matchups[key] = {
-                'first_game_date': game['datetime'],
-                'last_game_date': game['datetime'],
-                'p1_character': game['p1_character'],
-                'p2_character': game['p2_character'],
-                'p3_character': game['p3_character'],
-                'p4_character': game['p4_character'],
-                'opponent': game['opponent'],  # Use opponent from first game
-                'wins': 0,
-                'losses': 0,
-                'win_loss_order': ''
-            }
+        # Check if this game continues the current matchup
+        if current_matchup is not None:
+            current_chars = (
+                current_matchup['p1_character'],
+                current_matchup['p2_character'],
+                current_matchup['p3_character'],
+                current_matchup['p4_character']
+            )
 
-        matchup = matchups[key]
-        matchup['last_game_date'] = game['datetime']
+            if game_chars == current_chars:
+                # Extend current matchup
+                current_matchup['last_game_date'] = game['datetime']
+                if game['win'] == 'Yes':
+                    current_matchup['wins'] += 1
+                    current_matchup['win_loss_order'] += 'y'
+                else:
+                    current_matchup['losses'] += 1
+                    current_matchup['win_loss_order'] += 'n'
+                continue
 
-        if game['win'] == 'Yes':
-            matchup['wins'] += 1
-            matchup['win_loss_order'] += 'y'
-        else:
-            matchup['losses'] += 1
-            matchup['win_loss_order'] += 'n'
+        # Start a new matchup (either first game or characters changed)
+        if current_matchup is not None:
+            matchups.append(current_matchup)
+
+        current_matchup = {
+            'first_game_date': game['datetime'],
+            'last_game_date': game['datetime'],
+            'p1_character': game['p1_character'],
+            'p2_character': game['p2_character'],
+            'p3_character': game['p3_character'],
+            'p4_character': game['p4_character'],
+            'opponent': game['opponent'],
+            'wins': 1 if game['win'] == 'Yes' else 0,
+            'losses': 0 if game['win'] == 'Yes' else 1,
+            'win_loss_order': 'y' if game['win'] == 'Yes' else 'n'
+        }
+
+    # Don't forget the last matchup
+    if current_matchup is not None:
+        matchups.append(current_matchup)
 
     # Calculate matchup_result and insert into table
-    for matchup in matchups.values():
+    for matchup in matchups:
         wins = matchup['wins']
         losses = matchup['losses']
 
@@ -576,6 +620,422 @@ def get_character_stats():
 
     conn.close()
     return result
+
+
+def get_character_stats_month():
+    """
+    Get character statistics for p1 and p2 based on matchups from the last 30 days.
+
+    Returns:
+        dict: Stats for each player position with character counts and success rates
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    result = {'p1': [], 'p2': []}
+
+    for player in ['p1', 'p2']:
+        cursor.execute(f"""
+            SELECT
+                {player}_character as character,
+                COUNT(*) as count,
+                SUM(CASE WHEN matchup_result = 1.0 THEN 1 ELSE 0 END) as wins,
+                SUM(CASE WHEN matchup_result = 0.5 THEN 1 ELSE 0 END) as ties,
+                SUM(CASE WHEN matchup_result = 0.0 THEN 1 ELSE 0 END) as losses,
+                AVG(matchup_result) * 100 as success_rate
+            FROM matchups
+            WHERE {player}_character IS NOT NULL
+                AND {player}_character != ''
+                AND last_game_date >= datetime('now', '-30 days')
+            GROUP BY {player}_character
+            ORDER BY count DESC
+        """)
+
+        for row in cursor.fetchall():
+            result[player].append({
+                'character': row['character'],
+                'count': row['count'],
+                'wins': row['wins'],
+                'ties': row['ties'],
+                'losses': row['losses'],
+                'win_pct': round(row['success_rate'], 1)
+            })
+
+    conn.close()
+    return result
+
+
+def get_character_ko_damage_stats():
+    """
+    Get average KOs and damage for p1 and p2 characters.
+
+    Returns:
+        dict: Stats for each player position with avg KOs and damage per character
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    result = {'p1': [], 'p2': []}
+
+    for player in ['p1', 'p2']:
+        cursor.execute(f"""
+            SELECT
+                {player}_character as character,
+                COUNT(*) as count,
+                AVG({player}_kos) as avg_kos,
+                AVG({player}_damage) as avg_damage
+            FROM games
+            WHERE {player}_character IS NOT NULL AND {player}_character != ''
+                AND {player}_kos IS NOT NULL AND {player}_damage IS NOT NULL
+            GROUP BY {player}_character
+            ORDER BY count DESC
+        """)
+
+        for row in cursor.fetchall():
+            result[player].append({
+                'character': row['character'],
+                'count': row['count'],
+                'avg_kos': round(row['avg_kos'], 1) if row['avg_kos'] else 0,
+                'avg_damage': round(row['avg_damage'], 0) if row['avg_damage'] else 0
+            })
+
+    conn.close()
+    return result
+
+
+def get_opponent_ko_damage_stats():
+    """
+    Get average KOs and damage for opponent characters (p3 and p4 combined).
+
+    Returns:
+        list: Stats for opponent characters with avg KOs and damage
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Combine p3 and p4 character data using UNION ALL
+    cursor.execute("""
+        SELECT
+            character,
+            COUNT(*) as count,
+            AVG(kos) as avg_kos,
+            AVG(damage) as avg_damage
+        FROM (
+            SELECT p3_character as character, p3_kos as kos, p3_damage as damage
+            FROM games
+            WHERE p3_character IS NOT NULL AND p3_character != ''
+                AND p3_kos IS NOT NULL AND p3_damage IS NOT NULL
+            UNION ALL
+            SELECT p4_character as character, p4_kos as kos, p4_damage as damage
+            FROM games
+            WHERE p4_character IS NOT NULL AND p4_character != ''
+                AND p4_kos IS NOT NULL AND p4_damage IS NOT NULL
+        )
+        GROUP BY character
+        ORDER BY count DESC
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        result.append({
+            'character': row['character'],
+            'count': row['count'],
+            'avg_kos': round(row['avg_kos'], 1) if row['avg_kos'] else 0,
+            'avg_damage': round(row['avg_damage'], 0) if row['avg_damage'] else 0
+        })
+
+    conn.close()
+    return result
+
+
+def get_opponent_character_stats():
+    """
+    Get character statistics for opponents (p3 and p4 combined) based on matchups.
+
+    Returns:
+        dict: Stats for opponent characters with counts and success rates
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Combine p3 and p4 character data using UNION ALL
+    cursor.execute("""
+        SELECT
+            character,
+            COUNT(*) as count,
+            SUM(CASE WHEN matchup_result = 1.0 THEN 1 ELSE 0 END) as wins,
+            SUM(CASE WHEN matchup_result = 0.5 THEN 1 ELSE 0 END) as ties,
+            SUM(CASE WHEN matchup_result = 0.0 THEN 1 ELSE 0 END) as losses,
+            AVG(matchup_result) * 100 as success_rate
+        FROM (
+            SELECT p3_character as character, matchup_result
+            FROM matchups
+            WHERE p3_character IS NOT NULL AND p3_character != ''
+            UNION ALL
+            SELECT p4_character as character, matchup_result
+            FROM matchups
+            WHERE p4_character IS NOT NULL AND p4_character != ''
+        )
+        GROUP BY character
+        ORDER BY count DESC
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        result.append({
+            'character': row['character'],
+            'count': row['count'],
+            'wins': row['wins'],
+            'ties': row['ties'],
+            'losses': row['losses'],
+            'win_pct': round(row['success_rate'], 1)
+        })
+
+    conn.close()
+    return result
+
+
+def get_weekday_stats():
+    """
+    Get performance statistics grouped by day of week.
+
+    Returns:
+        list: Stats for each day of week (Sunday=0 through Saturday=6)
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # SQLite strftime %w returns 0=Sunday, 1=Monday, ..., 6=Saturday
+    cursor.execute("""
+        SELECT
+            CAST(strftime('%w', last_game_date) AS INTEGER) as weekday,
+            COUNT(*) as count,
+            AVG(matchup_result) * 100 as win_pct
+        FROM matchups
+        GROUP BY weekday
+        ORDER BY weekday
+    """)
+
+    # Initialize all days with zero values
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    result = [{'day': day, 'count': 0, 'win_pct': 0} for day in days]
+
+    for row in cursor.fetchall():
+        weekday = row['weekday']
+        result[weekday] = {
+            'day': days[weekday],
+            'count': row['count'],
+            'win_pct': round(row['win_pct'], 1) if row['win_pct'] else 0
+        }
+
+    conn.close()
+    return result
+
+
+def get_halfhour_stats():
+    """
+    Get performance statistics grouped by 15-minute time slot from 4pm to 1am.
+
+    Returns:
+        list: Stats for each 15-minute slot that has data
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Extract hour and determine which 15-minute quarter of the hour
+    # Filter to only include 4pm (16:00) to 1am (01:00)
+    cursor.execute("""
+        SELECT
+            CAST(strftime('%H', last_game_date) AS INTEGER) as hour,
+            CAST(strftime('%M', last_game_date) AS INTEGER) / 15 as quarter,
+            COUNT(*) as count,
+            AVG(matchup_result) * 100 as success_rate
+        FROM matchups
+        WHERE CAST(strftime('%H', last_game_date) AS INTEGER) >= 16
+           OR CAST(strftime('%H', last_game_date) AS INTEGER) < 2
+        GROUP BY hour, quarter
+        ORDER BY
+            CASE WHEN hour >= 16 THEN hour - 16 ELSE hour + 8 END,
+            quarter
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        hour = row['hour']
+        quarter = row['quarter']
+        minute = quarter * 15
+
+        # Convert to 12-hour format with AM/PM
+        if hour == 0:
+            display_hour = 12
+            period = 'AM'
+        elif hour < 12:
+            display_hour = hour
+            period = 'AM'
+        elif hour == 12:
+            display_hour = 12
+            period = 'PM'
+        else:
+            display_hour = hour - 12
+            period = 'PM'
+
+        time_label = f"{display_hour}:{minute:02d} {period}"
+
+        result.append({
+            'time': time_label,
+            'sort_key': (hour - 16) % 24 * 4 + quarter,  # For sorting
+            'count': row['count'],
+            'success_rate': round(row['success_rate'], 0) if row['success_rate'] else 0
+        })
+
+    conn.close()
+    return result
+
+
+def get_daily_success_rate():
+    """
+    Get success rate for each day that has matchups.
+
+    Returns:
+        list: Daily success rates with date and percentage
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            DATE(last_game_date) as date,
+            AVG(matchup_result) * 100 as success_rate
+        FROM matchups
+        GROUP BY DATE(last_game_date)
+        ORDER BY date ASC
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        result.append({
+            'date': row['date'],
+            'success_rate': round(row['success_rate'], 0) if row['success_rate'] else 0
+        })
+
+    conn.close()
+    return result
+
+
+def get_order_stats():
+    """
+    Get counts of each win_loss_order pattern, sorted by length then count.
+
+    Returns:
+        list: Order patterns with their counts
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            win_loss_order as pattern,
+            COUNT(*) as count
+        FROM matchups
+        WHERE win_loss_order IS NOT NULL AND win_loss_order != ''
+        GROUP BY win_loss_order
+        ORDER BY LENGTH(win_loss_order) ASC, count DESC
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        result.append({
+            'pattern': row['pattern'],
+            'count': row['count']
+        })
+
+    conn.close()
+    return result
+
+
+def get_opponent_pairs_stats():
+    """
+    Get stats for each opponent character pairing (p3 & p4).
+    Combines A & B with B & A by sorting characters alphabetically.
+
+    Returns:
+        list: Opponent pairs with count and success rate, sorted by count desc
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Use MIN and MAX to normalize the pair order (alphabetically)
+    cursor.execute("""
+        SELECT
+            MIN(p3_character, p4_character) || ' & ' || MAX(p3_character, p4_character) as pair,
+            COUNT(*) as count,
+            AVG(matchup_result) * 100 as success_rate
+        FROM matchups
+        WHERE p3_character IS NOT NULL AND p3_character != ''
+          AND p4_character IS NOT NULL AND p4_character != ''
+        GROUP BY MIN(p3_character, p4_character), MAX(p3_character, p4_character)
+        HAVING count >= 3
+        ORDER BY count DESC
+    """)
+
+    result = []
+    for row in cursor.fetchall():
+        result.append({
+            'pair': row['pair'],
+            'count': row['count'],
+            'success_rate': round(row['success_rate'], 0) if row['success_rate'] else 0
+        })
+
+    conn.close()
+    return result
+
+
+def get_streak_stats():
+    """
+    Calculate the maximum win streak and loss streak from matchups.
+
+    Returns:
+        dict: max_win_streak and max_loss_streak
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Get all matchups ordered by date
+    cursor.execute("""
+        SELECT matchup_result
+        FROM matchups
+        ORDER BY last_game_date ASC
+    """)
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    max_win_streak = 0
+    max_loss_streak = 0
+    current_win_streak = 0
+    current_loss_streak = 0
+
+    for row in rows:
+        result = row['matchup_result']
+
+        if result == 1.0:  # Win
+            current_win_streak += 1
+            current_loss_streak = 0
+            if current_win_streak > max_win_streak:
+                max_win_streak = current_win_streak
+        elif result == 0.0:  # Loss
+            current_loss_streak += 1
+            current_win_streak = 0
+            if current_loss_streak > max_loss_streak:
+                max_loss_streak = current_loss_streak
+        else:  # Tie (0.5) - breaks both streaks
+            current_win_streak = 0
+            current_loss_streak = 0
+
+    return {
+        'max_win_streak': max_win_streak,
+        'max_loss_streak': max_loss_streak
+    }
 
 
 def migrate_to_nullable_stats():
