@@ -395,7 +395,17 @@ def get_matchup_count():
 def get_today_stats():
     """Get today's statistics."""
     from datetime import datetime
-    today = datetime.now().strftime("%Y-%m-%d")
+    import os
+
+    # Use configured timezone, default to US/Pacific
+    tz_name = os.environ.get("SMASHSTATS_TIMEZONE", "US/Pacific")
+    try:
+        from zoneinfo import ZoneInfo
+        tz = ZoneInfo(tz_name)
+        today = datetime.now(tz).strftime("%Y-%m-%d")
+    except Exception:
+        # Fallback if zoneinfo not available
+        today = datetime.now().strftime("%Y-%m-%d")
 
     conn = get_connection()
     cursor = conn.cursor()
@@ -458,9 +468,19 @@ def get_today_stats():
 def get_last_month_stats():
     """Get last month's matchup statistics."""
     from datetime import datetime, timedelta
+    import os
+
+    # Use configured timezone, default to US/Pacific
+    tz_name = os.environ.get("SMASHSTATS_TIMEZONE", "US/Pacific")
+    try:
+        from zoneinfo import ZoneInfo
+        tz = ZoneInfo(tz_name)
+        now = datetime.now(tz)
+    except Exception:
+        now = datetime.now()
 
     # Get date 30 days ago
-    month_ago = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+    month_ago = (now - timedelta(days=30)).strftime("%Y-%m-%d")
 
     conn = get_connection()
     cursor = conn.cursor()
