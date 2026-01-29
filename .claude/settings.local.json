@@ -22,7 +22,8 @@
       "Bash(ls:*)",
       "Bash(cut:*)",
       "Bash(git check-ignore:*)",
-      "Bash(python scripts/sync_to_remote.py:*)"
+      "Bash(python scripts/sync_to_remote.py:*)",
+      "Bash(git log:*)"
     ]
   }
 }

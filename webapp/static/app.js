@@ -44,7 +44,7 @@ function showTab(tabName, updateHash = true) {
 // Get tab from URL hash
 function getTabFromHash() {
     const hash = window.location.hash.slice(1); // Remove the #
-    const validTabs = ['games', 'matchups', 'graphs'];
+    const validTabs = ['games', 'matchups', 'graphs', 'coffeetable'];
     return validTabs.includes(hash) ? hash : 'games';
 }
 
