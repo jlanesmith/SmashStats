@@ -89,8 +89,10 @@ class FrameProcessor:
             'p2': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
             'p3': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
             'p4': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
-            'win': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
-            'loss': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
+            '1_blue': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
+            '1_red': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
+            '2_blue': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
+            '2_red': {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None},
         }
         self.debug_log = []
 
@@ -135,8 +137,10 @@ class FrameProcessor:
         """Reset state for finding the next game."""
         self.state = State.LOOKING_FOR_CHARACTERS
         self.best_matches['characters'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
-        self.best_matches['win'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
-        self.best_matches['loss'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
+        self.best_matches['1_blue'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
+        self.best_matches['1_red'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
+        self.best_matches['2_blue'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
+        self.best_matches['2_red'] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
         self.game_result = None
         print(f"\nLooking for next game...")
 
@@ -299,30 +303,34 @@ class FrameProcessor:
             # Check for win/loss only after P2 has at least one frame over threshold
             p2_has_match = len(self.player_groups.get('p2', [])) > 0 or self.active_group.get('p2') is not None
             if self.game_result is None and p2_has_match:
-                win_t = self.templates['win']
-                loss_t = self.templates['loss']
+                # Check all 4 win/loss templates and pick highest confidence
+                template_results = {}
+                for template_name in ['1_blue', '1_red', '2_blue', '2_red']:
+                    t = self.templates[template_name]
+                    _, conf, loc = match_template_color(
+                        frame_small, t['img_scaled'], t['mask_scaled'], self.WIN_LOSS_THRESHOLD
+                    )
+                    template_results[template_name] = {'confidence': conf, 'loc': loc}
 
-                # Use color matching for win/loss templates
-                win_matched, win_conf, win_loc = match_template_color(
-                    frame_small, win_t['img_scaled'], win_t['mask_scaled'], self.WIN_LOSS_THRESHOLD
-                )
-                loss_matched, loss_conf, loss_loc = match_template_color(
-                    frame_small, loss_t['img_scaled'], loss_t['mask_scaled'], self.WIN_LOSS_THRESHOLD
-                )
+                    # Track best matches for debug
+                    if self.debug and conf > self.best_matches[template_name]['confidence']:
+                        self.best_matches[template_name] = {
+                            'confidence': conf, 'frame_num': frame_num,
+                            'frame': frame_small.copy(), 'loc': loc
+                        }
 
-                # Track best matches for debug
-                if self.debug:
-                    if win_conf > self.best_matches['win']['confidence']:
-                        self.best_matches['win'] = {'confidence': win_conf, 'frame_num': frame_num, 'frame': frame_small.copy(), 'loc': win_loc}
-                    if loss_conf > self.best_matches['loss']['confidence']:
-                        self.best_matches['loss'] = {'confidence': loss_conf, 'frame_num': frame_num, 'frame': frame_small.copy(), 'loc': loss_loc}
+                # Find highest confidence match
+                best_template = max(template_results.keys(), key=lambda k: template_results[k]['confidence'])
+                best_conf = template_results[best_template]['confidence']
 
-                if win_matched:
-                    self.game_result = 'win'
-                    print(f"  [WIN DETECTED] Frame {frame_num}, Confidence: {win_conf:.4f} (loss conf: {loss_conf:.4f})")
-                elif loss_matched:
-                    self.game_result = 'loss'
-                    print(f"  [LOSS DETECTED] Frame {frame_num}, Confidence: {loss_conf:.4f} (win conf: {win_conf:.4f})")
+                if best_conf >= self.WIN_LOSS_THRESHOLD:
+                    # 1_blue and 1_red mean win, 2_blue and 2_red mean loss
+                    if best_template in ['1_blue', '1_red']:
+                        self.game_result = 'win'
+                        print(f"  [WIN DETECTED] Frame {frame_num}, Template: {best_template}, Confidence: {best_conf:.4f}")
+                    else:
+                        self.game_result = 'loss'
+                        print(f"  [LOSS DETECTED] Frame {frame_num}, Template: {best_template}, Confidence: {best_conf:.4f}")
 
             # Check for all player results
             debug_parts = []
@@ -556,7 +564,7 @@ def load_and_scale_templates(template_dir, target_height=480, debug_output_dir=N
     """
     templates = {}
     grayscale_templates = ['characters', 'game', 'p1', 'p2', 'p3', 'p4']
-    color_templates = ['win', 'loss']  # These are color-sensitive
+    color_templates = ['1_blue', '1_red', '2_blue', '2_red']  # Win/loss templates for blue/red sides
 
     # Load grayscale templates
     print(f"Loading templates from: {template_dir}")
@@ -569,9 +577,9 @@ def load_and_scale_templates(template_dir, target_height=480, debug_output_dir=N
         h, w = img.shape[:2]
         print(f"  Loaded {name}: {w}x{h} (mask={mask is not None}, grayscale)")
 
-    # Load color templates (win/loss are color-sensitive)
+    # Load color templates (win/loss for blue/red sides)
     for name in color_templates:
-        path = os.path.join(template_dir, f"{name}_template.png")
+        path = os.path.join(template_dir, f"{name}.png")
         if not os.path.exists(path):
             raise FileNotFoundError(f"Template not found: {path}")
         img, mask = load_template_with_mask(path, use_color=True)

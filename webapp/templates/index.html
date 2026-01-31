@@ -115,11 +115,15 @@
         <!-- Matchups Tab -->
         <div id="content-matchups" class="tab-content hidden">
             <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div id="matchup-filter-bar" class="hidden px-4 py-2 bg-blue-50 border-b border-blue-200 flex items-center justify-between">
+                    <span class="text-blue-700 text-sm">Filtering by opponent: <strong id="filter-opponent-name"></strong></span>
+                    <button onclick="clearOpponentFilter()" class="text-blue-600 hover:text-blue-800 text-sm underline">Clear filter</button>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm">
                         <thead class="bg-gray-50 text-left">
                             <tr>
-                                <th class="px-3 py-3">Opponent</th>
+                                <th class="px-3 py-3">Last Played</th>
                                 <th class="px-3 py-3">P1</th>
                                 <th class="px-3 py-3">P2</th>
                                 <th class="px-3 py-3">P3</th>
@@ -127,12 +131,13 @@
                                 <th class="px-3 py-3">Record</th>
                                 <th class="px-3 py-3">History</th>
                                 <th class="px-3 py-3">Result</th>
-                                <th class="px-3 py-3">Last Played</th>
+                                <th class="px-3 py-3">Opponent</th>
+                                <th class="px-3 py-3">#</th>
                             </tr>
                         </thead>
                         <tbody id="matchups-table" class="divide-y divide-gray-200">
                             <tr id="matchups-loading" class="loading-row">
-                                <td colspan="9">
+                                <td colspan="10">
                                     <div class="loading-spinner"></div>
                                     <div class="text-gray-500 mt-2">Loading matchups...</div>
                                 </td>

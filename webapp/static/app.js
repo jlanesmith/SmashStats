@@ -3,6 +3,10 @@
 // Undo system - stores last action
 let lastAction = null;
 
+// Matchups data and filter state
+let allMatchups = [];
+let currentOpponentFilter = null;
+
 // Chart instances
 let todayChart = null;
 let overallChart = null;
@@ -69,12 +73,15 @@ function safeAdd(...values) {
     return values.reduce((sum, val) => sum + (val || 0), 0);
 }
 
-// Format team stat - shows N/A if all values are null
+// Format team stat - shows sum only if both values exist, N/A otherwise
 function formatTeamStat(val1, val2) {
-    if (val1 === null && val2 === null) {
-        return 'N/A';
+    const has1 = val1 !== null && val1 !== undefined;
+    const has2 = val2 !== null && val2 !== undefined;
+
+    if (has1 && has2) {
+        return val1 + val2;
     }
-    return safeAdd(val1, val2);
+    return 'N/A';
 }
 
 // Format date for input field (keep as local time, no timezone conversion)
@@ -188,7 +195,7 @@ async function loadMatchups() {
     // Show loading state
     tbody.innerHTML = `
         <tr class="loading-row">
-            <td colspan="9">
+            <td colspan="10">
                 <div class="loading-spinner"></div>
                 <div class="text-gray-500 mt-2">Loading matchups...</div>
             </td>
@@ -199,40 +206,99 @@ async function loadMatchups() {
         const response = await fetch('/api/matchups');
         const data = await response.json();
 
-        if (data.matchups.length === 0) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="9" class="px-3 py-8 text-center text-gray-500">
-                        No matchups recorded yet.
-                    </td>
-                </tr>
-            `;
-            return;
-        }
+        // Store all matchups for filtering
+        allMatchups = data.matchups;
 
-        tbody.innerHTML = data.matchups.map(m => `
-            <tr class="${getResultRowClass(m.matchup_result)}">
-                <td class="px-3 py-2 font-medium">${m.opponent || '-'}</td>
-                <td class="px-3 py-2">${m.p1_character}</td>
-                <td class="px-3 py-2">${m.p2_character}</td>
-                <td class="px-3 py-2">${m.p3_character}</td>
-                <td class="px-3 py-2">${m.p4_character}</td>
-                <td class="px-3 py-2 font-medium">${m.wins} - ${m.losses}</td>
-                <td class="px-3 py-2">${formatWinLossOrder(m.win_loss_order)}</td>
-                <td class="px-3 py-2">${formatMatchupResult(m.matchup_result)}</td>
-                <td class="px-3 py-2 whitespace-nowrap">${formatDate(m.last_game_date)}</td>
-            </tr>
-        `).join('');
+        renderMatchups();
     } catch (error) {
         console.error('Error loading matchups:', error);
         tbody.innerHTML = `
             <tr>
-                <td colspan="9" class="px-3 py-8 text-center text-red-500">
+                <td colspan="10" class="px-3 py-8 text-center text-red-500">
                     Error loading matchups. Please refresh the page.
                 </td>
             </tr>
         `;
     }
+}
+
+// Render matchups with current filter applied
+function renderMatchups() {
+    const tbody = document.getElementById('matchups-table');
+    const filterBar = document.getElementById('matchup-filter-bar');
+    const filterName = document.getElementById('filter-opponent-name');
+
+    // Compute opponent counts from all matchups (only for valid opponent names)
+    const opponentCounts = {};
+    allMatchups.forEach(m => {
+        const opp = m.opponent || '';
+        if (opp && opp.trim() !== '') {
+            opponentCounts[opp] = (opponentCounts[opp] || 0) + 1;
+        }
+    });
+
+    // Filter matchups if a filter is active
+    let matchupsToDisplay = allMatchups;
+    if (currentOpponentFilter !== null) {
+        matchupsToDisplay = allMatchups.filter(m => m.opponent === currentOpponentFilter);
+        filterBar.classList.remove('hidden');
+        filterName.textContent = currentOpponentFilter;
+    } else {
+        filterBar.classList.add('hidden');
+    }
+
+    if (matchupsToDisplay.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="10" class="px-3 py-8 text-center text-gray-500">
+                    ${currentOpponentFilter ? 'No matchups found for this opponent.' : 'No matchups recorded yet.'}
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    tbody.innerHTML = matchupsToDisplay.map(m => {
+        const oppKey = m.opponent || '';
+        const hasValidOpponent = oppKey && oppKey.trim() !== '';
+        const count = hasValidOpponent ? opponentCounts[oppKey] : null;
+        const countCell = hasValidOpponent
+            ? `<button onclick="toggleOpponentFilter('${oppKey.replace(/'/g, "\\'")}')"
+                       class="text-blue-600 hover:text-blue-800 hover:underline font-medium"
+                       title="Click to filter by this opponent">
+                   ${count}
+               </button>`
+            : '-';
+        return `
+        <tr class="${getResultRowClass(m.matchup_result)}">
+            <td class="px-3 py-2 whitespace-nowrap">${formatDate(m.last_game_date)}</td>
+            <td class="px-3 py-2">${m.p1_character}</td>
+            <td class="px-3 py-2">${m.p2_character}</td>
+            <td class="px-3 py-2">${m.p3_character}</td>
+            <td class="px-3 py-2">${m.p4_character}</td>
+            <td class="px-3 py-2 font-medium">${m.wins} - ${m.losses}</td>
+            <td class="px-3 py-2">${formatWinLossOrder(m.win_loss_order)}</td>
+            <td class="px-3 py-2">${formatMatchupResult(m.matchup_result)}</td>
+            <td class="px-3 py-2 font-medium">${m.opponent || '-'}</td>
+            <td class="px-3 py-2">${countCell}</td>
+        </tr>
+    `}).join('');
+}
+
+// Toggle opponent filter (click to filter, click again to clear)
+function toggleOpponentFilter(opponent) {
+    if (currentOpponentFilter === opponent) {
+        currentOpponentFilter = null;
+    } else {
+        currentOpponentFilter = opponent;
+    }
+    renderMatchups();
+}
+
+// Clear opponent filter
+function clearOpponentFilter() {
+    currentOpponentFilter = null;
+    renderMatchups();
 }
 
 // Load today's stats
