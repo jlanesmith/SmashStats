@@ -807,9 +807,8 @@ def sync_to_remote(result: dict) -> bool:
     """
     import requests
 
-    remote_url = os.environ.get("SMASHSTATS_REMOTE_URL")
-    if not remote_url:
-        return False
+    # Hardcoded Railway URL - can be overridden by SMASHSTATS_REMOTE_URL env var
+    remote_url = os.environ.get("SMASHSTATS_REMOTE_URL", "https://smashstats.up.railway.app")
 
     api_url = f"{remote_url.rstrip('/')}/api/games"
 
