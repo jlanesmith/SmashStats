@@ -168,16 +168,62 @@ class LiveAnalyzer:
 
     def capture_frames(self, source):
         """Capture thread - continuously reads frames into buffer."""
-        cap = cv2.VideoCapture(source)
+        # On Windows, try DirectShow backend for better camera compatibility
+        if platform.system() == "Windows" and isinstance(source, int):
+            print(f"Opening camera {source} with DirectShow backend...")
+            cap = cv2.VideoCapture(source, cv2.CAP_DSHOW)
+        else:
+            cap = cv2.VideoCapture(source)
+
         if not cap.isOpened():
             print(f"Error: Could not open video source: {source}")
             self.running = False
             return
 
+        # For capture cards, set resolution before reading
+        if isinstance(source, int):
+            print("Configuring capture device for 1080p @ 60fps...")
+            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+            cap.set(cv2.CAP_PROP_FPS, 60)
+
+        # On Windows, cameras need time to initialize
+        if platform.system() == "Windows":
+            print("Waiting for capture device to initialize...")
+            time.sleep(2)
+
+        # Try to read a test frame to verify camera is working
+        print("Testing video source...")
+        ret, test_frame = cap.read()
+        if not ret or test_frame is None:
+            print(f"Error: Could not read frames from video source: {source}")
+            print("  Camera opened but not providing video data")
+            print("  Try:")
+            print("    - Using a different device index (0, 1, 2)")
+            print("    - Closing other apps using the camera")
+            print("    - Checking camera permissions in Windows settings")
+            cap.release()
+            self.running = False
+            return
+
+        print(f"  Successfully read test frame: {test_frame.shape[1]}x{test_frame.shape[0]}")
+
         # Get video properties
         self.fps = cap.get(cv2.CAP_PROP_FPS) or 60
         video_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         video_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+        # Verify dimensions are valid
+        if video_width == 0 or video_height == 0:
+            # Use test frame dimensions instead
+            video_height, video_width = test_frame.shape[:2]
+            print(f"Warning: Camera properties returned 0x0, using actual frame size: {video_width}x{video_height}")
+
+        if video_height < 480:
+            print(f"WARNING: Camera resolution ({video_width}x{video_height}) is lower than 480p")
+            print(f"  Template matching may not work correctly")
+            print(f"  Consider using a higher resolution camera or capture device")
+
         self.target_width = int(video_width * (self.target_height / video_height))
 
         # Try to force 60fps for capture cards (may not work on all devices)
