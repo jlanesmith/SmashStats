@@ -119,7 +119,7 @@ from analyze_game import (
 class FrameBuffer:
     """Thread-safe circular buffer for frames with frame numbers."""
 
-    def __init__(self, max_size=900):  # 15 seconds at 60fps
+    def __init__(self, max_size=1800):  # 30 seconds at 60fps
         self.max_size = max_size
         self.frames = {}  # Dict for O(1) lookup by frame number
         self.frame_order = deque(maxlen=max_size)  # Track order for cleanup
@@ -191,7 +191,7 @@ class LiveAnalyzer:
     """Real-time video stream analyzer for Super Smash Bros."""
 
     def __init__(self, template_dir, output_dir="live_captures",
-                 threshold=DEFAULT_THRESHOLD, buffer_size=900):
+                 threshold=DEFAULT_THRESHOLD, buffer_size=1800):
         self.template_dir = template_dir
         self.output_dir = output_dir
         self.threshold = threshold
@@ -576,8 +576,8 @@ def main():
     parser.add_argument(
         "--buffer-size",
         type=int,
-        default=900,
-        help="Frame buffer size (default: 900, ~15s at 60fps)"
+        default=1800,
+        help="Frame buffer size (default: 1800, ~30s at 60fps)"
     )
 
     args = parser.parse_args()
