@@ -4,6 +4,12 @@ SmashStats Live - Real-time analysis of Super Smash Bros video streams.
 Uses a producer-consumer pattern with a frame buffer to handle 60fps input.
 """
 
+import sys
+
+# Force line buffering for real-time output on Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(line_buffering=True)
+
 import cv2
 import threading
 import time
