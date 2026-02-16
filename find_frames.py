@@ -226,7 +226,7 @@ class FrameProcessor:
             )
 
             # Print confidence vs threshold for debugging
-            match_indicator = "✓ MATCH" if matched else ""
+            match_indicator = "[MATCH]" if matched else ""
             if self.verbose:
                 print(f"  [CHAR] Frame {frame_num}: conf={confidence:.4f} thresh={self.threshold:.2f} {match_indicator}")
 
@@ -268,7 +268,7 @@ class FrameProcessor:
             )
 
             # Print confidence vs threshold for debugging
-            match_indicator = "✓ MATCH" if matched else ""
+            match_indicator = "[MATCH]" if matched else ""
             if self.verbose:
                 print(f"  [GAME] Frame {frame_num}: conf={confidence:.4f} thresh={self.threshold:.2f} {match_indicator}")
 
@@ -397,11 +397,11 @@ class FrameProcessor:
                                 self.player_groups[player].append(self.active_group[player])
                                 self.active_group[player] = None
                                 self.player_done[player] = True
-                                debug_parts.append(f"{player}={confidence:.3f}✓COMPLETE")
+                                debug_parts.append(f"{player}={confidence:.3f}[COMPLETE]")
                                 continue
 
                     num_groups = len(self.player_groups[player]) + (1 if self.active_group[player] else 0)
-                    debug_parts.append(f"{player}={confidence:.3f}✓(g{num_groups})")
+                    debug_parts.append(f"{player}={confidence:.3f}+(g{num_groups})")
                 else:
                     # Below threshold - end current group if active (incomplete)
                     if self.active_group[player] is not None:
