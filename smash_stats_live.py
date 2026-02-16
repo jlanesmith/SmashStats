@@ -5,18 +5,100 @@ Uses a producer-consumer pattern with a frame buffer to handle 60fps input.
 """
 
 import sys
+import os
+import platform
+import shutil
+import subprocess
 
 # Force line buffering for real-time output on Windows
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(line_buffering=True)
 
+
+def check_dependencies():
+    """Check that all required dependencies are installed."""
+    errors = []
+
+    # Check Python packages
+    try:
+        import cv2
+    except ImportError:
+        errors.append("opencv-python is not installed. Install with: pip install opencv-python")
+
+    try:
+        import pytesseract
+    except ImportError:
+        errors.append("pytesseract is not installed. Install with: pip install pytesseract")
+
+    # Check for Tesseract executable
+    tesseract_cmd = shutil.which('tesseract')
+
+    # On Windows, check common installation paths if not in PATH
+    if tesseract_cmd is None and platform.system() == 'Windows':
+        common_paths = [
+            r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+            r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+            os.path.expanduser(r'~\AppData\Local\Tesseract-OCR\tesseract.exe'),
+        ]
+        for path in common_paths:
+            if os.path.exists(path):
+                tesseract_cmd = path
+                # Add Tesseract directory to PATH so pytesseract can find it
+                tesseract_dir = os.path.dirname(path)
+                os.environ['PATH'] = tesseract_dir + os.pathsep + os.environ.get('PATH', '')
+                print(f"Found Tesseract at: {path}")
+                print(f"Added to PATH: {tesseract_dir}")
+                break
+
+    if tesseract_cmd is None:
+        if platform.system() == 'Windows':
+            errors.append(
+                "Tesseract OCR is not installed or not in PATH.\n"
+                "  Download from: https://github.com/UB-Mannheim/tesseract/wiki\n"
+                "  Run the installer and note the installation path.\n"
+                "  Either add it to PATH or it will be auto-detected in Program Files."
+            )
+        elif platform.system() == 'Darwin':
+            errors.append(
+                "Tesseract OCR is not installed.\n"
+                "  Install with: brew install tesseract"
+            )
+        else:
+            errors.append(
+                "Tesseract OCR is not installed.\n"
+                "  Install with: sudo apt-get install tesseract-ocr"
+            )
+    else:
+        # Verify tesseract actually works
+        try:
+            result = subprocess.run(
+                [tesseract_cmd, '--version'],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result.returncode != 0:
+                errors.append(f"Tesseract found but not working: {result.stderr}")
+        except Exception as e:
+            errors.append(f"Tesseract found but failed to run: {e}")
+
+    if errors:
+        print("=" * 60)
+        print("DEPENDENCY ERRORS")
+        print("=" * 60)
+        for error in errors:
+            print(f"\n[X] {error}")
+        print("\n" + "=" * 60)
+        sys.exit(1)
+
+
+# Check dependencies before importing anything else
+check_dependencies()
+
 import cv2
 import threading
 import time
-import os
 import argparse
-import subprocess
-import platform
 from collections import deque
 from pathlib import Path
 from datetime import datetime
