@@ -73,6 +73,13 @@ class FrameProcessor:
         self.wait_until_frame = 0
         self.game_result = None  # 'win' or 'loss'
 
+        # Frame counting for diagnostics
+        self.game_end_frame = None  # Frame when GAME template detected
+        self.results_start_frame = None  # Frame when LOOKING_FOR_RESULTS started
+        self.results_complete_frame = None  # Frame when results completed
+        self.results_frames_checked = 0  # Frames actually processed in LOOKING_FOR_RESULTS
+        self.last_frame_num = 0  # Most recent frame number processed
+
         # Constants
         self.WAIT_AFTER_GAME = 300  # Frames to wait after game end before looking for results
         self.RESULTS_THRESHOLD = 0.80
@@ -146,6 +153,22 @@ class FrameProcessor:
 
     def _complete_game(self):
         """Complete the current game - save results and trigger callback."""
+        # Record completion frame for diagnostics
+        self.results_complete_frame = self.last_frame_num
+
+        # Print frame diagnostics
+        if self.game_end_frame is not None:
+            total_frames_after_game = self.last_frame_num - self.game_end_frame
+            wait_frames = self.WAIT_AFTER_GAME
+            results_phase_frames = total_frames_after_game - wait_frames if total_frames_after_game > wait_frames else 0
+            print(f"\n  [FRAME STATS]")
+            print(f"    GAME detected at frame: {self.game_end_frame}")
+            print(f"    Results complete at frame: {self.last_frame_num}")
+            print(f"    Total frames after GAME: {total_frames_after_game}")
+            print(f"    Wait phase: {wait_frames} frames")
+            print(f"    Results phase: {results_phase_frames} frames (span)")
+            print(f"    Results frames checked: {self.results_frames_checked} (actually processed)")
+
         # Save game result (win/loss) to file
         if self.game_result and self.current_game_dir:
             result_file = os.path.join(self.current_game_dir, "game_result.txt")
@@ -205,11 +228,13 @@ class FrameProcessor:
         """
         frame_small_gray = cv2.cvtColor(frame_small, cv2.COLOR_BGR2GRAY)
         event = None
+        self.last_frame_num = frame_num  # Track for diagnostics
 
         # Handle waiting state
         if self.state == State.WAITING_FOR_RESULTS:
             if frame_num >= self.wait_until_frame:
                 self.state = State.LOOKING_FOR_RESULTS
+                self.results_start_frame = frame_num  # Track when results checking started
                 # Reset for player results
                 for p in ['p1', 'p2', 'p3', 'p4']:
                     self.best_matches[p] = {'confidence': 0, 'frame_num': 0, 'frame': None, 'loc': None}
@@ -288,6 +313,10 @@ class FrameProcessor:
                 print(f"Game end found! Frame {frame_num}, Confidence: {confidence:.4f}")
                 self._save_frame(frame, frame_small, 'game', frame_num)
 
+                # Track frame for diagnostics
+                self.game_end_frame = frame_num
+                self.results_frames_checked = 0
+
                 # Wait before looking for results
                 self.wait_until_frame = frame_num + self.WAIT_AFTER_GAME
                 self.state = State.WAITING_FOR_RESULTS
@@ -300,6 +329,9 @@ class FrameProcessor:
                 print(f"Waiting {self.WAIT_AFTER_GAME} frames before checking for results...")
 
         elif self.state == State.LOOKING_FOR_RESULTS:
+            # Track frames checked for diagnostics
+            self.results_frames_checked += 1
+
             # Check for win/loss only after P2 has at least one frame over threshold
             p2_has_match = len(self.player_groups.get('p2', [])) > 0 or self.active_group.get('p2') is not None
             if self.game_result is None and p2_has_match:
